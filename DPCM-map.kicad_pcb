@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 4)
+    (drawings 8)
     (tracks 0)
     (zones 0)
     (modules 1)
@@ -60,7 +60,7 @@
     (pad_to_mask_clearance 0.051)
     (solder_mask_min_width 0.25)
     (aux_axis_origin 0 0)
-    (visible_elements FFFFFF7F)
+    (visible_elements 7FFFFFFF)
     (pcbplotparams
       (layerselection 0x010fc_ffffffff)
       (usegerberextensions false)
@@ -102,7 +102,7 @@
   )
 
   (module mapref:mapref (layer F.Cu) (tedit 6004463B) (tstamp 60049AEA)
-    (at 233 200)
+    (at 180 180)
     (fp_text reference G*** (at -90.09 -90.09) (layer F.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)))
     )
@@ -3682,9 +3682,13 @@
       (xy -0.004666 -180.090745) (xy -0.004666 -0.004666)) (layer Eco2.User) (width 0.01))
   )
 
-  (gr_line (start 233 20) (end 233 200) (layer Edge.Cuts) (width 0.05) (tstamp 60044556))
-  (gr_line (start 53 20) (end 53 200) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 53 200) (end 233 200) (layer Edge.Cuts) (width 0.05) (tstamp 60044541))
-  (gr_line (start 53 20) (end 233 20) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 160 0) (end 20 0) (layer Edge.Cuts) (width 0.05) (tstamp 6004A07D))
+  (gr_arc (start 160 20) (end 180 20) (angle -90) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 180 160) (end 180 20) (layer Edge.Cuts) (width 0.05))
+  (gr_arc (start 160 160) (end 160 180) (angle -90) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 20 180) (end 160 180) (layer Edge.Cuts) (width 0.05))
+  (gr_arc (start 20 160) (end 0 160) (angle -90) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 0 20) (end 0 160) (layer Edge.Cuts) (width 0.05))
+  (gr_arc (start 20 20) (end 20 0) (angle -90) (layer Edge.Cuts) (width 0.05))
 
 )
