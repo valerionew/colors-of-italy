@@ -19,7 +19,7 @@ inspired by http://www.lucadentella.it/en/2021/01/09/impariamo-insieme-mappa-din
 - batteria?? almeno il footprint per portabatteria 18650 e caricabatteria da usb (target hardware V2)
 - led bianchi sul resto della mappa (quanti ne servono per illuminazione omogenea?)
 
-## Software
+## Firmware 
 ### Minimum viable product
 - alla prima accensione apre un access point senza password e ti chiede le credenziali di login al tuo wifi. dopo di ché si resetta e si connette alla tua rete, salvando le credenziali. 
 - ogni 10 minuti si collega a un indirizzo web e parsa i colori delle regioni
@@ -28,3 +28,10 @@ inspired by http://www.lucadentella.it/en/2021/01/09/impariamo-insieme-mappa-din
 - pulsante touch per spegnere la luce , posto sopra (esp32 integra gpio per fare touch funxion)  (target software V2 su hardware V1)
 - pulsanti touch -/0/+ per diminuire e aumentare la luminosità manualmente (dovrebbe rimappare il suo comportamento rispetto all'ambiente)  (target hardware V2)
 - Altri dati: vaccini, contagi... Da concepire l'interfaccia (target software V3)
+
+
+## Software
+### Minimum viable product
+- una pagina bianca (hostata da github pages) viene interrogata e continene un metadato che indica quali regioni hanno quale colore
+### Feature addizionali
+- la pagina non è più bianca ma contiene una replica virtuale del semaforo delle regioni, oltre al metadato usato dai dispositivi iot
