@@ -198,4 +198,8 @@ Wire Wire Line
 	9150 1950 9150 1350
 Text Notes 8000 900  0    50   ~ 0
 Il multiplexing può tenere accese tutte le regioni dello stesso colore insieme\nCosì sarebbe a 4 fasi invece che 20\nQuesto aumenta considerevolmente la corrente
+Text Notes 1150 4700 0    50   ~ 0
+esp32 module footprint by https://www.huubzegveld.nl/programmeren.html
+Text Notes 4300 3650 0    50   ~ 0
+sensore touch in cima per togglare luce on/off\nipotesi 3 bottoni touch -/0/+
 $EndSCHEMATC
