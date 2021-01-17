@@ -35,3 +35,11 @@ inspired by http://www.lucadentella.it/en/2021/01/09/impariamo-insieme-mappa-din
 - una pagina bianca (hostata da github pages) viene interrogata e continene un metadato che indica quali regioni hanno quale colore
 ### Feature addizionali
 - la pagina non è più bianca ma contiene una replica virtuale del semaforo delle regioni, oltre al metadato usato dai dispositivi iot
+
+## Mechanical
+### Minimum viable product
+- Frame esterno
+- Buco usb (in due posti)
+- pannello frontale in plexi semitrasparente al laser
+- coperchio sul retro con viti autofilettanti svasate
+- sistema di regioni interno
