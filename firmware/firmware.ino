@@ -7,11 +7,15 @@
 #define WIFI_SSID_NAME "DCPM-map"
 #define UPDATE_INTERVAL 3.6e6
 #define REQUEST_URL "www.vaccinocovid19.live/get/colore_territori"
+#define WIFI_RESET_BUTTON 1
+#define WIFI_RESET_TIMEOUT 5000
 
 WiFiManager wifiManager;
 WiFiClient client;
 
 unsigned long last_update;
+unsigned long last_pressed;
+
 
 void setup() {
   wifiManager.setTimeout(WIFI_TIMEOUT);
@@ -22,7 +26,9 @@ void setup() {
     ESP.restart();
   }
 
+  pinMode(WIFI_RESET_BUTTON, INPUT);
   last_update = 0;
+  last_pressed = 0;
 }
 
 void loop() {
@@ -50,4 +56,16 @@ void loop() {
   http.end();
 
   }
+
+  if (digitalRead(WIFI_RESET_BUTTON) == HIGH) {
+    if (last_pressed == 0) {
+      last_pressed = millis();
+    } else if (millis - last_pressed > WIFI_RESET_TIMEOUT) {
+      // delete wifi credentials and reset esp
+      wifiManager.resetSettings();
+      ESP.restart();
+    }
+  }
+
+  delay(10);
 }
