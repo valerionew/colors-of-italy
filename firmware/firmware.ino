@@ -60,7 +60,7 @@ void loop() {
   if (digitalRead(WIFI_RESET_BUTTON) == HIGH) {
     if (last_pressed == 0) {
       last_pressed = millis();
-    } else if (millis - last_pressed > WIFI_RESET_TIMEOUT) {
+    } else if (millis() - last_pressed > WIFI_RESET_TIMEOUT) {
       // delete wifi credentials and reset esp
       wifiManager.resetSettings();
       ESP.restart();
