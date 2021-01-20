@@ -1,6 +1,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
-#include <WiFiManager.h>
+#include <WiFiManager.h> // use development branch to get it working on esp32
 #include <HTTPClient.h>
 
 #define WIFI_TIMEOUT 500
