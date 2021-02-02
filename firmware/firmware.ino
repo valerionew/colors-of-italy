@@ -27,7 +27,7 @@ unsigned long last_pressed;
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
 // colori scopiazzati dalle faq del ministero
-std::map<unsigned short, unsigned short> color_map = {
+std::map<unsigned short, unsigned long> color_map = {
   {0, 0xdd222a},
   {1, 0xe78314},
   {2, 0xf8c300},
@@ -122,8 +122,9 @@ void loop() {
           // load the address by pairing the key (istat code) to the led address
           unsigned short address = led_map.find(p.key().c_str())->second;
           unsigned short color_code = p.value().as<unsigned short>();
+          unsigned long color = color_map.find(color_code)->second;
           // color the corrisponding led
-          leds[address] = color_map.find(color_code)->second;
+          leds[address] = color;
 
           #ifdef DEBUG
             Serial.print(p.key().c_str());
@@ -134,7 +135,7 @@ void loop() {
             Serial.print(" ");
             Serial.print(color_code);
             Serial.print(" ");
-            Serial.println(color_map.find(color_code)->second);
+            Serial.println(color);
           #endif
         }
       }
