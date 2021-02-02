@@ -98,8 +98,6 @@ Wire Wire Line
 Wire Wire Line
 	2700 3100 2850 3100
 Connection ~ 2700 3100
-Text Notes 4550 6450 0    50   ~ 0
-esp32 module footprint by \nhttps://www.huubzegveld.nl/programmeren.html
 Wire Wire Line
 	2150 3100 2700 3100
 Wire Wire Line
@@ -111,8 +109,6 @@ Wire Wire Line
 Connection ~ 2150 3100
 Wire Wire Line
 	2150 3200 2150 3100
-Wire Wire Line
-	1950 3100 2050 3100
 Wire Wire Line
 	1950 3200 1950 3100
 Wire Wire Line
@@ -170,7 +166,7 @@ Wire Wire Line
 	7100 5450 7300 5450
 Connection ~ 7300 5450
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L power:+3.3V #SUPPLY?
 U 1 1 601EC99D
 P 7300 5150
 F 0 "#SUPPLY?" H 7300 5150 50  0001 L BNN
@@ -199,7 +195,7 @@ Connection ~ 6750 3450
 Wire Wire Line
 	6500 3450 6750 3450
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L power:+3.3V #SUPPLY?
 U 1 1 601E4AD8
 P 6750 3150
 F 0 "#SUPPLY?" H 6750 3150 50  0001 L BNN
@@ -298,7 +294,7 @@ F 3 "~" H 4000 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L power:+3.3V #SUPPLY?
 U 1 1 601D221B
 P 4200 3100
 F 0 "#SUPPLY?" H 4200 3100 50  0001 L BNN
@@ -320,7 +316,7 @@ F 3 "~" H 4200 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L power:+3.3V #SUPPLY?
 U 1 1 601B94FA
 P 5350 3200
 F 0 "#SUPPLY?" H 5350 3200 50  0001 L BNN
@@ -352,327 +348,222 @@ F 3 "http://www.usb.org/developers/docs/usb_31_033017.zip" H 9700 4450 50  0001 
 	1    9550 4450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3350 1700 3950 1700
-Connection ~ 3350 1700
-Wire Wire Line
-	2750 1700 3350 1700
-Connection ~ 2750 1700
-Connection ~ 2150 1700
-Wire Wire Line
-	1550 1700 2150 1700
-Wire Wire Line
-	9350 700  9950 700 
-Connection ~ 9350 700 
-Wire Wire Line
-	8750 700  9350 700 
-Connection ~ 8750 700 
-Wire Wire Line
-	8150 700  8750 700 
-Connection ~ 8150 700 
-Wire Wire Line
-	7550 700  8150 700 
-Wire Wire Line
-	6350 700  6950 700 
-Connection ~ 6350 700 
-Wire Wire Line
-	5750 700  6350 700 
-Connection ~ 5750 700 
-Wire Wire Line
-	5150 700  5750 700 
-Connection ~ 5150 700 
-Wire Wire Line
-	4550 700  5150 700 
-Connection ~ 4550 700 
-Connection ~ 3950 700 
-Wire Wire Line
-	3350 700  3950 700 
-Connection ~ 3350 700 
-Wire Wire Line
-	2750 700  3350 700 
-Connection ~ 2750 700 
-Wire Wire Line
-	2150 700  2750 700 
-Connection ~ 2150 700 
-Wire Wire Line
-	1550 700  2150 700 
-Wire Wire Line
-	4250 1200 4550 1200
-Connection ~ 4250 1200
+Connection ~ 4250 1250
 $Comp
 L power:GND #PWR?
 U 1 1 601A6C41
-P 4250 1200
-F 0 "#PWR?" H 4250 950 50  0001 C CNN
-F 1 "GND" H 4255 1027 50  0000 C CNN
-F 2 "" H 4250 1200 50  0001 C CNN
-F 3 "" H 4250 1200 50  0001 C CNN
-	1    4250 1200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6350 1200 6950 1200
-Connection ~ 6350 1200
-Wire Wire Line
-	5750 1200 6350 1200
-Connection ~ 5750 1200
-Wire Wire Line
-	5150 1200 5750 1200
-Connection ~ 5150 1200
-Wire Wire Line
-	4550 1200 5150 1200
-Connection ~ 4550 1200
-Wire Wire Line
-	3950 1200 4250 1200
-Connection ~ 3950 1200
-Wire Wire Line
-	3350 1200 3950 1200
-Connection ~ 3350 1200
-Wire Wire Line
-	2750 1200 3350 1200
-Connection ~ 2750 1200
-Wire Wire Line
-	2150 1200 2750 1200
-Connection ~ 2150 1200
-Wire Wire Line
-	1550 1200 2150 1200
-Wire Wire Line
-	3350 2200 3950 2200
-Connection ~ 3350 2200
-Wire Wire Line
-	2750 2200 3350 2200
-Connection ~ 2750 2200
-Wire Wire Line
-	2150 2200 2500 2200
-Connection ~ 2150 2200
-Wire Wire Line
-	1550 2200 2150 2200
-Wire Wire Line
-	9350 1200 9950 1200
-Connection ~ 9350 1200
-Wire Wire Line
-	8750 1200 9350 1200
-Connection ~ 8750 1200
-Wire Wire Line
-	8150 1200 8750 1200
-Connection ~ 8150 1200
-Wire Wire Line
-	7550 1200 8150 1200
-$Comp
-L nik's_lib:ws2812b LED?
-U 1 1 601A5440
-P 3950 1950
-F 0 "LED?" H 4000 2150 50  0000 L CNN
-F 1 "ws2812b" H 4000 1750 50  0000 L CNN
-F 2 "" H 4500 2250 50  0001 C CNN
-F 3 "" H 4500 2250 50  0001 C CNN
-	1    3950 1950
+P 4250 1250
+F 0 "#PWR?" H 4250 1000 50  0001 C CNN
+F 1 "GND" H 4255 1077 50  0000 C CNN
+F 2 "" H 4250 1250 50  0001 C CNN
+F 3 "" H 4250 1250 50  0001 C CNN
+	1    4250 1250
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A543A
 P 3350 1950
 F 0 "LED?" H 3400 2150 50  0000 L CNN
-F 1 "ws2812b" H 3400 1750 50  0000 L CNN
+F 1 "WS2812B" H 3400 1700 50  0000 L CNN
 F 2 "" H 3900 2250 50  0001 C CNN
 F 3 "" H 3900 2250 50  0001 C CNN
 	1    3350 1950
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A5434
 P 2750 1950
 F 0 "LED?" H 2800 2150 50  0000 L CNN
-F 1 "ws2812b" H 2800 1750 50  0000 L CNN
+F 1 "WS2812B" H 2800 1700 50  0000 L CNN
 F 2 "" H 3300 2250 50  0001 C CNN
 F 3 "" H 3300 2250 50  0001 C CNN
 	1    2750 1950
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A542E
 P 2150 1950
 F 0 "LED?" H 2200 2150 50  0000 L CNN
-F 1 "ws2812b" H 2200 1750 50  0000 L CNN
+F 1 "WS2812B" H 2200 1700 50  0000 L CNN
 F 2 "" H 2700 2250 50  0001 C CNN
 F 3 "" H 2700 2250 50  0001 C CNN
 	1    2150 1950
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A5428
 P 1550 1950
 F 0 "LED?" H 1600 2150 50  0000 L CNN
-F 1 "ws2812b" H 1600 1750 50  0000 L CNN
+F 1 "WS2812B" H 1600 1700 50  0000 L CNN
 F 2 "" H 2100 2250 50  0001 C CNN
 F 3 "" H 2100 2250 50  0001 C CNN
 	1    1550 1950
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A317A
 P 9950 950
 F 0 "LED?" H 10000 1150 50  0000 L CNN
-F 1 "ws2812b" H 10000 750 50  0000 L CNN
+F 1 "WS2812B" H 10000 700 50  0000 L CNN
 F 2 "" H 10500 1250 50  0001 C CNN
 F 3 "" H 10500 1250 50  0001 C CNN
 	1    9950 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A3174
 P 9350 950
 F 0 "LED?" H 9400 1150 50  0000 L CNN
-F 1 "ws2812b" H 9400 750 50  0000 L CNN
+F 1 "WS2812B" H 9400 700 50  0000 L CNN
 F 2 "" H 9900 1250 50  0001 C CNN
 F 3 "" H 9900 1250 50  0001 C CNN
 	1    9350 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A316E
 P 8750 950
 F 0 "LED?" H 8800 1150 50  0000 L CNN
-F 1 "ws2812b" H 8800 750 50  0000 L CNN
+F 1 "WS2812B" H 8800 700 50  0000 L CNN
 F 2 "" H 9300 1250 50  0001 C CNN
 F 3 "" H 9300 1250 50  0001 C CNN
 	1    8750 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A3168
 P 8150 950
 F 0 "LED?" H 8200 1150 50  0000 L CNN
-F 1 "ws2812b" H 8200 750 50  0000 L CNN
+F 1 "WS2812B" H 8200 700 50  0000 L CNN
 F 2 "" H 8700 1250 50  0001 C CNN
 F 3 "" H 8700 1250 50  0001 C CNN
 	1    8150 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A3162
 P 7550 950
 F 0 "LED?" H 7600 1150 50  0000 L CNN
-F 1 "ws2812b" H 7600 750 50  0000 L CNN
+F 1 "WS2812B" H 7600 700 50  0000 L CNN
 F 2 "" H 8100 1250 50  0001 C CNN
 F 3 "" H 8100 1250 50  0001 C CNN
 	1    7550 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A12A7
 P 6950 950
 F 0 "LED?" H 7000 1150 50  0000 L CNN
-F 1 "ws2812b" H 7000 750 50  0000 L CNN
+F 1 "WS2812B" H 7000 700 50  0000 L CNN
 F 2 "" H 7500 1250 50  0001 C CNN
 F 3 "" H 7500 1250 50  0001 C CNN
 	1    6950 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A12A1
 P 6350 950
 F 0 "LED?" H 6400 1150 50  0000 L CNN
-F 1 "ws2812b" H 6400 750 50  0000 L CNN
+F 1 "WS2812B" H 6400 700 50  0000 L CNN
 F 2 "" H 6900 1250 50  0001 C CNN
 F 3 "" H 6900 1250 50  0001 C CNN
 	1    6350 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A129B
 P 5750 950
 F 0 "LED?" H 5800 1150 50  0000 L CNN
-F 1 "ws2812b" H 5800 750 50  0000 L CNN
+F 1 "WS2812B" H 5800 700 50  0000 L CNN
 F 2 "" H 6300 1250 50  0001 C CNN
 F 3 "" H 6300 1250 50  0001 C CNN
 	1    5750 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A1295
 P 5150 950
 F 0 "LED?" H 5200 1150 50  0000 L CNN
-F 1 "ws2812b" H 5200 750 50  0000 L CNN
+F 1 "WS2812B" H 5200 700 50  0000 L CNN
 F 2 "" H 5700 1250 50  0001 C CNN
 F 3 "" H 5700 1250 50  0001 C CNN
 	1    5150 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 601A128F
 P 4550 950
 F 0 "LED?" H 4600 1150 50  0000 L CNN
-F 1 "ws2812b" H 4600 750 50  0000 L CNN
+F 1 "WS2812B" H 4600 700 50  0000 L CNN
 F 2 "" H 5100 1250 50  0001 C CNN
 F 3 "" H 5100 1250 50  0001 C CNN
 	1    4550 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 6019F376
 P 3950 950
 F 0 "LED?" H 4000 1150 50  0000 L CNN
-F 1 "ws2812b" H 4000 750 50  0000 L CNN
+F 1 "WS2812B" H 4000 700 50  0000 L CNN
 F 2 "" H 4500 1250 50  0001 C CNN
 F 3 "" H 4500 1250 50  0001 C CNN
 	1    3950 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 6019EF1D
 P 3350 950
 F 0 "LED?" H 3400 1150 50  0000 L CNN
-F 1 "ws2812b" H 3400 750 50  0000 L CNN
+F 1 "WS2812B" H 3400 700 50  0000 L CNN
 F 2 "" H 3900 1250 50  0001 C CNN
 F 3 "" H 3900 1250 50  0001 C CNN
 	1    3350 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 6019EC72
 P 2750 950
 F 0 "LED?" H 2800 1150 50  0000 L CNN
-F 1 "ws2812b" H 2800 750 50  0000 L CNN
+F 1 "WS2812B" H 2800 700 50  0000 L CNN
 F 2 "" H 3300 1250 50  0001 C CNN
 F 3 "" H 3300 1250 50  0001 C CNN
 	1    2750 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 6019E936
 P 2150 950
 F 0 "LED?" H 2200 1150 50  0000 L CNN
-F 1 "ws2812b" H 2200 750 50  0000 L CNN
+F 1 "WS2812B" H 2200 700 50  0000 L CNN
 F 2 "" H 2700 1250 50  0001 C CNN
 F 3 "" H 2700 1250 50  0001 C CNN
 	1    2150 950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L nik's_lib:ws2812b LED?
+L LED:WS2812B LED?
 U 1 1 6019E07F
 P 1550 950
 F 0 "LED?" H 1600 1150 50  0000 L CNN
-F 1 "ws2812b" H 1600 750 50  0000 L CNN
+F 1 "WS2812B" H 1600 700 50  0000 L CNN
 F 2 "" H 2100 1250 50  0001 C CNN
 F 3 "" H 2100 1250 50  0001 C CNN
 	1    1550 950 
@@ -689,12 +580,12 @@ LED_CHAIN
 $Comp
 L power:GND #PWR?
 U 1 1 601AD992
-P 2500 2200
-F 0 "#PWR?" H 2500 1950 50  0001 C CNN
-F 1 "GND" H 2505 2027 50  0000 C CNN
-F 2 "" H 2500 2200 50  0001 C CNN
-F 3 "" H 2500 2200 50  0001 C CNN
-	1    2500 2200
+P 2500 2250
+F 0 "#PWR?" H 2500 2000 50  0001 C CNN
+F 1 "GND" H 2505 2077 50  0000 C CNN
+F 2 "" H 2500 2250 50  0001 C CNN
+F 3 "" H 2500 2250 50  0001 C CNN
+	1    2500 2250
 	1    0    0    -1  
 $EndComp
 Text Notes 3950 7250 0    50   ~ 0
@@ -824,7 +715,7 @@ F 3 "" H 1900 5750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L LED:WS2812B #SUPPLY?
 U 1 1 604174A5
 P 1900 5450
 F 0 "#SUPPLY?" H 1900 5450 50  0001 L BNN
@@ -847,7 +738,6 @@ F 3 "~" H 1900 5600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1900 5450 1650 5450
-Connection ~ 1900 5450
 $Comp
 L power:GND #PWR?
 U 1 1 6041E73D
@@ -998,20 +888,16 @@ Wire Wire Line
 	2650 5450 2800 5450
 Wire Wire Line
 	2350 5750 2800 5750
-Wire Wire Line
-	3950 700  4250 700 
-Connection ~ 4250 700 
-Wire Wire Line
-	4250 700  4550 700 
+Connection ~ 4250 650 
 $Comp
 L power:VAA #PWR?
 U 1 1 604A5E05
-P 4250 700
-F 0 "#PWR?" H 4250 550 50  0001 C CNN
-F 1 "VAA" H 4267 873 50  0000 C CNN
-F 2 "" H 4250 700 50  0001 C CNN
-F 3 "" H 4250 700 50  0001 C CNN
-	1    4250 700 
+P 4250 650
+F 0 "#PWR?" H 4250 500 50  0001 C CNN
+F 1 "VAA" H 4267 823 50  0000 C CNN
+F 2 "" H 4250 650 50  0001 C CNN
+F 3 "" H 4250 650 50  0001 C CNN
+	1    4250 650 
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1043,17 +929,7 @@ F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 2950 5750 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2350 5450 2350 5750
-Wire Wire Line
-	6950 700  7550 700 
-Connection ~ 6950 700 
-Connection ~ 7550 700 
-Wire Wire Line
-	6950 1200 7550 1200
-Connection ~ 6950 1200
-Connection ~ 7550 1200
-Connection ~ 2500 2200
-Wire Wire Line
-	2500 2200 2750 2200
+Connection ~ 2500 2250
 Wire Wire Line
 	1250 1950 1250 1450
 Wire Wire Line
@@ -1073,11 +949,6 @@ F 3 "" H 9450 6050 50  0001 C CNN
 	1    9450 6050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9250 6050 9350 6050
-Connection ~ 9350 6050
-Wire Wire Line
-	9350 6050 9450 6050
 Connection ~ 9450 6050
 Wire Wire Line
 	9450 6050 9550 6050
@@ -1097,15 +968,6 @@ F 3 "" H 10350 3150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10350 3150 10150 3150
-Wire Wire Line
-	10150 3150 10150 3250
-Connection ~ 10150 3150
-Connection ~ 10150 3250
-Wire Wire Line
-	10150 3250 10150 3350
-Connection ~ 10150 3350
-Wire Wire Line
-	10150 3350 10150 3450
 Wire Notes Line
 	550  4800 3700 4800
 Wire Notes Line
@@ -1157,7 +1019,7 @@ LDR
 Text Notes 3800 4900 0    50   ~ 0
 se colleghi robe qui\nnon funziona o\nnon puoi usare QIO\nsulla flash
 $Comp
-L SparkFun-Aesthetics:3.3V #SUPPLY?
+L power:+3.3V #SUPPLY?
 U 1 1 60584CCE
 P 2050 3100
 F 0 "#SUPPLY?" H 2050 3100 50  0001 L BNN
@@ -1167,9 +1029,6 @@ F 3 "" H 2050 3100 50  0001 C CNN
 	1    2050 3100
 	1    0    0    -1  
 $EndComp
-Connection ~ 2050 3100
-Wire Wire Line
-	2050 3100 2150 3100
 $Comp
 L power:GND #PWR?
 U 1 1 60586481
@@ -1203,22 +1062,18 @@ F 3 "" H 4700 1700 50  0001 C CNN
 	1    4700 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2150 1700 2500 1700
 $Comp
 L power:VAA #PWR?
 U 1 1 6058AACC
-P 2500 1700
-F 0 "#PWR?" H 2500 1550 50  0001 C CNN
-F 1 "VAA" H 2517 1873 50  0000 C CNN
-F 2 "" H 2500 1700 50  0001 C CNN
-F 3 "" H 2500 1700 50  0001 C CNN
-	1    2500 1700
+P 2500 1650
+F 0 "#PWR?" H 2500 1500 50  0001 C CNN
+F 1 "VAA" H 2517 1823 50  0000 C CNN
+F 2 "" H 2500 1650 50  0001 C CNN
+F 3 "" H 2500 1650 50  0001 C CNN
+	1    2500 1650
 	1    0    0    -1  
 $EndComp
-Connection ~ 2500 1700
-Wire Wire Line
-	2500 1700 2750 1700
+Connection ~ 2500 1650
 $Comp
 L Connector:Conn_01x06_Male J?
 U 1 1 6058C8EF
@@ -1268,4 +1123,43 @@ Text Notes 7250 3900 0    50   ~ 0
 program/debug\nper infilare\ncp2103
 Text Notes 1100 7500 0    50   ~ 0
 prog -> vcc\n450mA chg curr
+Wire Wire Line
+	1950 3100 2150 3100
+Wire Wire Line
+	1550 1650 2500 1650
+Wire Wire Line
+	1550 2250 2500 2250
+Wire Wire Line
+	2500 2250 3950 2250
+Wire Wire Line
+	9250 6050 9450 6050
+Wire Wire Line
+	10150 3150 10150 3450
+Wire Wire Line
+	2500 1650 3950 1650
+Wire Wire Line
+	1550 650  4250 650 
+Wire Wire Line
+	1550 1250 4250 1250
+Wire Wire Line
+	4250 650  9950 650 
+Wire Wire Line
+	4250 1250 9950 1250
+NoConn ~ 4750 4600
+NoConn ~ 4750 4700
+NoConn ~ 4750 4800
+NoConn ~ 4750 4900
+NoConn ~ 4750 5000
+NoConn ~ 4750 5100
+$Comp
+L LED:WS2812B LED?
+U 1 1 601B8A90
+P 3950 1950
+F 0 "LED?" H 4000 2150 50  0000 L CNN
+F 1 "WS2812B" H 4000 1700 50  0000 L CNN
+F 2 "" H 4500 2250 50  0001 C CNN
+F 3 "" H 4500 2250 50  0001 C CNN
+	1    3950 1950
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
