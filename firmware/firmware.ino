@@ -14,8 +14,8 @@
 #define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define WIFI_RESET_BUTTON 3
 #define WIFI_RESET_TIMEOUT 5000
-#define LED_PIN 12
-
+#define LED_PIN 12 // pin connected to WS2812b data cable
+#define LIGHT_SENSOR_PIN 13 // must be and ADC PIN
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -27,7 +27,7 @@ unsigned long last_pressed;
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
 // colori scopiazzati dalle faq del ministero
-std::map<unsigned short, unsigned long> color_map = {
+std::map<byte, unsigned long> color_map = {
   {0, 0xdd222a},
   {1, 0xe78314},
   {2, 0xf8c300},
@@ -38,8 +38,7 @@ std::map<unsigned short, unsigned long> color_map = {
 // ISTAT CODE -> led position translation
 // e.g. code 01 -> led with address led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
-
-std::map<String, unsigned short> led_map = {
+std::map<String, byte> led_map = {
   {"01", 0},
   {"02", 1},
   {"03", 2},
@@ -63,7 +62,6 @@ std::map<String, unsigned short> led_map = {
   {"21", 20}
 };
 
-
 void setup() {
 
   #ifdef DEBUG
@@ -77,7 +75,11 @@ void setup() {
     // this code gets called after timeout is hit
     ESP.restart();
   }
+  // PINs initialization
   pinMode(WIFI_RESET_BUTTON, INPUT_PULLUP);
+  pinMode(LIGHT_SENSOR_PIN, INPUT);
+
+  // variables initialization
   last_update = 0;
   last_pressed = 0;
 
@@ -120,21 +122,22 @@ void loop() {
         for (JsonPair p : obj) {
           // iterate through each key and value
           // load the address by pairing the key (istat code) to the led address
-          unsigned short address = led_map.find(p.key().c_str())->second;
-          unsigned short color_code = p.value().as<unsigned short>();
+          byte address = led_map.find(p.key().c_str())->second;
+          byte color_code = p.value().as<byte>();
           unsigned long color = color_map.find(color_code)->second;
           // color the corrisponding led
           leds[address] = color;
 
-          #ifdef DEBUG
+          #ifdef DEBUGS
+            Serial.print("key ")
             Serial.print(p.key().c_str());
-            Serial.print(" ");
-            Serial.print(p.value().as<int>());
-            Serial.print(" ");
+            Serial.print(" value ");
+            Serial.print(p.value().as<byte>());
+            Serial.print(" led address ");
             Serial.print(address);
-            Serial.print(" ");
+            Serial.print(" color code ");
             Serial.print(color_code);
-            Serial.print(" ");
+            Serial.print(" color hex");
             Serial.println(color);
           #endif
         }
@@ -142,6 +145,24 @@ void loop() {
 
       // free the memory
       doc.clear();
+
+      // read light level from sensor
+      unsigned int light = analogRead(LIGHT_SENSOR_PIN);
+      // 500 should be the max value
+      // this will need some tweaking
+      if (light > 500) light = 500;
+      // calculate the actual brightness compared to the sensor output
+      byte brightness = map(light, 500, 0, 255, 50);
+      // set the leds brightness
+      FastLED.setBrightness(brightness);
+
+      #ifdef DEBUG
+        Serial.print("ambient light ");
+        Serial.print(light);
+        Serial.print(" led brightness ");
+        Serial.println(brightness);
+      #endif
+
     }
     http.end();
 
