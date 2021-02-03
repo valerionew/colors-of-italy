@@ -137,7 +137,7 @@ void loop() {
             Serial.print(address);
             Serial.print(" color code ");
             Serial.print(color_code);
-            Serial.print(" color hex");
+            Serial.print(" color hex ");
             Serial.println(color);
           #endif
         }
