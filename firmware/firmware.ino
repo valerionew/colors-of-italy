@@ -1,10 +1,10 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include <WiFiManager.h> // use development branch to get it working on esp32
-#include <HTTPClient.h>
-#include <ArduinoJson.h>
-#include <FastLED.h>
-#include <map>
+#include <HTTPClient.h>  // built in library
+#include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
+#include <FastLED.h> // https://github.com/FastLED/FastLED
+#include <map> // built in library
 
 #define DEBUG
 
