@@ -5,9 +5,12 @@
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 #include <FastLED.h> // https://github.com/FastLED/FastLED
 #include <map> // built in library
+#include <array> // built in library
 
 #define DEBUG
 
+#define LED_NUMBER 35 // change this with the actual number of leds
+#define MAX_LEDS_PER_REGION 4 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
 #define WIFI_SSID_NAME "DCPM-map"
 #define UPDATE_INTERVAL 3.6e6
@@ -19,14 +22,14 @@
 
 WiFiManager wifiManager;
 WiFiClient client;
-CRGB leds[21];
+CRGB leds[LED_NUMBER];
 
 unsigned long last_update;
 unsigned long last_pressed;
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
-// colori scopiazzati dalle faq del ministero
+// colori scopiazzati dalle faq del ministero lmao
 std::map<byte, unsigned long> color_map = {
   {0, 0xdd222a},
   {1, 0xe78314},
@@ -34,32 +37,32 @@ std::map<byte, unsigned long> color_map = {
   {3, 0xf7f7f7}
 };
 
-// territory mapping
+// territory mapping -> change this with actual values and update the LED NUMBER constant. RANDOM VALUES PROVIDED AS NOW
 // ISTAT CODE -> led position translation
-// e.g. code 01 -> led with address led_map["01"]
+// e.g. code 01 -> addresses of led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
-std::map<String, byte> led_map = {
-  {"01", 0},
-  {"02", 1},
-  {"03", 2},
-  {"04", 3},
-  {"05", 4},
-  {"06", 5},
-  {"07", 6},
-  {"08", 7},
-  {"09", 8},
-  {"10", 9},
-  {"11", 10},
-  {"12", 11},
-  {"13", 12},
-  {"14", 13},
-  {"15", 14},
-  {"16", 15},
-  {"17", 16},
-  {"18", 17},
-  {"19", 18},
-  {"20", 19},
-  {"21", 20}
+std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
+  {"01", {0, 1, 2, 3}},
+  {"02", {4, 5, 6}},
+  {"03", {7}},
+  {"04", {8}},
+  {"05", {9, 10}},
+  {"06", {11}},
+  {"07", {12}},
+  {"08", {13, 14, 15}},
+  {"09", {17}},
+  {"10", {18, 19}},
+  {"11", {16}},
+  {"12", {20, 21}},
+  {"13", {22}},
+  {"14", {23}},
+  {"15", {24, 25, 26}},
+  {"16", {27}},
+  {"17", {28, 29}},
+  {"18", {30, 31, 32}},
+  {"19", {33}},
+  {"20", {34}},
+  {"21", {35}}
 };
 
 void setup() {
@@ -88,7 +91,8 @@ void setup() {
   #endif
 
   // set up WS2812b
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, 21);
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER
+  );
 }
 
 void loop() {
@@ -121,21 +125,28 @@ void loop() {
         JsonObject obj = doc.as<JsonObject>();
         for (JsonPair p : obj) {
           // iterate through each key and value
-          // load the address by pairing the key (istat code) to the led address
-          byte address = led_map.find(p.key().c_str())->second;
+          // load color code
           byte color_code = p.value().as<byte>();
+          // translate it to actual hex color
           unsigned long color = color_map.find(color_code)->second;
-          // color the corrisponding led
-          leds[address] = color;
+          // load the list of addresses from the map
+          std::array<byte, MAX_LEDS_PER_REGION> addresses =  led_map.find(p.key().c_str())->second;
+          for (const auto& address : addresses) {
+            // color the corrisponding led
+            leds[address] = color;
+          }
 
-          #ifdef DEBUGS
-            Serial.print("key ")
+          #ifdef DEBUG
+            Serial.print("key ");
             Serial.print(p.key().c_str());
             Serial.print(" value ");
             Serial.print(p.value().as<byte>());
-            Serial.print(" led address ");
-            Serial.print(address);
-            Serial.print(" color code ");
+            Serial.print(" led addresses ");
+            for (const auto& address : addresses) {
+              Serial.print(address);
+              Serial.print(" ");
+            }
+            Serial.print("color code ");
             Serial.print(color_code);
             Serial.print(" color hex ");
             Serial.println(color);
