@@ -42,27 +42,27 @@ std::map<byte, unsigned long> color_map = {
 // e.g. code 01 -> addresses of led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
 std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
-  {"01", {0, 1, 2, 3}},
-  {"02", {4, 5, 6}},
-  {"03", {7}},
-  {"04", {8}},
-  {"05", {9, 10}},
-  {"06", {11}},
-  {"07", {12}},
-  {"08", {13, 14, 15}},
-  {"09", {17}},
-  {"10", {18, 19}},
-  {"11", {16}},
-  {"12", {20, 21}},
-  {"13", {22}},
-  {"14", {23}},
-  {"15", {24, 25, 26}},
-  {"16", {27}},
-  {"17", {28, 29}},
-  {"18", {30, 31, 32}},
-  {"19", {33}},
-  {"20", {34}},
-  {"21", {35}}
+  {"01", {0, 1, 2, 3}},   // ABRUZZO
+  {"02", {4, 5, 6}},      // BASILICATA
+  {"03", {7}},            // BOLZANO
+  {"04", {8}},            // CALABRIA
+  {"05", {9, 10}},        // CAMPANIA
+  {"06", {11}},           // EMILIA ROMAGNA
+  {"07", {12}},           // FRIULI VENEZIA GIULIA
+  {"08", {13, 14, 15}},   // LAZIO
+  {"09", {17}},           // LIGURIA
+  {"10", {18, 19}},       // LOMBARDIA
+  {"11", {16}},           // MARCHE
+  {"12", {20, 21}},       // MOLISE
+  {"13", {22}},           // PIEMONTE
+  {"14", {23}},           // PUGLIA
+  {"15", {24, 25, 26}},   // SARDEGNA
+  {"16", {27}},           // SICILIA
+  {"17", {28, 29}},       // TOSCANA
+  {"18", {30, 31, 32}},   // TRENTO
+  {"19", {33}},           // UMBRIA
+  {"20", {34}},           // VALLE D'AOSTA
+  {"21", {35}}            // VENETO
 };
 
 void setup() {
