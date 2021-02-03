@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name mapref)(type KiCad)(uri ${KIPRJMOD}/mapref.pretty)(options "")(descr ""))
-)
