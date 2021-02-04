@@ -17,8 +17,8 @@
 #define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define WIFI_RESET_BUTTON 3
 #define WIFI_RESET_TIMEOUT 5000
-#define LED_PIN 12 // pin connected to WS2812b data cable
-#define LIGHT_SENSOR_PIN 13 // must be and ADC PIN
+#define LED_PIN 25 // pin connected to WS2812b data cable
+#define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -31,10 +31,10 @@ unsigned long last_pressed;
 // e.g. red -> color 0 -> 0xdd222a (red)
 // colori scopiazzati dalle faq del ministero lmao
 std::map<byte, unsigned long> color_map = {
-  {0, 0xdd222a},
-  {1, 0xe78314},
-  {2, 0xf8c300},
-  {3, 0xf7f7f7}
+  {0, 0xFF0000}, // red
+  {1, 0xFF6000}, // orange
+  {2, 0xFFFF00}, // yw
+  {3, 0xFFFFFF}  // white
 };
 
 // territory mapping -> change this with actual values and update the LED NUMBER constant. RANDOM VALUES PROVIDED AS NOW
@@ -157,6 +157,10 @@ void loop() {
       // free the memory
       doc.clear();
 
+    }
+    http.end();
+
+  }
       // read light level from sensor
       unsigned int light = analogRead(LIGHT_SENSOR_PIN);
       // 500 should be the max value
@@ -174,10 +178,6 @@ void loop() {
         Serial.println(brightness);
       #endif
 
-    }
-    http.end();
-
-  }
 
   if (digitalRead(WIFI_RESET_BUTTON) == LOW) {
     if (last_pressed == 0) {
@@ -189,5 +189,6 @@ void loop() {
     }
   }
 
+ FastLED.show();
   delay(10);
 }
