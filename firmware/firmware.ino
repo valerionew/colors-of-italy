@@ -19,6 +19,7 @@
 #define WIFI_RESET_TIMEOUT 5000
 #define LED_PIN 25 // pin connected to WS2812b data cable
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
+#define NO_LED 255
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -42,27 +43,27 @@ std::map<byte, unsigned long> color_map = {
 // e.g. code 01 -> addresses of led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
 std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
-  {"01", {0, 1, 2, 3}},   // ABRUZZO
-  {"02", {4, 5, 6}},      // BASILICATA
-  {"03", {7}},            // BOLZANO
-  {"04", {8}},            // CALABRIA
-  {"05", {9, 10}},        // CAMPANIA
-  {"06", {11}},           // EMILIA ROMAGNA
-  {"07", {12}},           // FRIULI VENEZIA GIULIA
-  {"08", {13, 14, 15}},   // LAZIO
-  {"09", {17}},           // LIGURIA
-  {"10", {18, 19}},       // LOMBARDIA
-  {"11", {16}},           // MARCHE
-  {"12", {20, 21}},       // MOLISE
-  {"13", {22}},           // PIEMONTE
-  {"14", {23}},           // PUGLIA
-  {"15", {24, 25, 26}},   // SARDEGNA
-  {"16", {27}},           // SICILIA
-  {"17", {28, 29}},       // TOSCANA
-  {"18", {30, 31, 32}},   // TRENTO
-  {"19", {33}},           // UMBRIA
-  {"20", {34}},           // VALLE D'AOSTA
-  {"21", {35}}            // VENETO
+  {"01", {0, 1, 2, 3}},                   // ABRUZZO
+  {"02", {4, 5, 6, NO_LED}},              // BASILICATA
+  {"03", {7, NO_LED, NO_LED, NO_LED}},    // BOLZANO
+  {"04", {8, NO_LED, NO_LED, NO_LED}},    // CALABRIA
+  {"05", {9, 10, NO_LED, NO_LED}},        // CAMPANIA
+  {"06", {11, NO_LED, NO_LED, NO_LED}},   // EMILIA ROMAGNA
+  {"07", {12, NO_LED, NO_LED, NO_LED}},   // FRIULI VENEZIA GIULIA
+  {"08", {13, 14, 15, NO_LED}},           // LAZIO
+  {"09", {17, NO_LED, NO_LED, NO_LED}},   // LIGURIA
+  {"10", {18, 19, NO_LED, NO_LED}},       // LOMBARDIA
+  {"11", {16, NO_LED, NO_LED, NO_LED}},   // MARCHE
+  {"12", {20, 21, NO_LED, NO_LED}},       // MOLISE
+  {"13", {22, NO_LED, NO_LED, NO_LED}},   // PIEMONTE
+  {"14", {23, NO_LED, NO_LED, NO_LED}},   // PUGLIA
+  {"15", {24, 25, 26, NO_LED}},           // SARDEGNA
+  {"16", {27, NO_LED, NO_LED, NO_LED}},   // SICILIA
+  {"17", {28, 29, NO_LED, NO_LED}},       // TOSCANA
+  {"18", {30, 31, 32, NO_LED}},           // TRENTO
+  {"19", {33, NO_LED, NO_LED, NO_LED}},   // UMBRIA
+  {"20", {34, NO_LED, NO_LED, NO_LED}},   // VALLE D'AOSTA
+  {"21", {35, NO_LED, NO_LED, NO_LED}}    // VENETO
 };
 
 void setup() {
@@ -91,8 +92,7 @@ void setup() {
   #endif
 
   // set up WS2812b
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER
-  );
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 }
 
 void loop() {
@@ -130,10 +130,13 @@ void loop() {
           // translate it to actual hex color
           unsigned long color = color_map.find(color_code)->second;
           // load the list of addresses from the map
-          std::array<byte, MAX_LEDS_PER_REGION> addresses =  led_map.find(p.key().c_str())->second;
+          std::array<byte, MAX_LEDS_PER_REGION> addresses = led_map.find(p.key().c_str())->second;
           for (const auto& address : addresses) {
             // color the corrisponding led
-            leds[address] = color;
+            if (address != NO_LED) {
+              // the address must be different from the array filler
+              leds[address] = color;
+            }
           }
 
           #ifdef DEBUG
