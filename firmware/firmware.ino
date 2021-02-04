@@ -9,7 +9,7 @@
 
 #define DEBUG
 
-#define LED_NUMBER 35 // change this with the actual number of leds
+#define LED_NUMBER 36 // change this with the actual number of leds
 #define MAX_LEDS_PER_REGION 4 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
 #define WIFI_SSID_NAME "DCPM-map"
@@ -49,7 +49,7 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
   {"05", {9, 10}},        // CAMPANIA
   {"06", {11}},           // EMILIA ROMAGNA
   {"07", {12}},           // FRIULI VENEZIA GIULIA
-  {"08", {13, 14, 15}},   // LAZIO
+  {"08", {13, 14, 15, 16}},   // LAZIO
   {"09", {17}},           // LIGURIA
   {"10", {18, 19}},       // LOMBARDIA
   {"11", {16}},           // MARCHE
