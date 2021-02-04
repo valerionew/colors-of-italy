@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name map_edges_keepout)(type KiCad)(uri ${KIPRJMOD}/map_edges_keepout.pretty)(options "")(descr ""))
+)
