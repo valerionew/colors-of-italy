@@ -13,8 +13,8 @@
 #define MAX_LEDS_PER_REGION 4 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
 #define WIFI_SSID_NAME "DCPM-map"
-#define UPDATE_INTERVAL 3.6e6
-#define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
+#define UPDATE_INTERVAL 10000
+#define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim_dummy"
 #define WIFI_RESET_BUTTON 3
 #define WIFI_RESET_TIMEOUT 5000
 #define LED_PIN 25 // pin connected to WS2812b data cable
@@ -32,7 +32,7 @@ unsigned long last_pressed;
 // colori scopiazzati dalle faq del ministero lmao
 std::map<byte, unsigned long> color_map = {
   {0, 0xFF0000}, // red
-  {1, 0xFF6000}, // orange
+  {1, 0xFF2000}, // orange
   {2, 0xFFFF00}, // yw
   {3, 0xFFFFFF}  // white
 };
@@ -49,7 +49,7 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
   {"05", {9, 10}},        // CAMPANIA
   {"06", {11}},           // EMILIA ROMAGNA
   {"07", {12}},           // FRIULI VENEZIA GIULIA
-  {"08", {13, 14, 15, 16}},   // LAZIO
+  {"08", {13, 14, 15}},   // LAZIO
   {"09", {17}},           // LIGURIA
   {"10", {18, 19}},       // LOMBARDIA
   {"11", {16}},           // MARCHE
@@ -167,16 +167,16 @@ void loop() {
       // this will need some tweaking
       if (light > 500) light = 500;
       // calculate the actual brightness compared to the sensor output
-      byte brightness = map(light, 500, 0, 255, 50);
+      byte brightness = map(light, 500, 0, 255, 20);
       // set the leds brightness
       FastLED.setBrightness(brightness);
 
-      #ifdef DEBUG
-        Serial.print("ambient light ");
-        Serial.print(light);
-        Serial.print(" led brightness ");
-        Serial.println(brightness);
-      #endif
+//      #ifdef DEBUG
+//        Serial.print("ambient light ");
+//        Serial.print(light);
+//        Serial.print(" led brightness ");
+//        Serial.println(brightness);
+//      #endif
 
 
   if (digitalRead(WIFI_RESET_BUTTON) == LOW) {
