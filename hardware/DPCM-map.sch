@@ -335,7 +335,7 @@ Text GLabel 5950 4800 2    50   Input ~ 0
 SDA
 Text GLabel 5950 4900 2    50   Input ~ 0
 SCL
-Text GLabel 5950 5700 2    50   Input ~ 0
+Text GLabel 5950 5500 2    50   Input ~ 0
 LDR
 Text Notes 3800 4900 0    50   ~ 0
 se colleghi robe qui\nnon funziona o\nnon puoi usare QIO\nsulla flash

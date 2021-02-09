@@ -15,11 +15,15 @@
 #define WIFI_SSID_NAME "DCPM-map"
 #define UPDATE_INTERVAL 10000
 #define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim_dummy"
-#define WIFI_RESET_BUTTON 3
+#define WIFI_RESET_BUTTON 4
 #define WIFI_RESET_TIMEOUT 5000
-#define LED_PIN 25 // pin connected to WS2812b data cable
+#define LED_PIN 15 // pin connected to WS2812b data cable
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 #define NO_LED 255
+
+#define TOUCH_+_PIN T5 // pin 12
+#define TOUCH_0_PIN T4 // pin 13
+#define TOUCH_-_PIN T6 // pin 14
 
 WiFiManager wifiManager;
 WiFiClient client;
