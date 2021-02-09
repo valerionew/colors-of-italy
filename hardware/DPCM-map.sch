@@ -200,7 +200,7 @@ Text GLabel 1850 1500 0    50   Input ~ 0
 LED_CHAIN
 Text GLabel 5950 4300 2    50   Input ~ 0
 LED_CHAIN
-Text Notes 3950 7250 0    50   ~ 0
+Text Notes 3850 7000 0    50   ~ 0
 3 bottoni touch \nminimizzare capacità parassite\n
 Text Notes 9150 2800 0    50   ~ 0
 power source
@@ -489,40 +489,40 @@ $EndComp
 $Comp
 L Connector:Conn_01x01_Female J5
 U 1 1 601CF152
-P 6400 7500
-F 0 "J5" H 6428 7526 50  0000 L CNN
-F 1 "Touch_Pad_+" H 6428 7435 50  0000 L CNN
-F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 6400 7500 50  0001 C CNN
-F 3 "~" H 6400 7500 50  0001 C CNN
-F 4 "~" H 6400 7500 50  0001 C CNN "Basic part"
-F 5 "~" H 6400 7500 50  0001 C CNN "JLCPCBA"
-	1    6400 7500
+P 4500 7600
+F 0 "J5" H 4528 7626 50  0000 L CNN
+F 1 "Touch_Pad_+" H 4528 7535 50  0000 L CNN
+F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 4500 7600 50  0001 C CNN
+F 3 "~" H 4500 7600 50  0001 C CNN
+F 4 "~" H 4500 7600 50  0001 C CNN "Basic part"
+F 5 "~" H 4500 7600 50  0001 C CNN "JLCPCBA"
+	1    4500 7600
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Female J4
 U 1 1 601CEEE7
-P 6400 7300
-F 0 "J4" H 6428 7326 50  0000 L CNN
-F 1 "Touch_Pad_0" H 6428 7235 50  0000 L CNN
-F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 6400 7300 50  0001 C CNN
-F 3 "~" H 6400 7300 50  0001 C CNN
-F 4 "~" H 6400 7300 50  0001 C CNN "Basic part"
-F 5 "~" H 6400 7300 50  0001 C CNN "JLCPCBA"
-	1    6400 7300
+P 4500 7400
+F 0 "J4" H 4528 7426 50  0000 L CNN
+F 1 "Touch_Pad_0" H 4528 7335 50  0000 L CNN
+F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 4500 7400 50  0001 C CNN
+F 3 "~" H 4500 7400 50  0001 C CNN
+F 4 "~" H 4500 7400 50  0001 C CNN "Basic part"
+F 5 "~" H 4500 7400 50  0001 C CNN "JLCPCBA"
+	1    4500 7400
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Female J3
 U 1 1 601CE24F
-P 6400 7100
-F 0 "J3" H 6428 7126 50  0000 L CNN
-F 1 "Touch_Pad_-" H 6428 7035 50  0000 L CNN
-F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 6400 7100 50  0001 C CNN
-F 3 "~" H 6400 7100 50  0001 C CNN
-F 4 "~" H 6400 7100 50  0001 C CNN "Basic part"
-F 5 "~" H 6400 7100 50  0001 C CNN "JLCPCBA"
-	1    6400 7100
+P 4500 7200
+F 0 "J3" H 4528 7226 50  0000 L CNN
+F 1 "Touch_Pad_-" H 4528 7135 50  0000 L CNN
+F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 4500 7200 50  0001 C CNN
+F 3 "~" H 4500 7200 50  0001 C CNN
+F 4 "~" H 4500 7200 50  0001 C CNN "Basic part"
+F 5 "~" H 4500 7200 50  0001 C CNN "JLCPCBA"
+	1    4500 7200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1098,11 +1098,11 @@ Connection ~ 7000 3150
 Wire Wire Line
 	7000 3450 7250 3450
 Connection ~ 7000 3450
-Text GLabel 6200 7100 0    50   Input ~ 0
+Text GLabel 4300 7200 0    50   Input ~ 0
 TOUCH_+
-Text GLabel 6200 7300 0    50   Input ~ 0
+Text GLabel 4300 7400 0    50   Input ~ 0
 TOUCH_0
-Text GLabel 6200 7500 0    50   Input ~ 0
+Text GLabel 4300 7600 0    50   Input ~ 0
 TOUCH_-
 Text GLabel 5950 4000 2    50   Input ~ 0
 TOUCH_+
@@ -1390,7 +1390,7 @@ Wire Wire Line
 Wire Wire Line
 	14100 6000 14100 6100
 Connection ~ 14100 6100
-Text Notes 7200 5550 0    50   ~ 0
+Text Notes 7700 5300 0    50   ~ 0
 potrebbe essere:\n C589176 (out of stock)\naltirmenti cercare su RS\n
 Wire Wire Line
 	2200 1800 4900 1800
@@ -1505,55 +1505,49 @@ Wire Wire Line
 $Comp
 L Connector:Conn_01x04_Female J7
 U 1 1 601CD4FB
-P 9150 7250
-F 0 "J7" H 9178 7226 50  0000 L CNN
-F 1 "SSD1306" H 9178 7135 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9150 7250 50  0001 C CNN
-F 3 "~" H 9150 7250 50  0001 C CNN
-F 4 "~" H 9150 7250 50  0001 C CNN "Basic part"
-F 5 "~" H 9150 7250 50  0001 C CNN "JLCPCBA"
-	1    9150 7250
+P 11750 7450
+F 0 "J7" H 11778 7426 50  0000 L CNN
+F 1 "SSD1306" H 11778 7335 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 11750 7450 50  0001 C CNN
+F 3 "~" H 11750 7450 50  0001 C CNN
+F 4 "~" H 11750 7450 50  0001 C CNN "Basic part"
+F 5 "~" H 11750 7450 50  0001 C CNN "JLCPCBA"
+	1    11750 7450
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3.3V #SUPPLY0109
 U 1 1 601CEC0E
-P 8850 7100
-F 0 "#SUPPLY0109" H 8850 7100 50  0001 L BNN
-F 1 "3.3V" H 8850 7275 50  0000 C CNN
-F 2 "" H 8850 7100 50  0001 C CNN
-F 3 "" H 8850 7100 50  0001 C CNN
-	1    8850 7100
+P 10700 7000
+F 0 "#SUPPLY0109" H 10700 7000 50  0001 L BNN
+F 1 "3.3V" H 10700 7175 50  0000 C CNN
+F 2 "" H 10700 7000 50  0001 C CNN
+F 3 "" H 10700 7000 50  0001 C CNN
+	1    10700 7000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8850 7100 8850 7150
-Wire Wire Line
-	8850 7150 8950 7150
+	10700 7000 10700 7050
 $Comp
 L power:GND #PWR0113
 U 1 1 601D55D1
-P 8900 7550
-F 0 "#PWR0113" H 8900 7300 50  0001 C CNN
-F 1 "GND" H 8905 7377 50  0000 C CNN
-F 2 "" H 8900 7550 50  0001 C CNN
-F 3 "" H 8900 7550 50  0001 C CNN
-	1    8900 7550
+P 10700 7450
+F 0 "#PWR0113" H 10700 7200 50  0001 C CNN
+F 1 "GND" H 10705 7277 50  0000 C CNN
+F 2 "" H 10700 7450 50  0001 C CNN
+F 3 "" H 10700 7450 50  0001 C CNN
+	1    10700 7450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8950 7250 8900 7250
-Wire Wire Line
-	8900 7250 8900 7550
-Text GLabel 8850 7450 0    50   Input ~ 0
+Text GLabel 11450 7650 0    50   Input ~ 0
 SDA
-Text GLabel 8850 7350 0    50   Input ~ 0
+Text GLabel 11450 7550 0    50   Input ~ 0
 SCL
 Wire Wire Line
-	8850 7450 8950 7450
+	11450 7650 11550 7650
 Wire Wire Line
-	8850 7350 8950 7350
-Text Notes 9350 7050 0    50   ~ 0
+	11450 7550 11550 7550
+Text Notes 11950 7250 0    50   ~ 0
 OLED che non fa mai male
 $Comp
 L Device:Q_NMOS_GSD Q1
@@ -2054,4 +2048,136 @@ F 3 "" H 1300 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 1300 2000
+$Comp
+L power:GND #PWR?
+U 1 1 60238E9A
+P 5300 7800
+F 0 "#PWR?" H 5300 7550 50  0001 C CNN
+F 1 "GND" V 5305 7672 50  0000 R CNN
+F 2 "" H 5300 7800 50  0001 C CNN
+F 3 "" H 5300 7800 50  0001 C CNN
+	1    5300 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 602427E3
+P 5900 7800
+F 0 "#PWR?" H 5900 7550 50  0001 C CNN
+F 1 "GND" V 5905 7672 50  0000 R CNN
+F 2 "" H 5900 7800 50  0001 C CNN
+F 3 "" H 5900 7800 50  0001 C CNN
+	1    5900 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 60243313
+P 5900 7600
+F 0 "SW?" V 5854 7748 50  0000 L CNN
+F 1 "SW_0_Fb" V 5945 7748 50  0000 L CNN
+F 2 "" H 5900 7800 50  0001 C CNN
+F 3 "~" H 5900 7800 50  0001 C CNN
+	1    5900 7600
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:SolderJumper_3_Open JP?
+U 1 1 6025DE88
+P 10700 7250
+F 0 "JP?" V 10746 7317 50  0000 L CNN
+F 1 "SolderJumper_3_Open" V 10655 7317 50  0000 L CNN
+F 2 "" H 10700 7250 50  0001 C CNN
+F 3 "~" H 10700 7250 50  0001 C CNN
+	1    10700 7250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3.3V #SUPPLY?
+U 1 1 6027F07F
+P 10950 7500
+F 0 "#SUPPLY?" H 10950 7500 50  0001 L BNN
+F 1 "3.3V" H 10950 7675 50  0000 C CNN
+F 2 "" H 10950 7500 50  0001 C CNN
+F 3 "" H 10950 7500 50  0001 C CNN
+	1    10950 7500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10950 7500 10950 7550
+$Comp
+L power:GND #PWR?
+U 1 1 6027FBFC
+P 10950 7950
+F 0 "#PWR?" H 10950 7700 50  0001 C CNN
+F 1 "GND" H 10955 7777 50  0000 C CNN
+F 2 "" H 10950 7950 50  0001 C CNN
+F 3 "" H 10950 7950 50  0001 C CNN
+	1    10950 7950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_3_Open JP?
+U 1 1 6027FC06
+P 10950 7750
+F 0 "JP?" V 10996 7817 50  0000 L CNN
+F 1 "SolderJumper_3_Open" V 10905 7817 50  0000 L CNN
+F 2 "" H 10950 7750 50  0001 C CNN
+F 3 "~" H 10950 7750 50  0001 C CNN
+	1    10950 7750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10850 7250 11200 7250
+Wire Wire Line
+	11200 7250 11200 7350
+Wire Wire Line
+	11200 7350 11550 7350
+Wire Wire Line
+	11200 7450 11200 7750
+Wire Wire Line
+	11200 7750 11100 7750
+Wire Wire Line
+	11200 7450 11550 7450
+$Comp
+L power:GND #PWR?
+U 1 1 602A42B2
+P 6450 7800
+F 0 "#PWR?" H 6450 7550 50  0001 C CNN
+F 1 "GND" V 6455 7672 50  0000 R CNN
+F 2 "" H 6450 7800 50  0001 C CNN
+F 3 "" H 6450 7800 50  0001 C CNN
+	1    6450 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 602A4E6A
+P 6450 7600
+F 0 "SW?" V 6404 7748 50  0000 L CNN
+F 1 "SW_-_Fb" V 6495 7748 50  0000 L CNN
+F 2 "" H 6450 7800 50  0001 C CNN
+F 3 "~" H 6450 7800 50  0001 C CNN
+	1    6450 7600
+	0    1    1    0   
+$EndComp
+Text GLabel 5300 7400 1    50   Input ~ 0
+TOUCH_+
+Text GLabel 5900 7400 1    50   Input ~ 0
+TOUCH_0
+Text GLabel 6450 7400 1    50   Input ~ 0
+TOUCH_-
+$Comp
+L Switch:SW_Push SW?
+U 1 1 602399A8
+P 5300 7600
+F 0 "SW?" V 5254 7748 50  0000 L CNN
+F 1 "SW_+_Fb" V 5345 7748 50  0000 L CNN
+F 2 "" H 5300 7800 50  0001 C CNN
+F 3 "~" H 5300 7800 50  0001 C CNN
+	1    5300 7600
+	0    1    1    0   
+$EndComp
+Text Notes 5300 8400 0    50   ~ 0
+SWITCH fisici fallback \nnel caso ci fossero problemi col touch \nstesso footprint del wifi reset\n
 $EndSCHEMATC
