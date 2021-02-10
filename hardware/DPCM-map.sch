@@ -491,7 +491,7 @@ L Connector:Conn_01x01_Female J5
 U 1 1 601CF152
 P 4500 7600
 F 0 "J5" H 4528 7626 50  0000 L CNN
-F 1 "Touch_Pad_+" H 4528 7535 50  0000 L CNN
+F 1 "Touch_Pad_-" H 4528 7535 50  0000 L CNN
 F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 4500 7600 50  0001 C CNN
 F 3 "~" H 4500 7600 50  0001 C CNN
 F 4 "~" H 4500 7600 50  0001 C CNN "Basic part"
@@ -517,7 +517,7 @@ L Connector:Conn_01x01_Female J3
 U 1 1 601CE24F
 P 4500 7200
 F 0 "J3" H 4528 7226 50  0000 L CNN
-F 1 "Touch_Pad_-" H 4528 7135 50  0000 L CNN
+F 1 "Touch_Pad_+" H 4528 7135 50  0000 L CNN
 F 2 "Connector_Wire:SolderWire-0.75sqmm_1x01_D1.25mm_OD2.3mm" H 4500 7200 50  0001 C CNN
 F 3 "~" H 4500 7200 50  0001 C CNN
 F 4 "~" H 4500 7200 50  0001 C CNN "Basic part"
