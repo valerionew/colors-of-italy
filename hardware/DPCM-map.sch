@@ -382,17 +382,6 @@ Text GLabel 5950 3700 2    50   Input ~ 0
 RX
 Text GLabel 5950 3500 2    50   Input ~ 0
 TX
-$Comp
-L power:+5V #PWR0128
-U 1 1 6059771A
-P 7550 4200
-F 0 "#PWR0128" H 7550 4050 50  0001 C CNN
-F 1 "+5V" H 7565 4373 50  0000 C CNN
-F 2 "" H 7550 4200 50  0001 C CNN
-F 3 "" H 7550 4200 50  0001 C CNN
-	1    7550 4200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7550 4200 7200 4200
 Text Notes 7250 3900 0    50   ~ 0
@@ -1503,19 +1492,6 @@ Connection ~ 2200 1150
 Wire Wire Line
 	2200 1150 2350 1150
 $Comp
-L Connector:Conn_01x04_Female J7
-U 1 1 601CD4FB
-P 11750 7450
-F 0 "J7" H 11778 7426 50  0000 L CNN
-F 1 "SSD1306" H 11778 7335 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 11750 7450 50  0001 C CNN
-F 3 "~" H 11750 7450 50  0001 C CNN
-F 4 "~" H 11750 7450 50  0001 C CNN "Basic part"
-F 5 "~" H 11750 7450 50  0001 C CNN "JLCPCBA"
-	1    11750 7450
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3.3V #SUPPLY0109
 U 1 1 601CEC0E
 P 10700 7000
@@ -2115,11 +2091,9 @@ F 3 "~" H 10950 7750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	10850 7250 11200 7250
+	10850 7250 11150 7250
 Wire Wire Line
 	11200 7250 11200 7350
-Wire Wire Line
-	11200 7350 11550 7350
 Wire Wire Line
 	11200 7450 11200 7750
 Wire Wire Line
@@ -2362,4 +2336,130 @@ Connection ~ 6050 2300
 Wire Wire Line
 	6050 2000 6300 2000
 Connection ~ 6050 2000
+$Comp
+L power:+3.3V #SUPPLY0114
+U 1 1 6027BF3C
+P 7550 4200
+F 0 "#SUPPLY0114" H 7550 4200 50  0001 L BNN
+F 1 "3.3V" H 7550 4375 50  0000 C CNN
+F 2 "" H 7550 4200 50  0001 C CNN
+F 3 "" H 7550 4200 50  0001 C CNN
+	1    7550 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x06_Female J7
+U 1 1 6027DD30
+P 11750 7550
+F 0 "J7" H 11778 7526 50  0000 L CNN
+F 1 "Conn_01x06_Female" H 11778 7435 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 11750 7550 50  0001 C CNN
+F 3 "~" H 11750 7550 50  0001 C CNN
+	1    11750 7550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11200 7750 11550 7750
+Connection ~ 11200 7750
+Wire Wire Line
+	11200 7350 11550 7350
+Wire Wire Line
+	11150 7850 11150 7250
+Wire Wire Line
+	11150 7850 11550 7850
+Connection ~ 11150 7250
+Wire Wire Line
+	11150 7250 11200 7250
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 602B16C7
+P 14550 7350
+F 0 "H2" H 14650 7399 50  0000 L CNN
+F 1 "MountingHole_Pad" H 14650 7308 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14550 7350 50  0001 C CNN
+F 3 "~" H 14550 7350 50  0001 C CNN
+	1    14550 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 602B1993
+P 14550 7650
+F 0 "H3" H 14450 7607 50  0000 R CNN
+F 1 "MountingHole_Pad" H 14450 7698 50  0000 R CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14550 7650 50  0001 C CNN
+F 3 "~" H 14550 7650 50  0001 C CNN
+	1    14550 7650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 602E83E6
+P 14400 7500
+F 0 "H1" V 14637 7503 50  0000 C CNN
+F 1 "MountingHole_Pad" V 14546 7503 50  0000 C CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14400 7500 50  0001 C CNN
+F 3 "~" H 14400 7500 50  0001 C CNN
+	1    14400 7500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 6031EB49
+P 14700 7500
+F 0 "H4" V 14654 7650 50  0000 L CNN
+F 1 "MountingHole_Pad" V 14745 7650 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14700 7500 50  0001 C CNN
+F 3 "~" H 14700 7500 50  0001 C CNN
+	1    14700 7500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	14550 7450 14500 7450
+Wire Wire Line
+	14500 7450 14500 7500
+Wire Wire Line
+	14500 7500 14500 7550
+Wire Wire Line
+	14500 7550 14550 7550
+Connection ~ 14500 7500
+Wire Wire Line
+	14550 7550 14600 7550
+Wire Wire Line
+	14600 7550 14600 7500
+Connection ~ 14550 7550
+Wire Wire Line
+	14600 7500 14600 7450
+Wire Wire Line
+	14600 7450 14550 7450
+Connection ~ 14600 7500
+Connection ~ 14550 7450
+Wire Wire Line
+	14500 7550 14450 7550
+Wire Wire Line
+	14450 7550 14450 7600
+Wire Wire Line
+	14450 7600 14400 7600
+Wire Wire Line
+	14400 7600 14400 7650
+Wire Wire Line
+	14400 7650 14350 7650
+Wire Wire Line
+	14350 7650 14350 7700
+Wire Wire Line
+	14350 7700 14300 7700
+Wire Wire Line
+	14300 7700 14300 7750
+Connection ~ 14500 7550
+$Comp
+L power:GND #PWR0126
+U 1 1 6036B0F9
+P 14300 7750
+F 0 "#PWR0126" H 14300 7500 50  0001 C CNN
+F 1 "GND" H 14305 7577 50  0000 C CNN
+F 2 "" H 14300 7750 50  0001 C CNN
+F 3 "" H 14300 7750 50  0001 C CNN
+	1    14300 7750
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
