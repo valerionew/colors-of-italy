@@ -198,7 +198,7 @@ Wire Wire Line
 	1850 1500 1900 1500
 Text GLabel 1850 1500 0    50   Input ~ 0
 LED_CHAIN
-Text GLabel 5950 4300 2    50   Input ~ 0
+Text GLabel 5950 3900 2    50   Input ~ 0
 LED_CHAIN
 Text Notes 3850 7000 0    50   ~ 0
 3 bottoni touch \nminimizzare capacità parassite\n
@@ -411,7 +411,7 @@ F 3 "" H 7550 5650 50  0001 C CNN
 	1    7550 5650
 	1    0    0    -1  
 $EndComp
-Text GLabel 5950 3800 2    50   Input ~ 0
+Text GLabel 5950 5400 2    50   Input ~ 0
 WIFI_RESET
 Text GLabel 10150 4150 2    50   Input ~ 0
 D+
@@ -1093,11 +1093,11 @@ Text GLabel 4300 7400 0    50   Input ~ 0
 TOUCH_0
 Text GLabel 4300 7600 0    50   Input ~ 0
 TOUCH_-
-Text GLabel 5950 4000 2    50   Input ~ 0
+Text GLabel 5950 3800 2    50   Input ~ 0
 TOUCH_+
-Text GLabel 5950 4100 2    50   Input ~ 0
+Text GLabel 5950 3600 2    50   Input ~ 0
 TOUCH_0
-Text GLabel 5950 4200 2    50   Input ~ 0
+Text GLabel 5950 4300 2    50   Input ~ 0
 TOUCH_-
 Text GLabel 5950 3400 2    50   Input ~ 0
 BOOT0
