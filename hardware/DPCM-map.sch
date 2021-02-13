@@ -2012,34 +2012,34 @@ Connection ~ 1300 2000
 $Comp
 L power:GND #PWR0119
 U 1 1 60238E9A
-P 5300 7800
-F 0 "#PWR0119" H 5300 7550 50  0001 C CNN
-F 1 "GND" V 5305 7672 50  0000 R CNN
-F 2 "" H 5300 7800 50  0001 C CNN
-F 3 "" H 5300 7800 50  0001 C CNN
-	1    5300 7800
+P 7400 7750
+F 0 "#PWR0119" H 7400 7500 50  0001 C CNN
+F 1 "GND" V 7405 7622 50  0000 R CNN
+F 2 "" H 7400 7750 50  0001 C CNN
+F 3 "" H 7400 7750 50  0001 C CNN
+	1    7400 7750
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0120
 U 1 1 602427E3
-P 5900 7800
-F 0 "#PWR0120" H 5900 7550 50  0001 C CNN
-F 1 "GND" V 5905 7672 50  0000 R CNN
-F 2 "" H 5900 7800 50  0001 C CNN
-F 3 "" H 5900 7800 50  0001 C CNN
-	1    5900 7800
+P 8000 7750
+F 0 "#PWR0120" H 8000 7500 50  0001 C CNN
+F 1 "GND" V 8005 7622 50  0000 R CNN
+F 2 "" H 8000 7750 50  0001 C CNN
+F 3 "" H 8000 7750 50  0001 C CNN
+	1    8000 7750
 	1    0    0    -1  
 $EndComp
 $Comp
 L Switch:SW_Push SW3
 U 1 1 60243313
-P 5900 7600
-F 0 "SW3" V 5854 7748 50  0000 L CNN
-F 1 "SW_0_Fb" V 5945 7748 50  0000 L CNN
-F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 5900 7800 50  0001 C CNN
-F 3 "~" H 5900 7800 50  0001 C CNN
-	1    5900 7600
+P 8000 7550
+F 0 "SW3" V 7954 7698 50  0000 L CNN
+F 1 "SW_0_Fb" V 8045 7698 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 8000 7750 50  0001 C CNN
+F 3 "~" H 8000 7750 50  0001 C CNN
+	1    8000 7550
 	0    1    1    0   
 $EndComp
 $Comp
@@ -2101,43 +2101,43 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0125
 U 1 1 602A42B2
-P 6450 7800
-F 0 "#PWR0125" H 6450 7550 50  0001 C CNN
-F 1 "GND" V 6455 7672 50  0000 R CNN
-F 2 "" H 6450 7800 50  0001 C CNN
-F 3 "" H 6450 7800 50  0001 C CNN
-	1    6450 7800
+P 8550 7750
+F 0 "#PWR0125" H 8550 7500 50  0001 C CNN
+F 1 "GND" V 8555 7622 50  0000 R CNN
+F 2 "" H 8550 7750 50  0001 C CNN
+F 3 "" H 8550 7750 50  0001 C CNN
+	1    8550 7750
 	1    0    0    -1  
 $EndComp
 $Comp
 L Switch:SW_Push SW4
 U 1 1 602A4E6A
-P 6450 7600
-F 0 "SW4" V 6404 7748 50  0000 L CNN
-F 1 "SW_-_Fb" V 6495 7748 50  0000 L CNN
-F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 6450 7800 50  0001 C CNN
-F 3 "~" H 6450 7800 50  0001 C CNN
-	1    6450 7600
+P 8550 7550
+F 0 "SW4" V 8504 7698 50  0000 L CNN
+F 1 "SW_-_Fb" V 8595 7698 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 8550 7750 50  0001 C CNN
+F 3 "~" H 8550 7750 50  0001 C CNN
+	1    8550 7550
 	0    1    1    0   
 $EndComp
-Text GLabel 5300 7400 1    50   Input ~ 0
+Text GLabel 7400 7350 1    50   Input ~ 0
 TOUCH_+
-Text GLabel 5900 7400 1    50   Input ~ 0
+Text GLabel 8000 7350 1    50   Input ~ 0
 TOUCH_0
-Text GLabel 6450 7400 1    50   Input ~ 0
+Text GLabel 8550 7350 1    50   Input ~ 0
 TOUCH_-
 $Comp
 L Switch:SW_Push SW2
 U 1 1 602399A8
-P 5300 7600
-F 0 "SW2" V 5254 7748 50  0000 L CNN
-F 1 "SW_+_Fb" V 5345 7748 50  0000 L CNN
-F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 5300 7800 50  0001 C CNN
-F 3 "~" H 5300 7800 50  0001 C CNN
-	1    5300 7600
+P 7400 7550
+F 0 "SW2" V 7354 7698 50  0000 L CNN
+F 1 "SW_+_Fb" V 7445 7698 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 7400 7750 50  0001 C CNN
+F 3 "~" H 7400 7750 50  0001 C CNN
+	1    7400 7550
 	0    1    1    0   
 $EndComp
-Text Notes 5300 8400 0    50   ~ 0
+Text Notes 7400 8350 0    50   ~ 0
 SWITCH fisici fallback \nnel caso ci fossero problemi col touch \nstesso footprint del wifi reset\n
 NoConn ~ 10150 3650
 NoConn ~ 10150 3750
@@ -2501,4 +2501,66 @@ F 5 "Y" H 7100 6050 50  0001 C CNN "Basic part"
 	1    7100 6050
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:Conn_01x03_Female J8
+U 1 1 6029ACEA
+P 6000 7100
+F 0 "J8" H 6028 7126 50  0000 L CNN
+F 1 "Conn_01x03_Female" H 6028 7035 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 6000 7100 50  0001 C CNN
+F 3 "~" H 6000 7100 50  0001 C CNN
+	1    6000 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Female J9
+U 1 1 6029B7EB
+P 6000 7450
+F 0 "J9" H 6028 7476 50  0000 L CNN
+F 1 "Conn_01x03_Female" H 6028 7385 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 6000 7450 50  0001 C CNN
+F 3 "~" H 6000 7450 50  0001 C CNN
+	1    6000 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Female J10
+U 1 1 6029C189
+P 6000 7800
+F 0 "J10" H 6028 7826 50  0000 L CNN
+F 1 "Conn_01x03_Female" H 6028 7735 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 6000 7800 50  0001 C CNN
+F 3 "~" H 6000 7800 50  0001 C CNN
+	1    6000 7800
+	1    0    0    -1  
+$EndComp
+Text GLabel 5750 7100 0    50   Input ~ 0
+TOUCH_+
+Text GLabel 5750 7450 0    50   Input ~ 0
+TOUCH_0
+Text GLabel 5750 7800 0    50   Input ~ 0
+TOUCH_-
+Wire Wire Line
+	5800 7000 5800 7100
+Connection ~ 5800 7100
+Wire Wire Line
+	5800 7100 5800 7200
+Wire Wire Line
+	5800 7700 5800 7800
+Connection ~ 5800 7800
+Wire Wire Line
+	5800 7800 5800 7900
+Wire Wire Line
+	5800 7350 5800 7450
+Connection ~ 5800 7450
+Wire Wire Line
+	5800 7450 5800 7550
+Wire Wire Line
+	5750 7450 5800 7450
+Wire Wire Line
+	5750 7800 5800 7800
+Wire Wire Line
+	5750 7100 5800 7100
+Text Notes 5300 8300 0    50   ~ 0
+SWITCH con connettore fallback \n\nnel caso ci fossero problemi col touch \nbisogna fare board aggiuntiva con header
 $EndSCHEMATC
