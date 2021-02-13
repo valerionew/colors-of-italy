@@ -96,8 +96,6 @@ F 3 "" H 6800 5900 50  0001 C CNN
 $EndComp
 Text GLabel 6600 5600 0    50   Input ~ 0
 LDR
-Wire Wire Line
-	6600 5600 6800 5600
 Connection ~ 6800 5600
 $Comp
 L power:+3.3V #SUPPLY0101
@@ -110,7 +108,7 @@ F 3 "" H 6800 5300 50  0001 C CNN
 	1    6800 5300
 	1    0    0    -1  
 $EndComp
-Text Notes 6350 6400 0    50   ~ 0
+Text Notes 5800 6400 0    50   ~ 0
 fotoresistenza per adattare \nla luminosità dei led \na quella ambientale
 $Comp
 L power:GND #PWR0104
@@ -1093,11 +1091,11 @@ Text GLabel 4300 7400 0    50   Input ~ 0
 TOUCH_0
 Text GLabel 4300 7600 0    50   Input ~ 0
 TOUCH_-
-Text GLabel 5950 3800 2    50   Input ~ 0
+Text GLabel 5950 4300 2    50   Input ~ 0
 TOUCH_+
 Text GLabel 5950 3600 2    50   Input ~ 0
 TOUCH_0
-Text GLabel 5950 4300 2    50   Input ~ 0
+Text GLabel 5950 3800 2    50   Input ~ 0
 TOUCH_-
 Text GLabel 5950 3400 2    50   Input ~ 0
 BOOT0
@@ -2460,6 +2458,47 @@ F 1 "GND" H 14305 7577 50  0000 C CNN
 F 2 "" H 14300 7750 50  0001 C CNN
 F 3 "" H 14300 7750 50  0001 C CNN
 	1    14300 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C42
+U 1 1 60289898
+P 7100 5750
+F 0 "C42" H 7150 5850 50  0000 L CNN
+F 1 "10u" H 7150 5650 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7138 5600 50  0001 C CNN
+F 3 "~" H 7100 5750 50  0001 C CNN
+F 4 " C19702" H 7100 5750 50  0001 C CNN "JLCPCBA"
+F 5 "Y" H 7100 5750 50  0001 C CNN "Basic part"
+	1    7100 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 6028A171
+P 7100 6200
+F 0 "#PWR01" H 7100 5950 50  0001 C CNN
+F 1 "GND" H 7105 6027 50  0000 C CNN
+F 2 "" H 7100 6200 50  0001 C CNN
+F 3 "" H 7100 6200 50  0001 C CNN
+	1    7100 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 5600 7100 5600
+Wire Wire Line
+	6600 5600 6800 5600
+$Comp
+L Device:C C43
+U 1 1 602B5B24
+P 7100 6050
+F 0 "C43" H 7150 6150 50  0000 L CNN
+F 1 "10u" H 7150 5950 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7138 5900 50  0001 C CNN
+F 3 "~" H 7100 6050 50  0001 C CNN
+F 4 " C19702" H 7100 6050 50  0001 C CNN "JLCPCBA"
+F 5 "Y" H 7100 6050 50  0001 C CNN "Basic part"
+	1    7100 6050
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

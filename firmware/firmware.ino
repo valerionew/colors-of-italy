@@ -21,9 +21,9 @@
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 #define NO_LED 255
 
-#define TOUCH_+_PIN T0 // GPIO 4
+#define TOUCH_+_PIN T3 // GPIO 4
 #define TOUCH_0_PIN T2 // GPIO 2
-#define TOUCH_-_PIN T3 // GPIO 15
+#define TOUCH_-_PIN T0 // GPIO 15
 
 WiFiManager wifiManager;
 WiFiClient client;
