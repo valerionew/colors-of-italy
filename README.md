@@ -4,3 +4,6 @@ inspired by http://www.lucadentella.it/en/2021/01/09/impariamo-insieme-mappa-din
 
 ![dpcm](proof-of-concept/proof-of-concept-v.jpg)
 
+
+
+Using https://github.com/wokwi/kicad-jlcpcb-bom-plugin for BOM management
