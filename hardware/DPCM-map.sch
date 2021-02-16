@@ -2401,105 +2401,57 @@ Wire Wire Line
 $Comp
 L Mechanical:MountingHole_Pad H2
 U 1 1 602B16C7
-P 14550 7350
-F 0 "H2" H 14650 7399 50  0000 L CNN
-F 1 "MountingHole_Pad" H 14650 7308 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14550 7350 50  0001 C CNN
-F 3 "~" H 14550 7350 50  0001 C CNN
-F 4 "~" H 14550 7350 50  0001 C CNN "Basic part"
-F 5 "~" H 14550 7350 50  0001 C CNN "LCSC Part"
-F 6 "False" H 14550 7350 50  0001 C CNN "JLCPCB BOM"
-	1    14550 7350
+P 14850 7500
+F 0 "H2" H 14800 7700 50  0000 L CNN
+F 1 "MountingHole_Pad" H 14950 7458 50  0001 L CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14850 7500 50  0001 C CNN
+F 3 "~" H 14850 7500 50  0001 C CNN
+F 4 "~" H 14850 7500 50  0001 C CNN "Basic part"
+F 5 "~" H 14850 7500 50  0001 C CNN "LCSC Part"
+F 6 "False" H 14850 7500 50  0001 C CNN "JLCPCB BOM"
+	1    14850 7500
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H3
 U 1 1 602B1993
-P 14550 7650
-F 0 "H3" H 14450 7607 50  0000 R CNN
-F 1 "MountingHole_Pad" H 14450 7698 50  0000 R CNN
-F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14550 7650 50  0001 C CNN
-F 3 "~" H 14550 7650 50  0001 C CNN
-F 4 "~" H 14550 7650 50  0001 C CNN "Basic part"
-F 5 "~" H 14550 7650 50  0001 C CNN "LCSC Part"
-F 6 "False" H 14550 7650 50  0001 C CNN "JLCPCB BOM"
-	1    14550 7650
-	-1   0    0    1   
+P 15050 7500
+F 0 "H3" H 15100 7700 50  0000 R CNN
+F 1 "MountingHole_Pad" H 14950 7548 50  0001 R CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 15050 7500 50  0001 C CNN
+F 3 "~" H 15050 7500 50  0001 C CNN
+F 4 "~" H 15050 7500 50  0001 C CNN "Basic part"
+F 5 "~" H 15050 7500 50  0001 C CNN "LCSC Part"
+F 6 "False" H 15050 7500 50  0001 C CNN "JLCPCB BOM"
+	1    15050 7500
+	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H1
 U 1 1 602E83E6
-P 14400 7500
-F 0 "H1" V 14637 7503 50  0000 C CNN
-F 1 "MountingHole_Pad" V 14546 7503 50  0000 C CNN
-F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14400 7500 50  0001 C CNN
-F 3 "~" H 14400 7500 50  0001 C CNN
-F 4 "~" H 14400 7500 50  0001 C CNN "Basic part"
-F 5 "~" H 14400 7500 50  0001 C CNN "LCSC Part"
-F 6 "False" H 14400 7500 50  0001 C CNN "JLCPCB BOM"
-	1    14400 7500
-	0    -1   -1   0   
+P 14650 7500
+F 0 "H1" H 14650 7700 50  0000 C CNN
+F 1 "MountingHole_Pad" H 14600 7300 50  0001 C CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14650 7500 50  0001 C CNN
+F 3 "~" H 14650 7500 50  0001 C CNN
+F 4 "~" H 14650 7500 50  0001 C CNN "Basic part"
+F 5 "~" H 14650 7500 50  0001 C CNN "LCSC Part"
+F 6 "False" H 14650 7500 50  0001 C CNN "JLCPCB BOM"
+	1    14650 7500
+	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H4
 U 1 1 6031EB49
-P 14700 7500
-F 0 "H4" V 14654 7650 50  0000 L CNN
-F 1 "MountingHole_Pad" V 14745 7650 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 14700 7500 50  0001 C CNN
-F 3 "~" H 14700 7500 50  0001 C CNN
-F 4 "~" H 14700 7500 50  0001 C CNN "Basic part"
-F 5 "~" H 14700 7500 50  0001 C CNN "LCSC Part"
-F 6 "False" H 14700 7500 50  0001 C CNN "JLCPCB BOM"
-	1    14700 7500
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	14550 7450 14500 7450
-Wire Wire Line
-	14500 7450 14500 7500
-Wire Wire Line
-	14500 7500 14500 7550
-Wire Wire Line
-	14500 7550 14550 7550
-Connection ~ 14500 7500
-Wire Wire Line
-	14550 7550 14600 7550
-Wire Wire Line
-	14600 7550 14600 7500
-Connection ~ 14550 7550
-Wire Wire Line
-	14600 7500 14600 7450
-Wire Wire Line
-	14600 7450 14550 7450
-Connection ~ 14600 7500
-Connection ~ 14550 7450
-Wire Wire Line
-	14500 7550 14450 7550
-Wire Wire Line
-	14450 7550 14450 7600
-Wire Wire Line
-	14450 7600 14400 7600
-Wire Wire Line
-	14400 7600 14400 7650
-Wire Wire Line
-	14400 7650 14350 7650
-Wire Wire Line
-	14350 7650 14350 7700
-Wire Wire Line
-	14350 7700 14300 7700
-Wire Wire Line
-	14300 7700 14300 7750
-Connection ~ 14500 7550
-$Comp
-L power:GND #PWR0126
-U 1 1 6036B0F9
-P 14300 7750
-F 0 "#PWR0126" H 14300 7500 50  0001 C CNN
-F 1 "GND" H 14305 7577 50  0000 C CNN
-F 2 "" H 14300 7750 50  0001 C CNN
-F 3 "" H 14300 7750 50  0001 C CNN
-	1    14300 7750
+P 15250 7500
+F 0 "H4" H 15200 7700 50  0000 L CNN
+F 1 "MountingHole_Pad" V 15295 7650 50  0001 L CNN
+F 2 "MountingHole:MountingHole_4mm_Pad_Via" H 15250 7500 50  0001 C CNN
+F 3 "~" H 15250 7500 50  0001 C CNN
+F 4 "~" H 15250 7500 50  0001 C CNN "Basic part"
+F 5 "~" H 15250 7500 50  0001 C CNN "LCSC Part"
+F 6 "False" H 15250 7500 50  0001 C CNN "JLCPCB BOM"
+	1    15250 7500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2614,4 +2566,34 @@ Wire Wire Line
 	5750 7100 5800 7100
 Text Notes 5300 8300 0    50   ~ 0
 SWITCH con connettore fallback \n\nnel caso ci fossero problemi col touch \nbisogna fare board aggiuntiva con header
+$Comp
+L power:GND #PWR0128
+U 1 1 6039B409
+P 15250 7600
+F 0 "#PWR0128" H 15250 7350 50  0001 C CNN
+F 1 "GND" H 15255 7427 50  0000 C CNN
+F 2 "" H 15250 7600 50  0001 C CNN
+F 3 "" H 15250 7600 50  0001 C CNN
+	1    15250 7600
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	13950 6750 13950 8100
+Wire Notes Line
+	13950 8100 16050 8100
+Text Notes 14050 6900 0    50   ~ 0
+mounting holes
+$Comp
+L power:GND #PWR0126
+U 1 1 603DA380
+P 14850 7600
+F 0 "#PWR0126" H 14850 7350 50  0001 C CNN
+F 1 "GND" H 14855 7427 50  0000 C CNN
+F 2 "" H 14850 7600 50  0001 C CNN
+F 3 "" H 14850 7600 50  0001 C CNN
+	1    14850 7600
+	1    0    0    -1  
+$EndComp
+NoConn ~ 15050 7600
+NoConn ~ 14650 7600
 $EndSCHEMATC
