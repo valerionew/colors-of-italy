@@ -2596,4 +2596,1973 @@ F 3 "" H 14850 7600 50  0001 C CNN
 $EndComp
 NoConn ~ 15050 7600
 NoConn ~ 14650 7600
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 603B42A4
+P 3150 -1400
+F 0 "U?" H 3150 -919 50  0000 C CNN
+F 1 "WS2811" H 3150 -1010 50  0000 C CNN
+F 2 "" H 2850 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 2950 -1150 50  0001 C CNN
+	1    3150 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 603B6C33
+P 3800 -1750
+F 0 "D?" V 3846 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 3755 -2080 50  0000 R CNN
+F 2 "" H 3800 -1800 50  0001 C CNN
+F 3 "~" H 3800 -1800 50  0001 C CNN
+	1    3800 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 -1500 3600 -1500
+Wire Wire Line
+	3600 -1500 3600 -1550
+Wire Wire Line
+	3550 -1400 3800 -1400
+Wire Wire Line
+	3800 -1400 3800 -1550
+Wire Wire Line
+	3550 -1300 4000 -1300
+Wire Wire Line
+	4000 -1300 4000 -1550
+Wire Wire Line
+	3150 -1700 3150 -1950
+Wire Wire Line
+	2750 -1500 2650 -1500
+Wire Wire Line
+	2750 -1400 2700 -1400
+Wire Wire Line
+	2700 -1400 2700 -1050
+Wire Wire Line
+	2700 -1050 4200 -1050
+Wire Wire Line
+	3150 -1100 3150 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6043323B
+P 2600 -1100
+F 0 "JP?" V 2646 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 2555 -1148 50  0000 R CNN
+F 2 "" H 2600 -1100 50  0001 C CNN
+F 3 "~" H 2600 -1100 50  0001 C CNN
+	1    2600 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2600 -1200 2600 -1300
+Wire Wire Line
+	2600 -1300 2750 -1300
+Wire Wire Line
+	4200 -1500 4200 -1050
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6046A5C8
+P 4850 -1400
+F 0 "U?" H 4850 -919 50  0000 C CNN
+F 1 "WS2811" H 4850 -1010 50  0000 C CNN
+F 2 "" H 4550 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 4650 -1150 50  0001 C CNN
+	1    4850 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6046B362
+P 5500 -1750
+F 0 "D?" V 5546 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 5455 -2080 50  0000 R CNN
+F 2 "" H 5500 -1800 50  0001 C CNN
+F 3 "~" H 5500 -1800 50  0001 C CNN
+	1    5500 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5250 -1500 5300 -1500
+Wire Wire Line
+	5300 -1500 5300 -1550
+Wire Wire Line
+	5250 -1400 5500 -1400
+Wire Wire Line
+	5500 -1400 5500 -1550
+Wire Wire Line
+	5250 -1300 5700 -1300
+Wire Wire Line
+	5700 -1300 5700 -1550
+Wire Wire Line
+	4850 -1700 4850 -1950
+Wire Wire Line
+	4450 -1400 4400 -1400
+Wire Wire Line
+	4400 -1400 4400 -1050
+Wire Wire Line
+	4400 -1050 5900 -1050
+Wire Wire Line
+	4850 -1100 4850 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6046B378
+P 4300 -1100
+F 0 "JP?" V 4346 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 4255 -1148 50  0000 R CNN
+F 2 "" H 4300 -1100 50  0001 C CNN
+F 3 "~" H 4300 -1100 50  0001 C CNN
+	1    4300 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4300 -1200 4300 -1300
+Wire Wire Line
+	4300 -1300 4450 -1300
+Wire Wire Line
+	5900 -1500 5900 -1050
+Wire Wire Line
+	4200 -1500 4450 -1500
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604A7B6D
+P 6550 -1400
+F 0 "U?" H 6550 -919 50  0000 C CNN
+F 1 "WS2811" H 6550 -1010 50  0000 C CNN
+F 2 "" H 6250 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 6350 -1150 50  0001 C CNN
+	1    6550 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604A897F
+P 7200 -1750
+F 0 "D?" V 7246 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 7155 -2080 50  0000 R CNN
+F 2 "" H 7200 -1800 50  0001 C CNN
+F 3 "~" H 7200 -1800 50  0001 C CNN
+	1    7200 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6950 -1500 7000 -1500
+Wire Wire Line
+	7000 -1500 7000 -1550
+Wire Wire Line
+	6950 -1400 7200 -1400
+Wire Wire Line
+	7200 -1400 7200 -1550
+Wire Wire Line
+	6950 -1300 7400 -1300
+Wire Wire Line
+	7400 -1300 7400 -1550
+Wire Wire Line
+	6550 -1700 6550 -1950
+Wire Wire Line
+	6150 -1400 6100 -1400
+Wire Wire Line
+	6100 -1400 6100 -1050
+Wire Wire Line
+	6100 -1050 7600 -1050
+Wire Wire Line
+	6550 -1100 6550 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604A8995
+P 6000 -1100
+F 0 "JP?" V 6046 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 5955 -1148 50  0000 R CNN
+F 2 "" H 6000 -1100 50  0001 C CNN
+F 3 "~" H 6000 -1100 50  0001 C CNN
+	1    6000 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 -1200 6000 -1300
+Wire Wire Line
+	6000 -1300 6150 -1300
+Wire Wire Line
+	7600 -1500 7600 -1050
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604A89A2
+P 8250 -1400
+F 0 "U?" H 8250 -919 50  0000 C CNN
+F 1 "WS2811" H 8250 -1010 50  0000 C CNN
+F 2 "" H 7950 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 8050 -1150 50  0001 C CNN
+	1    8250 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604A89AC
+P 8900 -1750
+F 0 "D?" V 8946 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 8855 -2080 50  0000 R CNN
+F 2 "" H 8900 -1800 50  0001 C CNN
+F 3 "~" H 8900 -1800 50  0001 C CNN
+	1    8900 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 -1500 8700 -1500
+Wire Wire Line
+	8700 -1500 8700 -1550
+Wire Wire Line
+	8650 -1400 8900 -1400
+Wire Wire Line
+	8900 -1400 8900 -1550
+Wire Wire Line
+	8650 -1300 9100 -1300
+Wire Wire Line
+	9100 -1300 9100 -1550
+Wire Wire Line
+	8250 -1700 8250 -1950
+Wire Wire Line
+	7850 -1400 7800 -1400
+Wire Wire Line
+	7800 -1400 7800 -1050
+Wire Wire Line
+	7800 -1050 9300 -1050
+Wire Wire Line
+	8250 -1100 8250 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604A89C1
+P 7700 -1100
+F 0 "JP?" V 7746 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 7655 -1148 50  0000 R CNN
+F 2 "" H 7700 -1100 50  0001 C CNN
+F 3 "~" H 7700 -1100 50  0001 C CNN
+	1    7700 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7700 -1200 7700 -1300
+Wire Wire Line
+	7700 -1300 7850 -1300
+Wire Wire Line
+	9300 -1500 9300 -1050
+Wire Wire Line
+	7600 -1500 7850 -1500
+Wire Wire Line
+	5900 -1500 6150 -1500
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604C536C
+P 9950 -1400
+F 0 "U?" H 9950 -919 50  0000 C CNN
+F 1 "WS2811" H 9950 -1010 50  0000 C CNN
+F 2 "" H 9650 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 9750 -1150 50  0001 C CNN
+	1    9950 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604C626E
+P 10600 -1750
+F 0 "D?" V 10646 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 10555 -2080 50  0000 R CNN
+F 2 "" H 10600 -1800 50  0001 C CNN
+F 3 "~" H 10600 -1800 50  0001 C CNN
+	1    10600 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10350 -1500 10400 -1500
+Wire Wire Line
+	10400 -1500 10400 -1550
+Wire Wire Line
+	10350 -1400 10600 -1400
+Wire Wire Line
+	10600 -1400 10600 -1550
+Wire Wire Line
+	10350 -1300 10800 -1300
+Wire Wire Line
+	10800 -1300 10800 -1550
+Wire Wire Line
+	9950 -1700 9950 -1950
+Wire Wire Line
+	9550 -1400 9500 -1400
+Wire Wire Line
+	9500 -1400 9500 -1050
+Wire Wire Line
+	9500 -1050 11000 -1050
+Wire Wire Line
+	9950 -1100 9950 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604C6284
+P 9400 -1100
+F 0 "JP?" V 9446 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 9355 -1148 50  0000 R CNN
+F 2 "" H 9400 -1100 50  0001 C CNN
+F 3 "~" H 9400 -1100 50  0001 C CNN
+	1    9400 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9400 -1200 9400 -1300
+Wire Wire Line
+	9400 -1300 9550 -1300
+Wire Wire Line
+	11000 -1500 11000 -1050
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604C6291
+P 11650 -1400
+F 0 "U?" H 11650 -919 50  0000 C CNN
+F 1 "WS2811" H 11650 -1010 50  0000 C CNN
+F 2 "" H 11350 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 11450 -1150 50  0001 C CNN
+	1    11650 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604C629B
+P 12300 -1750
+F 0 "D?" V 12346 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 12255 -2080 50  0000 R CNN
+F 2 "" H 12300 -1800 50  0001 C CNN
+F 3 "~" H 12300 -1800 50  0001 C CNN
+	1    12300 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12050 -1500 12100 -1500
+Wire Wire Line
+	12100 -1500 12100 -1550
+Wire Wire Line
+	12050 -1400 12300 -1400
+Wire Wire Line
+	12300 -1400 12300 -1550
+Wire Wire Line
+	12050 -1300 12500 -1300
+Wire Wire Line
+	12500 -1300 12500 -1550
+Wire Wire Line
+	11650 -1700 11650 -1950
+Wire Wire Line
+	11250 -1400 11200 -1400
+Wire Wire Line
+	11200 -1400 11200 -1050
+Wire Wire Line
+	11200 -1050 12700 -1050
+Wire Wire Line
+	11650 -1100 11650 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604C62B0
+P 11100 -1100
+F 0 "JP?" V 11146 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 11055 -1148 50  0000 R CNN
+F 2 "" H 11100 -1100 50  0001 C CNN
+F 3 "~" H 11100 -1100 50  0001 C CNN
+	1    11100 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	11100 -1200 11100 -1300
+Wire Wire Line
+	11100 -1300 11250 -1300
+Wire Wire Line
+	12700 -1500 12700 -1050
+Wire Wire Line
+	11000 -1500 11250 -1500
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604C62BE
+P 13350 -1400
+F 0 "U?" H 13350 -919 50  0000 C CNN
+F 1 "WS2811" H 13350 -1010 50  0000 C CNN
+F 2 "" H 13050 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 13150 -1150 50  0001 C CNN
+	1    13350 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604C62C8
+P 14000 -1750
+F 0 "D?" V 14046 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 13955 -2080 50  0000 R CNN
+F 2 "" H 14000 -1800 50  0001 C CNN
+F 3 "~" H 14000 -1800 50  0001 C CNN
+	1    14000 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	13750 -1500 13800 -1500
+Wire Wire Line
+	13800 -1500 13800 -1550
+Wire Wire Line
+	13750 -1400 14000 -1400
+Wire Wire Line
+	14000 -1400 14000 -1550
+Wire Wire Line
+	13750 -1300 14200 -1300
+Wire Wire Line
+	14200 -1300 14200 -1550
+Wire Wire Line
+	13350 -1700 13350 -1950
+Wire Wire Line
+	12950 -1400 12900 -1400
+Wire Wire Line
+	12900 -1400 12900 -1050
+Wire Wire Line
+	12900 -1050 14400 -1050
+Wire Wire Line
+	13350 -1100 13350 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604C62DD
+P 12800 -1100
+F 0 "JP?" V 12846 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 12755 -1148 50  0000 R CNN
+F 2 "" H 12800 -1100 50  0001 C CNN
+F 3 "~" H 12800 -1100 50  0001 C CNN
+	1    12800 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12800 -1200 12800 -1300
+Wire Wire Line
+	12800 -1300 12950 -1300
+Wire Wire Line
+	14400 -1500 14400 -1050
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604C62EA
+P 15050 -1400
+F 0 "U?" H 15050 -919 50  0000 C CNN
+F 1 "WS2811" H 15050 -1010 50  0000 C CNN
+F 2 "" H 14750 -1250 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 14850 -1150 50  0001 C CNN
+	1    15050 -1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604C62F4
+P 15700 -1750
+F 0 "D?" V 15746 -2080 50  0000 R CNN
+F 1 "LED_RGBA" V 15655 -2080 50  0000 R CNN
+F 2 "" H 15700 -1800 50  0001 C CNN
+F 3 "~" H 15700 -1800 50  0001 C CNN
+	1    15700 -1750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	15450 -1500 15500 -1500
+Wire Wire Line
+	15500 -1500 15500 -1550
+Wire Wire Line
+	15450 -1400 15700 -1400
+Wire Wire Line
+	15700 -1400 15700 -1550
+Wire Wire Line
+	15450 -1300 15900 -1300
+Wire Wire Line
+	15900 -1300 15900 -1550
+Wire Wire Line
+	15050 -1700 15050 -1950
+Wire Wire Line
+	14650 -1400 14600 -1400
+Wire Wire Line
+	14600 -1400 14600 -1050
+Wire Wire Line
+	14600 -1050 16100 -1050
+Wire Wire Line
+	15050 -1100 15050 -1000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604C6309
+P 14500 -1100
+F 0 "JP?" V 14546 -1148 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 14455 -1148 50  0000 R CNN
+F 2 "" H 14500 -1100 50  0001 C CNN
+F 3 "~" H 14500 -1100 50  0001 C CNN
+	1    14500 -1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	14500 -1200 14500 -1300
+Wire Wire Line
+	14500 -1300 14650 -1300
+Wire Wire Line
+	16100 -1500 16100 -1050
+Wire Wire Line
+	14400 -1500 14650 -1500
+Wire Wire Line
+	16100 -1500 16250 -1500
+Wire Wire Line
+	12700 -1500 12950 -1500
+Wire Wire Line
+	9300 -1500 9550 -1500
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604F95B4
+P 3150 -2650
+F 0 "U?" H 3150 -2169 50  0000 C CNN
+F 1 "WS2811" H 3150 -2260 50  0000 C CNN
+F 2 "" H 2850 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 2950 -2400 50  0001 C CNN
+	1    3150 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA696
+P 3800 -3000
+F 0 "D?" V 3846 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 3755 -3330 50  0000 R CNN
+F 2 "" H 3800 -3050 50  0001 C CNN
+F 3 "~" H 3800 -3050 50  0001 C CNN
+	1    3800 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 -2750 3600 -2750
+Wire Wire Line
+	3600 -2750 3600 -2800
+Wire Wire Line
+	3550 -2650 3800 -2650
+Wire Wire Line
+	3800 -2650 3800 -2800
+Wire Wire Line
+	3550 -2550 4000 -2550
+Wire Wire Line
+	4000 -2550 4000 -2800
+Wire Wire Line
+	2750 -2750 2650 -2750
+Wire Wire Line
+	2750 -2650 2700 -2650
+Wire Wire Line
+	2700 -2650 2700 -2300
+Wire Wire Line
+	2700 -2300 4200 -2300
+Wire Wire Line
+	3150 -2350 3150 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA6AC
+P 2600 -2350
+F 0 "JP?" V 2646 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 2555 -2398 50  0000 R CNN
+F 2 "" H 2600 -2350 50  0001 C CNN
+F 3 "~" H 2600 -2350 50  0001 C CNN
+	1    2600 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2600 -2450 2600 -2550
+Wire Wire Line
+	2600 -2550 2750 -2550
+Wire Wire Line
+	4200 -2750 4200 -2300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA6B9
+P 4850 -2650
+F 0 "U?" H 4850 -2169 50  0000 C CNN
+F 1 "WS2811" H 4850 -2260 50  0000 C CNN
+F 2 "" H 4550 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 4650 -2400 50  0001 C CNN
+	1    4850 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA6C3
+P 5500 -3000
+F 0 "D?" V 5546 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 5455 -3330 50  0000 R CNN
+F 2 "" H 5500 -3050 50  0001 C CNN
+F 3 "~" H 5500 -3050 50  0001 C CNN
+	1    5500 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5250 -2750 5300 -2750
+Wire Wire Line
+	5300 -2750 5300 -2800
+Wire Wire Line
+	5250 -2650 5500 -2650
+Wire Wire Line
+	5500 -2650 5500 -2800
+Wire Wire Line
+	5250 -2550 5700 -2550
+Wire Wire Line
+	5700 -2550 5700 -2800
+Wire Wire Line
+	4850 -2950 4850 -3200
+Wire Wire Line
+	4450 -2650 4400 -2650
+Wire Wire Line
+	4400 -2650 4400 -2300
+Wire Wire Line
+	4400 -2300 5900 -2300
+Wire Wire Line
+	4850 -2350 4850 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA6D8
+P 4300 -2350
+F 0 "JP?" V 4346 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 4255 -2398 50  0000 R CNN
+F 2 "" H 4300 -2350 50  0001 C CNN
+F 3 "~" H 4300 -2350 50  0001 C CNN
+	1    4300 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4300 -2450 4300 -2550
+Wire Wire Line
+	4300 -2550 4450 -2550
+Wire Wire Line
+	5900 -2750 5900 -2300
+Wire Wire Line
+	4200 -2750 4450 -2750
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA6E6
+P 6550 -2650
+F 0 "U?" H 6550 -2169 50  0000 C CNN
+F 1 "WS2811" H 6550 -2260 50  0000 C CNN
+F 2 "" H 6250 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 6350 -2400 50  0001 C CNN
+	1    6550 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA6F0
+P 7200 -3000
+F 0 "D?" V 7246 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 7155 -3330 50  0000 R CNN
+F 2 "" H 7200 -3050 50  0001 C CNN
+F 3 "~" H 7200 -3050 50  0001 C CNN
+	1    7200 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6950 -2750 7000 -2750
+Wire Wire Line
+	7000 -2750 7000 -2800
+Wire Wire Line
+	6950 -2650 7200 -2650
+Wire Wire Line
+	7200 -2650 7200 -2800
+Wire Wire Line
+	6950 -2550 7400 -2550
+Wire Wire Line
+	7400 -2550 7400 -2800
+Wire Wire Line
+	6550 -2950 6550 -3200
+Wire Wire Line
+	6150 -2650 6100 -2650
+Wire Wire Line
+	6100 -2650 6100 -2300
+Wire Wire Line
+	6100 -2300 7600 -2300
+Wire Wire Line
+	6550 -2350 6550 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA705
+P 6000 -2350
+F 0 "JP?" V 6046 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 5955 -2398 50  0000 R CNN
+F 2 "" H 6000 -2350 50  0001 C CNN
+F 3 "~" H 6000 -2350 50  0001 C CNN
+	1    6000 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 -2450 6000 -2550
+Wire Wire Line
+	6000 -2550 6150 -2550
+Wire Wire Line
+	7600 -2750 7600 -2300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA712
+P 8250 -2650
+F 0 "U?" H 8250 -2169 50  0000 C CNN
+F 1 "WS2811" H 8250 -2260 50  0000 C CNN
+F 2 "" H 7950 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 8050 -2400 50  0001 C CNN
+	1    8250 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA71C
+P 8900 -3000
+F 0 "D?" V 8946 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 8855 -3330 50  0000 R CNN
+F 2 "" H 8900 -3050 50  0001 C CNN
+F 3 "~" H 8900 -3050 50  0001 C CNN
+	1    8900 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 -2750 8700 -2750
+Wire Wire Line
+	8700 -2750 8700 -2800
+Wire Wire Line
+	8650 -2650 8900 -2650
+Wire Wire Line
+	8900 -2650 8900 -2800
+Wire Wire Line
+	8650 -2550 9100 -2550
+Wire Wire Line
+	9100 -2550 9100 -2800
+Wire Wire Line
+	8250 -2950 8250 -3200
+Wire Wire Line
+	7850 -2650 7800 -2650
+Wire Wire Line
+	7800 -2650 7800 -2300
+Wire Wire Line
+	7800 -2300 9300 -2300
+Wire Wire Line
+	8250 -2350 8250 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA731
+P 7700 -2350
+F 0 "JP?" V 7746 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 7655 -2398 50  0000 R CNN
+F 2 "" H 7700 -2350 50  0001 C CNN
+F 3 "~" H 7700 -2350 50  0001 C CNN
+	1    7700 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7700 -2450 7700 -2550
+Wire Wire Line
+	7700 -2550 7850 -2550
+Wire Wire Line
+	9300 -2750 9300 -2300
+Wire Wire Line
+	7600 -2750 7850 -2750
+Wire Wire Line
+	5900 -2750 6150 -2750
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA740
+P 9950 -2650
+F 0 "U?" H 9950 -2169 50  0000 C CNN
+F 1 "WS2811" H 9950 -2260 50  0000 C CNN
+F 2 "" H 9650 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 9750 -2400 50  0001 C CNN
+	1    9950 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA74A
+P 10600 -3000
+F 0 "D?" V 10646 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 10555 -3330 50  0000 R CNN
+F 2 "" H 10600 -3050 50  0001 C CNN
+F 3 "~" H 10600 -3050 50  0001 C CNN
+	1    10600 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10350 -2750 10400 -2750
+Wire Wire Line
+	10400 -2750 10400 -2800
+Wire Wire Line
+	10350 -2650 10600 -2650
+Wire Wire Line
+	10600 -2650 10600 -2800
+Wire Wire Line
+	10350 -2550 10800 -2550
+Wire Wire Line
+	10800 -2550 10800 -2800
+Wire Wire Line
+	9950 -2950 9950 -3200
+Wire Wire Line
+	9550 -2650 9500 -2650
+Wire Wire Line
+	9500 -2650 9500 -2300
+Wire Wire Line
+	9500 -2300 11000 -2300
+Wire Wire Line
+	9950 -2350 9950 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA75F
+P 9400 -2350
+F 0 "JP?" V 9446 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 9355 -2398 50  0000 R CNN
+F 2 "" H 9400 -2350 50  0001 C CNN
+F 3 "~" H 9400 -2350 50  0001 C CNN
+	1    9400 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9400 -2450 9400 -2550
+Wire Wire Line
+	9400 -2550 9550 -2550
+Wire Wire Line
+	11000 -2750 11000 -2300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA76C
+P 11650 -2650
+F 0 "U?" H 11650 -2169 50  0000 C CNN
+F 1 "WS2811" H 11650 -2260 50  0000 C CNN
+F 2 "" H 11350 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 11450 -2400 50  0001 C CNN
+	1    11650 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA776
+P 12300 -3000
+F 0 "D?" V 12346 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 12255 -3330 50  0000 R CNN
+F 2 "" H 12300 -3050 50  0001 C CNN
+F 3 "~" H 12300 -3050 50  0001 C CNN
+	1    12300 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12050 -2750 12100 -2750
+Wire Wire Line
+	12100 -2750 12100 -2800
+Wire Wire Line
+	12050 -2650 12300 -2650
+Wire Wire Line
+	12300 -2650 12300 -2800
+Wire Wire Line
+	12050 -2550 12500 -2550
+Wire Wire Line
+	12500 -2550 12500 -2800
+Wire Wire Line
+	11650 -2950 11650 -3200
+Wire Wire Line
+	11250 -2650 11200 -2650
+Wire Wire Line
+	11200 -2650 11200 -2300
+Wire Wire Line
+	11200 -2300 12700 -2300
+Wire Wire Line
+	11650 -2350 11650 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA78B
+P 11100 -2350
+F 0 "JP?" V 11146 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 11055 -2398 50  0000 R CNN
+F 2 "" H 11100 -2350 50  0001 C CNN
+F 3 "~" H 11100 -2350 50  0001 C CNN
+	1    11100 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	11100 -2450 11100 -2550
+Wire Wire Line
+	11100 -2550 11250 -2550
+Wire Wire Line
+	12700 -2750 12700 -2300
+Wire Wire Line
+	11000 -2750 11250 -2750
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA799
+P 13350 -2650
+F 0 "U?" H 13350 -2169 50  0000 C CNN
+F 1 "WS2811" H 13350 -2260 50  0000 C CNN
+F 2 "" H 13050 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 13150 -2400 50  0001 C CNN
+	1    13350 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA7A3
+P 14000 -3000
+F 0 "D?" V 14046 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 13955 -3330 50  0000 R CNN
+F 2 "" H 14000 -3050 50  0001 C CNN
+F 3 "~" H 14000 -3050 50  0001 C CNN
+	1    14000 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	13750 -2750 13800 -2750
+Wire Wire Line
+	13800 -2750 13800 -2800
+Wire Wire Line
+	13750 -2650 14000 -2650
+Wire Wire Line
+	14000 -2650 14000 -2800
+Wire Wire Line
+	13750 -2550 14200 -2550
+Wire Wire Line
+	14200 -2550 14200 -2800
+Wire Wire Line
+	13350 -2950 13350 -3200
+Wire Wire Line
+	12950 -2650 12900 -2650
+Wire Wire Line
+	12900 -2650 12900 -2300
+Wire Wire Line
+	12900 -2300 14400 -2300
+Wire Wire Line
+	13350 -2350 13350 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA7B8
+P 12800 -2350
+F 0 "JP?" V 12846 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 12755 -2398 50  0000 R CNN
+F 2 "" H 12800 -2350 50  0001 C CNN
+F 3 "~" H 12800 -2350 50  0001 C CNN
+	1    12800 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12800 -2450 12800 -2550
+Wire Wire Line
+	12800 -2550 12950 -2550
+Wire Wire Line
+	14400 -2750 14400 -2300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 604FA7C5
+P 15050 -2650
+F 0 "U?" H 15050 -2169 50  0000 C CNN
+F 1 "WS2811" H 15050 -2260 50  0000 C CNN
+F 2 "" H 14750 -2500 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 14850 -2400 50  0001 C CNN
+	1    15050 -2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 604FA7CF
+P 15700 -3000
+F 0 "D?" V 15746 -3330 50  0000 R CNN
+F 1 "LED_RGBA" V 15655 -3330 50  0000 R CNN
+F 2 "" H 15700 -3050 50  0001 C CNN
+F 3 "~" H 15700 -3050 50  0001 C CNN
+	1    15700 -3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	15450 -2750 15500 -2750
+Wire Wire Line
+	15500 -2750 15500 -2800
+Wire Wire Line
+	15450 -2650 15700 -2650
+Wire Wire Line
+	15700 -2650 15700 -2800
+Wire Wire Line
+	15450 -2550 15900 -2550
+Wire Wire Line
+	15900 -2550 15900 -2800
+Wire Wire Line
+	15050 -2950 15050 -3200
+Wire Wire Line
+	14650 -2650 14600 -2650
+Wire Wire Line
+	14600 -2650 14600 -2300
+Wire Wire Line
+	14600 -2300 16100 -2300
+Wire Wire Line
+	15050 -2350 15050 -2250
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 604FA7E4
+P 14500 -2350
+F 0 "JP?" V 14546 -2398 50  0000 R CNN
+F 1 "Jumper_NO_Small" V 14455 -2398 50  0000 R CNN
+F 2 "" H 14500 -2350 50  0001 C CNN
+F 3 "~" H 14500 -2350 50  0001 C CNN
+	1    14500 -2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	14500 -2450 14500 -2550
+Wire Wire Line
+	14500 -2550 14650 -2550
+Wire Wire Line
+	16100 -2750 16100 -2300
+Wire Wire Line
+	14400 -2750 14650 -2750
+Wire Wire Line
+	16100 -2750 16250 -2750
+Wire Wire Line
+	12700 -2750 12950 -2750
+Wire Wire Line
+	9300 -2750 9550 -2750
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 60549263
+P 3150 -200
+F 0 "U?" H 3150 281 50  0000 C CNN
+F 1 "WS2811" H 3150 190 50  0000 C CNN
+F 2 "" H 2850 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 2950 50  50  0001 C CNN
+	1    3150 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A705
+P 3800 -550
+F 0 "D?" V 3846 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 3755 -880 50  0000 R CNN
+F 2 "" H 3800 -600 50  0001 C CNN
+F 3 "~" H 3800 -600 50  0001 C CNN
+	1    3800 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 -300 3600 -300
+Wire Wire Line
+	3600 -300 3600 -350
+Wire Wire Line
+	3550 -200 3800 -200
+Wire Wire Line
+	3800 -200 3800 -350
+Wire Wire Line
+	3550 -100 4000 -100
+Wire Wire Line
+	4000 -100 4000 -350
+Wire Wire Line
+	3150 -500 3150 -750
+Wire Wire Line
+	2750 -300 2650 -300
+Wire Wire Line
+	2750 -200 2700 -200
+Wire Wire Line
+	2700 -200 2700 150 
+Wire Wire Line
+	2700 150  4200 150 
+Wire Wire Line
+	3150 100  3150 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A71B
+P 2600 100
+F 0 "JP?" V 2646 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 2555 52  50  0000 R CNN
+F 2 "" H 2600 100 50  0001 C CNN
+F 3 "~" H 2600 100 50  0001 C CNN
+	1    2600 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2600 0    2600 -100
+Wire Wire Line
+	2600 -100 2750 -100
+Wire Wire Line
+	4200 -300 4200 150 
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A728
+P 4850 -200
+F 0 "U?" H 4850 281 50  0000 C CNN
+F 1 "WS2811" H 4850 190 50  0000 C CNN
+F 2 "" H 4550 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 4650 50  50  0001 C CNN
+	1    4850 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A732
+P 5500 -550
+F 0 "D?" V 5546 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 5455 -880 50  0000 R CNN
+F 2 "" H 5500 -600 50  0001 C CNN
+F 3 "~" H 5500 -600 50  0001 C CNN
+	1    5500 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5250 -300 5300 -300
+Wire Wire Line
+	5300 -300 5300 -350
+Wire Wire Line
+	5250 -200 5500 -200
+Wire Wire Line
+	5500 -200 5500 -350
+Wire Wire Line
+	5250 -100 5700 -100
+Wire Wire Line
+	5700 -100 5700 -350
+Wire Wire Line
+	4850 -500 4850 -750
+Wire Wire Line
+	4450 -200 4400 -200
+Wire Wire Line
+	4400 -200 4400 150 
+Wire Wire Line
+	4400 150  5900 150 
+Wire Wire Line
+	4850 100  4850 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A747
+P 4300 100
+F 0 "JP?" V 4346 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 4255 52  50  0000 R CNN
+F 2 "" H 4300 100 50  0001 C CNN
+F 3 "~" H 4300 100 50  0001 C CNN
+	1    4300 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4300 0    4300 -100
+Wire Wire Line
+	4300 -100 4450 -100
+Wire Wire Line
+	5900 -300 5900 150 
+Wire Wire Line
+	4200 -300 4450 -300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A755
+P 6550 -200
+F 0 "U?" H 6550 281 50  0000 C CNN
+F 1 "WS2811" H 6550 190 50  0000 C CNN
+F 2 "" H 6250 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 6350 50  50  0001 C CNN
+	1    6550 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A75F
+P 7200 -550
+F 0 "D?" V 7246 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 7155 -880 50  0000 R CNN
+F 2 "" H 7200 -600 50  0001 C CNN
+F 3 "~" H 7200 -600 50  0001 C CNN
+	1    7200 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6950 -300 7000 -300
+Wire Wire Line
+	7000 -300 7000 -350
+Wire Wire Line
+	6950 -200 7200 -200
+Wire Wire Line
+	7200 -200 7200 -350
+Wire Wire Line
+	6950 -100 7400 -100
+Wire Wire Line
+	7400 -100 7400 -350
+Wire Wire Line
+	6550 -500 6550 -750
+Wire Wire Line
+	6150 -200 6100 -200
+Wire Wire Line
+	6100 -200 6100 150 
+Wire Wire Line
+	6100 150  7600 150 
+Wire Wire Line
+	6550 100  6550 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A774
+P 6000 100
+F 0 "JP?" V 6046 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 5955 52  50  0000 R CNN
+F 2 "" H 6000 100 50  0001 C CNN
+F 3 "~" H 6000 100 50  0001 C CNN
+	1    6000 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 0    6000 -100
+Wire Wire Line
+	6000 -100 6150 -100
+Wire Wire Line
+	7600 -300 7600 150 
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A781
+P 8250 -200
+F 0 "U?" H 8250 281 50  0000 C CNN
+F 1 "WS2811" H 8250 190 50  0000 C CNN
+F 2 "" H 7950 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 8050 50  50  0001 C CNN
+	1    8250 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A78B
+P 8900 -550
+F 0 "D?" V 8946 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 8855 -880 50  0000 R CNN
+F 2 "" H 8900 -600 50  0001 C CNN
+F 3 "~" H 8900 -600 50  0001 C CNN
+	1    8900 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 -300 8700 -300
+Wire Wire Line
+	8700 -300 8700 -350
+Wire Wire Line
+	8650 -200 8900 -200
+Wire Wire Line
+	8900 -200 8900 -350
+Wire Wire Line
+	8650 -100 9100 -100
+Wire Wire Line
+	9100 -100 9100 -350
+Wire Wire Line
+	8250 -500 8250 -750
+Wire Wire Line
+	7850 -200 7800 -200
+Wire Wire Line
+	7800 -200 7800 150 
+Wire Wire Line
+	7800 150  9300 150 
+Wire Wire Line
+	8250 100  8250 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A7A0
+P 7700 100
+F 0 "JP?" V 7746 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 7655 52  50  0000 R CNN
+F 2 "" H 7700 100 50  0001 C CNN
+F 3 "~" H 7700 100 50  0001 C CNN
+	1    7700 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7700 0    7700 -100
+Wire Wire Line
+	7700 -100 7850 -100
+Wire Wire Line
+	9300 -300 9300 150 
+Wire Wire Line
+	7600 -300 7850 -300
+Wire Wire Line
+	5900 -300 6150 -300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A7AF
+P 9950 -200
+F 0 "U?" H 9950 281 50  0000 C CNN
+F 1 "WS2811" H 9950 190 50  0000 C CNN
+F 2 "" H 9650 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 9750 50  50  0001 C CNN
+	1    9950 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A7B9
+P 10600 -550
+F 0 "D?" V 10646 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 10555 -880 50  0000 R CNN
+F 2 "" H 10600 -600 50  0001 C CNN
+F 3 "~" H 10600 -600 50  0001 C CNN
+	1    10600 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10350 -300 10400 -300
+Wire Wire Line
+	10400 -300 10400 -350
+Wire Wire Line
+	10350 -200 10600 -200
+Wire Wire Line
+	10600 -200 10600 -350
+Wire Wire Line
+	10350 -100 10800 -100
+Wire Wire Line
+	10800 -100 10800 -350
+Wire Wire Line
+	9950 -500 9950 -750
+Wire Wire Line
+	9550 -200 9500 -200
+Wire Wire Line
+	9500 -200 9500 150 
+Wire Wire Line
+	9500 150  11000 150 
+Wire Wire Line
+	9950 100  9950 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A7CE
+P 9400 100
+F 0 "JP?" V 9446 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 9355 52  50  0000 R CNN
+F 2 "" H 9400 100 50  0001 C CNN
+F 3 "~" H 9400 100 50  0001 C CNN
+	1    9400 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9400 0    9400 -100
+Wire Wire Line
+	9400 -100 9550 -100
+Wire Wire Line
+	11000 -300 11000 150 
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A7DB
+P 11650 -200
+F 0 "U?" H 11650 281 50  0000 C CNN
+F 1 "WS2811" H 11650 190 50  0000 C CNN
+F 2 "" H 11350 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 11450 50  50  0001 C CNN
+	1    11650 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A7E5
+P 12300 -550
+F 0 "D?" V 12346 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 12255 -880 50  0000 R CNN
+F 2 "" H 12300 -600 50  0001 C CNN
+F 3 "~" H 12300 -600 50  0001 C CNN
+	1    12300 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12050 -300 12100 -300
+Wire Wire Line
+	12100 -300 12100 -350
+Wire Wire Line
+	12050 -200 12300 -200
+Wire Wire Line
+	12300 -200 12300 -350
+Wire Wire Line
+	12050 -100 12500 -100
+Wire Wire Line
+	12500 -100 12500 -350
+Wire Wire Line
+	11650 -500 11650 -750
+Wire Wire Line
+	11250 -200 11200 -200
+Wire Wire Line
+	11200 -200 11200 150 
+Wire Wire Line
+	11200 150  12700 150 
+Wire Wire Line
+	11650 100  11650 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A7FA
+P 11100 100
+F 0 "JP?" V 11146 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 11055 52  50  0000 R CNN
+F 2 "" H 11100 100 50  0001 C CNN
+F 3 "~" H 11100 100 50  0001 C CNN
+	1    11100 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	11100 0    11100 -100
+Wire Wire Line
+	11100 -100 11250 -100
+Wire Wire Line
+	12700 -300 12700 150 
+Wire Wire Line
+	11000 -300 11250 -300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A808
+P 13350 -200
+F 0 "U?" H 13350 281 50  0000 C CNN
+F 1 "WS2811" H 13350 190 50  0000 C CNN
+F 2 "" H 13050 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 13150 50  50  0001 C CNN
+	1    13350 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A812
+P 14000 -550
+F 0 "D?" V 14046 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 13955 -880 50  0000 R CNN
+F 2 "" H 14000 -600 50  0001 C CNN
+F 3 "~" H 14000 -600 50  0001 C CNN
+	1    14000 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	13750 -300 13800 -300
+Wire Wire Line
+	13800 -300 13800 -350
+Wire Wire Line
+	13750 -200 14000 -200
+Wire Wire Line
+	14000 -200 14000 -350
+Wire Wire Line
+	13750 -100 14200 -100
+Wire Wire Line
+	14200 -100 14200 -350
+Wire Wire Line
+	13350 -500 13350 -750
+Wire Wire Line
+	12950 -200 12900 -200
+Wire Wire Line
+	12900 -200 12900 150 
+Wire Wire Line
+	12900 150  14400 150 
+Wire Wire Line
+	13350 100  13350 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A827
+P 12800 100
+F 0 "JP?" V 12846 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 12755 52  50  0000 R CNN
+F 2 "" H 12800 100 50  0001 C CNN
+F 3 "~" H 12800 100 50  0001 C CNN
+	1    12800 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12800 0    12800 -100
+Wire Wire Line
+	12800 -100 12950 -100
+Wire Wire Line
+	14400 -300 14400 150 
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 6054A834
+P 15050 -200
+F 0 "U?" H 15050 281 50  0000 C CNN
+F 1 "WS2811" H 15050 190 50  0000 C CNN
+F 2 "" H 14750 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 14850 50  50  0001 C CNN
+	1    15050 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 6054A83E
+P 15700 -550
+F 0 "D?" V 15746 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 15655 -880 50  0000 R CNN
+F 2 "" H 15700 -600 50  0001 C CNN
+F 3 "~" H 15700 -600 50  0001 C CNN
+	1    15700 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	15450 -300 15500 -300
+Wire Wire Line
+	15500 -300 15500 -350
+Wire Wire Line
+	15450 -200 15700 -200
+Wire Wire Line
+	15700 -200 15700 -350
+Wire Wire Line
+	15450 -100 15900 -100
+Wire Wire Line
+	15900 -100 15900 -350
+Wire Wire Line
+	15050 -500 15050 -750
+Wire Wire Line
+	14650 -200 14600 -200
+Wire Wire Line
+	14600 -200 14600 150 
+Wire Wire Line
+	14600 150  16100 150 
+Wire Wire Line
+	15050 100  15050 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 6054A853
+P 14500 100
+F 0 "JP?" V 14546 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 14455 52  50  0000 R CNN
+F 2 "" H 14500 100 50  0001 C CNN
+F 3 "~" H 14500 100 50  0001 C CNN
+	1    14500 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	14500 0    14500 -100
+Wire Wire Line
+	14500 -100 14650 -100
+Wire Wire Line
+	16100 -300 16100 150 
+Wire Wire Line
+	14400 -300 14650 -300
+Wire Wire Line
+	12700 -300 12950 -300
+Wire Wire Line
+	9300 -300 9550 -300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 605A6933
+P 16750 -200
+F 0 "U?" H 16750 281 50  0000 C CNN
+F 1 "WS2811" H 16750 190 50  0000 C CNN
+F 2 "" H 16450 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 16550 50  50  0001 C CNN
+	1    16750 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 605A8195
+P 17400 -550
+F 0 "D?" V 17446 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 17355 -880 50  0000 R CNN
+F 2 "" H 17400 -600 50  0001 C CNN
+F 3 "~" H 17400 -600 50  0001 C CNN
+	1    17400 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	17150 -300 17200 -300
+Wire Wire Line
+	17200 -300 17200 -350
+Wire Wire Line
+	17150 -200 17400 -200
+Wire Wire Line
+	17400 -200 17400 -350
+Wire Wire Line
+	17150 -100 17600 -100
+Wire Wire Line
+	17600 -100 17600 -350
+Wire Wire Line
+	16750 -500 16750 -750
+Wire Wire Line
+	16350 -200 16300 -200
+Wire Wire Line
+	16300 -200 16300 150 
+Wire Wire Line
+	16300 150  17800 150 
+Wire Wire Line
+	16750 100  16750 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 605A81AB
+P 16200 100
+F 0 "JP?" V 16246 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 16155 52  50  0000 R CNN
+F 2 "" H 16200 100 50  0001 C CNN
+F 3 "~" H 16200 100 50  0001 C CNN
+	1    16200 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	16200 0    16200 -100
+Wire Wire Line
+	16200 -100 16350 -100
+Wire Wire Line
+	17800 -300 17800 150 
+Wire Wire Line
+	16100 -300 16350 -300
+$Comp
+L Driver_LED:WS2811 U?
+U 1 1 60604652
+P 18450 -200
+F 0 "U?" H 18450 281 50  0000 C CNN
+F 1 "WS2811" H 18450 190 50  0000 C CNN
+F 2 "" H 18150 -50 50  0001 C CNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2811.pdf" H 18250 50  50  0001 C CNN
+	1    18450 -200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_RGBA D?
+U 1 1 60605F2C
+P 19100 -550
+F 0 "D?" V 19146 -880 50  0000 R CNN
+F 1 "LED_RGBA" V 19055 -880 50  0000 R CNN
+F 2 "" H 19100 -600 50  0001 C CNN
+F 3 "~" H 19100 -600 50  0001 C CNN
+	1    19100 -550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	18850 -300 18900 -300
+Wire Wire Line
+	18900 -300 18900 -350
+Wire Wire Line
+	18850 -200 19100 -200
+Wire Wire Line
+	19100 -200 19100 -350
+Wire Wire Line
+	18850 -100 19300 -100
+Wire Wire Line
+	19300 -100 19300 -350
+Wire Wire Line
+	18450 -500 18450 -750
+Wire Wire Line
+	18050 -200 18000 -200
+Wire Wire Line
+	18000 -200 18000 150 
+Wire Wire Line
+	18000 150  19500 150 
+Wire Wire Line
+	18450 100  18450 200 
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 60605F41
+P 17900 100
+F 0 "JP?" V 17946 52  50  0000 R CNN
+F 1 "Jumper_NO_Small" V 17855 52  50  0000 R CNN
+F 2 "" H 17900 100 50  0001 C CNN
+F 3 "~" H 17900 100 50  0001 C CNN
+	1    17900 100 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	17900 0    17900 -100
+Wire Wire Line
+	17900 -100 18050 -100
+Wire Wire Line
+	19500 -300 19500 150 
+Wire Wire Line
+	17800 -300 18050 -300
+Wire Wire Line
+	2600 -2250 3150 -2250
+Connection ~ 3150 -2250
+Wire Wire Line
+	3150 -2250 4300 -2250
+Connection ~ 4300 -2250
+Wire Wire Line
+	4300 -2250 4850 -2250
+Connection ~ 4850 -2250
+Wire Wire Line
+	4850 -2250 6000 -2250
+Connection ~ 6000 -2250
+Wire Wire Line
+	6000 -2250 6550 -2250
+Connection ~ 6550 -2250
+Wire Wire Line
+	6550 -2250 7700 -2250
+Connection ~ 7700 -2250
+Wire Wire Line
+	7700 -2250 8250 -2250
+Connection ~ 8250 -2250
+Wire Wire Line
+	8250 -2250 9400 -2250
+Connection ~ 9400 -2250
+Wire Wire Line
+	9400 -2250 9950 -2250
+Connection ~ 9950 -2250
+Wire Wire Line
+	9950 -2250 11100 -2250
+Connection ~ 11100 -2250
+Wire Wire Line
+	11100 -2250 11650 -2250
+Connection ~ 11650 -2250
+Wire Wire Line
+	11650 -2250 12800 -2250
+Connection ~ 12800 -2250
+Wire Wire Line
+	12800 -2250 13350 -2250
+Connection ~ 13350 -2250
+Wire Wire Line
+	13350 -2250 14500 -2250
+Connection ~ 14500 -2250
+Wire Wire Line
+	14500 -2250 15050 -2250
+Wire Wire Line
+	3800 -3200 4850 -3200
+Connection ~ 4850 -3200
+Wire Wire Line
+	4850 -3200 5500 -3200
+Connection ~ 5500 -3200
+Wire Wire Line
+	5500 -3200 6550 -3200
+Connection ~ 6550 -3200
+Wire Wire Line
+	6550 -3200 7200 -3200
+Connection ~ 7200 -3200
+Wire Wire Line
+	7200 -3200 8250 -3200
+Connection ~ 8250 -3200
+Wire Wire Line
+	8250 -3200 8900 -3200
+Connection ~ 8900 -3200
+Wire Wire Line
+	8900 -3200 9950 -3200
+Connection ~ 9950 -3200
+Wire Wire Line
+	9950 -3200 10600 -3200
+Connection ~ 10600 -3200
+Wire Wire Line
+	10600 -3200 11650 -3200
+Connection ~ 11650 -3200
+Wire Wire Line
+	11650 -3200 12300 -3200
+Connection ~ 12300 -3200
+Wire Wire Line
+	12300 -3200 13350 -3200
+Connection ~ 13350 -3200
+Wire Wire Line
+	13350 -3200 14000 -3200
+Connection ~ 14000 -3200
+Wire Wire Line
+	14000 -3200 15050 -3200
+Connection ~ 15050 -3200
+Wire Wire Line
+	15050 -3200 15700 -3200
+$Comp
+L Diode:1N4148 D?
+U 1 1 607FCF76
+P 2850 -3200
+F 0 "D?" V 2850 -2900 50  0000 R CNN
+F 1 "1N4148W" V 2750 -2800 50  0000 R CNN
+F 2 "Diode_SMD:D_SOD-123" H 2850 -3375 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 2850 -3200 50  0001 C CNN
+F 4 "Y" H 2850 -3200 50  0001 C CNN "Basic part"
+F 5 "C81598" H 2850 -3200 50  0001 C CNN "LCSC Part"
+	1    2850 -3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:Jumper JP?
+U 1 1 607FE8E3
+P 3150 -3350
+F 0 "JP?" V 3104 -3223 50  0000 L CNN
+F 1 "Jumper" V 3195 -3223 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" H 3150 -3350 50  0001 C CNN
+F 3 "~" H 3150 -3350 50  0001 C CNN
+F 4 "~" H 3150 -3350 50  0001 C CNN "Basic part"
+F 5 "~" H 3150 -3350 50  0001 C CNN "LCSC Part"
+F 6 "False" H 3150 -3350 50  0001 C CNN "JLCPCB BOM"
+	1    3150 -3350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2850 -3350 2850 -3650
+Wire Wire Line
+	2850 -3650 3150 -3650
+Connection ~ 3150 -3650
+Wire Wire Line
+	3150 -3650 3600 -3650
+Wire Wire Line
+	3600 -3650 3600 -3200
+Wire Wire Line
+	3600 -3200 3800 -3200
+Connection ~ 3800 -3200
+Wire Wire Line
+	2850 -3050 3150 -3050
+Wire Wire Line
+	3150 -3050 3150 -2950
+Connection ~ 3150 -3050
+Wire Wire Line
+	3150 -1950 3800 -1950
+Connection ~ 3800 -1950
+Wire Wire Line
+	3800 -1950 4850 -1950
+Connection ~ 4850 -1950
+Wire Wire Line
+	4850 -1950 5500 -1950
+Connection ~ 5500 -1950
+Wire Wire Line
+	5500 -1950 6550 -1950
+Connection ~ 6550 -1950
+Wire Wire Line
+	6550 -1950 7200 -1950
+Connection ~ 7200 -1950
+Wire Wire Line
+	7200 -1950 8250 -1950
+Connection ~ 8250 -1950
+Wire Wire Line
+	8250 -1950 8900 -1950
+Connection ~ 8900 -1950
+Wire Wire Line
+	8900 -1950 9950 -1950
+Connection ~ 9950 -1950
+Wire Wire Line
+	9950 -1950 10600 -1950
+Connection ~ 10600 -1950
+Wire Wire Line
+	10600 -1950 11650 -1950
+Connection ~ 11650 -1950
+Wire Wire Line
+	11650 -1950 12300 -1950
+Connection ~ 12300 -1950
+Wire Wire Line
+	12300 -1950 13350 -1950
+Connection ~ 13350 -1950
+Wire Wire Line
+	13350 -1950 14000 -1950
+Connection ~ 14000 -1950
+Wire Wire Line
+	14000 -1950 15050 -1950
+Connection ~ 15050 -1950
+Wire Wire Line
+	15050 -1950 15700 -1950
+Wire Wire Line
+	15050 -1000 14500 -1000
+Connection ~ 3150 -1000
+Wire Wire Line
+	3150 -1000 2600 -1000
+Connection ~ 4300 -1000
+Wire Wire Line
+	4300 -1000 3150 -1000
+Connection ~ 4850 -1000
+Wire Wire Line
+	4850 -1000 4300 -1000
+Connection ~ 6000 -1000
+Wire Wire Line
+	6000 -1000 4850 -1000
+Connection ~ 6550 -1000
+Wire Wire Line
+	6550 -1000 6000 -1000
+Connection ~ 7700 -1000
+Wire Wire Line
+	7700 -1000 6550 -1000
+Connection ~ 8250 -1000
+Wire Wire Line
+	8250 -1000 7700 -1000
+Connection ~ 9400 -1000
+Wire Wire Line
+	9400 -1000 8250 -1000
+Connection ~ 9950 -1000
+Wire Wire Line
+	9950 -1000 9400 -1000
+Connection ~ 11100 -1000
+Wire Wire Line
+	11100 -1000 9950 -1000
+Connection ~ 11650 -1000
+Wire Wire Line
+	11650 -1000 11100 -1000
+Connection ~ 12800 -1000
+Wire Wire Line
+	12800 -1000 11650 -1000
+Connection ~ 13350 -1000
+Wire Wire Line
+	13350 -1000 12800 -1000
+Connection ~ 14500 -1000
+Wire Wire Line
+	14500 -1000 13350 -1000
+Wire Wire Line
+	3150 -750 3800 -750
+Connection ~ 3800 -750
+Wire Wire Line
+	3800 -750 4850 -750
+Connection ~ 4850 -750
+Wire Wire Line
+	4850 -750 5500 -750
+Connection ~ 5500 -750
+Wire Wire Line
+	5500 -750 6550 -750
+Connection ~ 6550 -750
+Wire Wire Line
+	6550 -750 7200 -750
+Connection ~ 7200 -750
+Wire Wire Line
+	7200 -750 8250 -750
+Connection ~ 8250 -750
+Wire Wire Line
+	8250 -750 8900 -750
+Connection ~ 8900 -750
+Wire Wire Line
+	8900 -750 9950 -750
+Connection ~ 9950 -750
+Wire Wire Line
+	9950 -750 10600 -750
+Connection ~ 10600 -750
+Wire Wire Line
+	10600 -750 11650 -750
+Connection ~ 11650 -750
+Wire Wire Line
+	11650 -750 12300 -750
+Connection ~ 12300 -750
+Wire Wire Line
+	12300 -750 13350 -750
+Connection ~ 13350 -750
+Wire Wire Line
+	13350 -750 14000 -750
+Connection ~ 14000 -750
+Wire Wire Line
+	14000 -750 15050 -750
+Connection ~ 15050 -750
+Wire Wire Line
+	15050 -750 15700 -750
+Connection ~ 15700 -750
+Wire Wire Line
+	15700 -750 16750 -750
+Connection ~ 16750 -750
+Wire Wire Line
+	16750 -750 17400 -750
+Connection ~ 17400 -750
+Wire Wire Line
+	17400 -750 18450 -750
+Connection ~ 18450 -750
+Wire Wire Line
+	18450 -750 19100 -750
+Wire Wire Line
+	2600 200  3150 200 
+Connection ~ 3150 200 
+Wire Wire Line
+	3150 200  4300 200 
+Connection ~ 4300 200 
+Wire Wire Line
+	4300 200  4850 200 
+Connection ~ 4850 200 
+Wire Wire Line
+	4850 200  6000 200 
+Connection ~ 6000 200 
+Wire Wire Line
+	6000 200  6550 200 
+Connection ~ 6550 200 
+Wire Wire Line
+	6550 200  7700 200 
+Connection ~ 7700 200 
+Wire Wire Line
+	7700 200  8250 200 
+Connection ~ 8250 200 
+Wire Wire Line
+	8250 200  9400 200 
+Connection ~ 9400 200 
+Wire Wire Line
+	9400 200  9950 200 
+Connection ~ 9950 200 
+Wire Wire Line
+	9950 200  11100 200 
+Connection ~ 11100 200 
+Wire Wire Line
+	11100 200  11650 200 
+Connection ~ 11650 200 
+Wire Wire Line
+	11650 200  12800 200 
+Connection ~ 12800 200 
+Wire Wire Line
+	12800 200  13350 200 
+Connection ~ 13350 200 
+Wire Wire Line
+	13350 200  14500 200 
+Connection ~ 14500 200 
+Wire Wire Line
+	14500 200  15050 200 
+Connection ~ 15050 200 
+Wire Wire Line
+	15050 200  16200 200 
+Connection ~ 16200 200 
+Wire Wire Line
+	16200 200  16750 200 
+Connection ~ 16750 200 
+Wire Wire Line
+	16750 200  17900 200 
+Connection ~ 17900 200 
+Wire Wire Line
+	17900 200  18450 200 
 $EndSCHEMATC
