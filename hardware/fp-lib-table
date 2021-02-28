@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name map_edges_keepout)(type KiCad)(uri ${KIPRJMOD}/map_edges_keepout.pretty)(options "")(descr ""))
+  (lib (name WS2813MINI)(type KiCad)(uri ${KIPRJMOD}/WS2813MINI.pretty)(options "")(descr ""))
 )
