@@ -1,0 +1,13 @@
+Comment,Designator,Footprint,LCSC Part #
+10u Unpolarized capacitor,"C1,C24,C27,C29,C30,C35,C37,C38,C39,C41,C43,C44",C_0603_1608Metric,C19702
+100n Unpolarized capacitor,"C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C25,C26,C28,C31,C32,C36,C40,C42",C_0603_1608Metric,C14663
+"18p Unpolarized capacitor, small symbol","C33,C34",C_0805_2012Metric,C1797
+"1N4148W 100V 0.15A standard switching diode, DO-35",D1,D_SOD-123,C81598
+WS2813 RGB LED with integrated controller,"D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,D13,D14,D15,D16,D17,D18,D19,D20,D21,D22,D23",LED_WS2813-MINI,C189639 
+USB_C_Plug USB Type-C Plug connector,P1,USB_C_Receptacle_HRO_TYPE-C-31-M-12,C165948
+" 2N7002 N-MOSFET transistor, gate/source/drain","Q1,Q2",SOT-23,C8545
+10k Resistor,"R1,R2,R3,R4,R5,R6,R7",R_0603_1608Metric,C25804
+"CH340G USB serial converter, UART, SOIC-16",U2,SOIC-16_3.9x9.9mm_P1.27mm,C14267
+"ESP32-WROOM-32 RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD",U3,ESP32-WROOM-32,C82899
+"AZ1117-3.3 1A 20V Fixed LDO Linear Regulator, 3.3V, SOT-89/SOT-223/TO-220/TO-252/TO-263",U4,SOT-223-3_TabPin2,C6186
+"12MHz Four pin crystal, GND on pins 2 and 4",Y1,Crystal_SMD_3225-4Pin_3.2x2.5mm,C9002
