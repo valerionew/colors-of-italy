@@ -9,12 +9,12 @@
 
 #define DEBUG
 
-#define LED_NUMBER 36 // change this with the actual number of leds
-#define MAX_LEDS_PER_REGION 4 // change this with the maximum number of led in each region
+#define LED_NUMBER 22 // change this with the actual number of leds
+#define MAX_LEDS_PER_REGION 2 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
 #define WIFI_SSID_NAME "DCPM-map"
 #define UPDATE_INTERVAL 10000
-#define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim_dummy"
+#define REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define WIFI_RESET_BUTTON 32
 #define WIFI_RESET_TIMEOUT 5000
 #define LED_PIN 5 // pin connected to WS2812b data cable
@@ -36,9 +36,9 @@ unsigned long last_pressed;
 // e.g. red -> color 0 -> 0xdd222a (red)
 // colori scopiazzati dalle faq del ministero lmao
 std::map<byte, unsigned long> color_map = {
-  {0, 0xFF0000}, // red
-  {1, 0xFF2000}, // orange
-  {2, 0xFFFF00}, // yw
+  {0, 0xFF0011}, // red
+  {1, 0xFF7000}, // orange
+  {2, 0xFFFF11}, // yw
   {3, 0xFFFFFF}  // white
 };
 
@@ -47,27 +47,27 @@ std::map<byte, unsigned long> color_map = {
 // e.g. code 01 -> addresses of led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
 std::map<String, std::array<byte, MAX_LEDS_PER_REGION>> led_map = {
-  {"01", {0, 1, 2, 3}},                   // ABRUZZO
-  {"02", {4, 5, 6, NO_LED}},              // BASILICATA
-  {"03", {7, NO_LED, NO_LED, NO_LED}},    // BOLZANO
-  {"04", {8, NO_LED, NO_LED, NO_LED}},    // CALABRIA
-  {"05", {9, 10, NO_LED, NO_LED}},        // CAMPANIA
-  {"06", {11, NO_LED, NO_LED, NO_LED}},   // EMILIA ROMAGNA
-  {"07", {12, NO_LED, NO_LED, NO_LED}},   // FRIULI VENEZIA GIULIA
-  {"08", {13, 14, 15, NO_LED}},           // LAZIO
-  {"09", {17, NO_LED, NO_LED, NO_LED}},   // LIGURIA
-  {"10", {18, 19, NO_LED, NO_LED}},       // LOMBARDIA
-  {"11", {16, NO_LED, NO_LED, NO_LED}},   // MARCHE
-  {"12", {20, 21, NO_LED, NO_LED}},       // MOLISE
-  {"13", {22, NO_LED, NO_LED, NO_LED}},   // PIEMONTE
-  {"14", {23, NO_LED, NO_LED, NO_LED}},   // PUGLIA
-  {"15", {24, 25, 26, NO_LED}},           // SARDEGNA
-  {"16", {27, NO_LED, NO_LED, NO_LED}},   // SICILIA
-  {"17", {28, 29, NO_LED, NO_LED}},       // TOSCANA
-  {"18", {30, 31, 32, NO_LED}},           // TRENTO
-  {"19", {33, NO_LED, NO_LED, NO_LED}},   // UMBRIA
-  {"20", {34, NO_LED, NO_LED, NO_LED}},   // VALLE D'AOSTA
-  {"21", {35, NO_LED, NO_LED, NO_LED}}    // VENETO
+  {"01", {14,NO_LED}},                   // ABRUZZO
+  {"02", {19,NO_LED}},              // BASILICATA
+  {"03", {NO_LED}},    // BOLZANO
+  {"04", {20, NO_LED}},    // CALABRIA
+  {"05", {16,NO_LED}},        // CAMPANIA
+  {"06", {9, NO_LED}},   // EMILIA ROMAGNA
+  {"07", {7, NO_LED}},   // FRIULI VENEZIA GIULIA
+  {"08", {12,NO_LED}},           // LAZIO
+  {"09", {1,2}},   // LIGURIA
+  {"10", {5, NO_LED}},       // LOMBARDIA
+  {"11", {10,NO_LED}},   // MARCHE
+  {"12", {15,NO_LED}},       // MOLISE
+  {"13", {3, NO_LED}},   // PIEMONTE
+  {"14", {17,18}},   // PUGLIA
+  {"15", {13,NO_LED}},           // SARDEGNA
+  {"16", {21,NO_LED}},   // SICILIA
+  {"17", {0, NO_LED}},       // TOSCANA
+  {"18", {6, NO_LED}},           // TRENTO
+  {"19", {11,NO_LED}},   // UMBRIA
+  {"20", {4, NO_LED}},   // VALLE D'AOSTA
+  {"21", {8, NO_LED}}    // VENETO
 };
 
 void setup() {
