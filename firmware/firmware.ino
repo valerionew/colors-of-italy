@@ -17,7 +17,8 @@
 #define TERRITORIES_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define COLORS_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_rgb"
 #define WIFI_RESET_BUTTON 32
-#define WIFI_RESET_TIMEOUT 60000
+#define WIFI_RESET_TIMEOUT 5000
+#define WIFI_MAX_TIME 600000
 #define LED_PIN 5           // pin connected to WS2812b data cable
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 #define NO_LED 255
@@ -40,7 +41,7 @@ boolean wifi_connected;
 // initialization
 std::map<String, unsigned long> color_map;
 
-// territory mapping -> change this with actual values and update the LED NUMBER constant. RANDOM VALUES PROVIDED AS NOW
+// territory mapping
 // ISTAT CODE -> led position translation
 // e.g. code 01 -> addresses of led_map["01"]
 // source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
@@ -143,7 +144,7 @@ void setup()
       }
 
       // handle wifi timeout
-      if (millis() - wifiStarted > WIFI_RESET_TIMEOUT)
+      if (millis() - wifiStarted > WIFI_MAX_TIME)
       {
         // it's taking too long to connect in
         // reset everything
