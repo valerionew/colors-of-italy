@@ -69,8 +69,12 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
         {"21", {8, NO_LED}}   // VENETO
 };
 
+// this function gets called when the parameters are set
 void wifiParametersSet()
 {
+#ifdef DEBUG
+  Serial.println("Wifi parameters set. Resetting ESP32.");
+#endif
   ESP.restart();
 }
 
