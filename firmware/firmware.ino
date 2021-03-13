@@ -17,14 +17,14 @@
 #define TERRITORIES_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define COLORS_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_rgb"
 #define WIFI_RESET_BUTTON 32
-#define WIFI_RESET_TIMEOUT 5000
+#define WIFI_RESET_TIMEOUT 60000
 #define LED_PIN 5           // pin connected to WS2812b data cable
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 #define NO_LED 255
 
-#define TOUCH_ +_PIN T3 // GPIO 4
-#define TOUCH_0_PIN T2  // GPIO 2
-#define TOUCH_ -_PIN T0 // GPIO 15
+#define TOUCH_PLUS_PIN T3  // GPIO 4
+#define TOUCH_RESET_PIN T2 // GPIO 2
+#define TOUCH_MINUS_PIN T0 // GPIO 15
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -32,6 +32,8 @@ CRGB leds[LED_NUMBER];
 
 unsigned long last_update;
 unsigned long last_pressed;
+
+boolean wifi_connected;
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
@@ -67,6 +69,11 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
         {"21", {8, NO_LED}}   // VENETO
 };
 
+void wifiParametersSet()
+{
+  ESP.restart();
+}
+
 void setup()
 {
 
@@ -84,51 +91,60 @@ void setup()
 
 #ifdef DEBUG
   Serial.println(WiFi.status());
+  //wifiManager.resetSettings();
 #endif
 
   // set up WS2812b - in realtà sono 2813 mini
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 
   // setup non blocking loop
+
+  wifiManager.setHostname(WIFI_SSID_NAME);
   wifiManager.setConfigPortalBlocking(false);
+  wifiManager.setSaveConfigCallback(wifiParametersSet);
+
   unsigned long wifiStarted = millis();
-  while (!wifiManager.autoConnect())
+  if (!wifiManager.autoConnect(WIFI_SSID_NAME))
   {
-    // ConfigPortal is now running
-
-    // handle led animation
-    EVERY_N_MILLISECONDS(20)
+    while (!wifi_connected)
     {
-      pacifica_loop();
-      FastLED.show();
-    }
+      // ConfigPortal is now running
+      wifiManager.process();
 
-    // handle wifi reset button
-    if (digitalRead(WIFI_RESET_BUTTON) == LOW)
-    {
-      if (last_pressed == 0)
+      // handle led animation
+      EVERY_N_MILLISECONDS(20)
       {
-        last_pressed = millis();
+        pacifica_loop();
+        FastLED.show();
       }
-      else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
+
+      // handle wifi reset button
+      if (digitalRead(WIFI_RESET_BUTTON) == LOW)
       {
-        // delete wifi credentials and reset esp
-        wifiManager.resetSettings();
+        if (last_pressed == 0)
+        {
+          last_pressed = millis();
+        }
+        else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
+        {
+          // delete wifi credentials and reset esp
+          wifiManager.resetSettings();
+          ESP.restart();
+        }
+      }
+      else if (digitalRead(WIFI_RESET_BUTTON) == HIGH && last_pressed != 0)
+      {
+        // reset last pressed
+        last_pressed = 0;
+      }
+
+      // handle wifi timeout
+      if (millis() - wifiStarted > WIFI_RESET_TIMEOUT)
+      {
+        // it's taking too long to connect in
+        // reset everything
         ESP.restart();
       }
-    }
-    else if (digitalRead(WIFI_RESET_BUTTON) == HIGH && last_pressed != 0)
-    {
-      // reset last pressed
-      last_pressed = 0;
-    }
-
-    // handle wifi timeout
-    if (millis() - wifiStarted > WIFI_RESET_TIMEOUT)
-    {
-      // it's taking too long to connect in
-      // reset everything
-      ESP.restart();
     }
   }
 }
@@ -178,6 +194,12 @@ void loop()
           unsigned long color_hex = p.value().as<unsigned long>();
           // assing to map
           color_map[color_code] = color_hex;
+#ifdef DEBUG
+          Serial.print("color code ");
+          Serial.print(color_code);
+          Serial.print(" color hex ");
+          Serial.println(color_hex);
+#endif
         }
       }
     }
