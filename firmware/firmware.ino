@@ -37,9 +37,37 @@ unsigned long last_pressed;
 boolean wifi_connected;
 
 // color mapping
-// e.g. red -> color 0 -> 0xdd222a (red)
+// colors are fetched from internet
 // initialization
 std::map<String, unsigned long> color_map;
+
+// brightness mapping
+// ISTAT CODE -> led brightness translation
+// 0 to 255 (darkse to brightest)
+// initialization
+std::map<String, byte> brightness_map = {
+    {"01", 255}, // ABRUZZO
+    {"02", 255}, // BASILICATA
+    {"03", 255}, // BOLZANO
+    {"04", 255}, // CALABRIA
+    {"05", 255}, // CAMPANIA
+    {"06", 255}, // EMILIA ROMAGNA
+    {"07", 255}, // FRIULI VENEZIA GIULIA
+    {"08", 255}, // LAZIO
+    {"09", 255}, // LIGURIA
+    {"10", 255}, // LOMBARDIA
+    {"11", 255}, // MARCHE
+    {"12", 255}, // MOLISE
+    {"13", 255}, // PIEMONTE
+    {"14", 255}, // PUGLIA
+    {"15", 255}, // SARDEGNA
+    {"16", 255}, // SICILIA
+    {"17", 255}, // TOSCANA
+    {"18", 255}, // TRENTO
+    {"19", 255}, // UMBRIA
+    {"20", 255}, // VALLE D'AOSTA
+    {"21", 255}  // VENETO
+};
 
 // territory mapping
 // ISTAT CODE -> led position translation
@@ -231,23 +259,25 @@ void loop()
           String color_code = p.value().as<String>();
           // translate it to actual hex color
           unsigned long color = color_map.find(color_code)->second;
+          // get leds brightness (unique for each territory)
+          byte brightness = brightness_map.find(p.key().c_str())->second;
           // load the list of addresses from the map
-          std::array<byte, MAX_LEDS_PER_REGION> addresses = led_map.find(p.key().c_str())->second;
+          std::array<byte, MAX_LEDS_PER_REGION>
+              addresses = led_map.find(p.key().c_str())->second;
+          // loop throught each address
           for (const auto &address : addresses)
           {
-            // color the corrisponding led
+            // the address must be different from the array filler
             if (address != NO_LED)
             {
-              // the address must be different from the array filler
+              // color the corrisponding led
               leds[address] = color;
+              // set its brightness
+              leds[address].fadeToBlackBy(255 - brightness);
             }
           }
 
 #ifdef DEBUG
-          Serial.print("key ");
-          Serial.print(p.key().c_str());
-          Serial.print(" value ");
-          Serial.print(p.value().as<byte>());
           Serial.print(" led addresses ");
           for (const auto &address : addresses)
           {
@@ -257,7 +287,9 @@ void loop()
           Serial.print("color code ");
           Serial.print(color_code);
           Serial.print(" color hex ");
-          Serial.println(color);
+          Serial.print(color);
+          Serial.print(" brightness ");
+          Serial.println(brightness);
 #endif
         }
       }
