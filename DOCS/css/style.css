@@ -42,6 +42,7 @@ body {
 .form {
   font-size: var(--font-size);
   margin-top: calc(var(--font-size) * 2);
+  margin-bottom: calc(var(--font-size) * 1  );
 
   display: flex;
   flex-direction: row;
@@ -81,7 +82,6 @@ body {
 }
 
 .confirmation {
-  margin-top: calc(var(--font-size) * 3);
   padding: calc(var(--font-size) / 2);
 
   width: var(--input-width);

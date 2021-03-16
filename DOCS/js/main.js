@@ -5,7 +5,7 @@ $(document).ready(() => {
   let send = $(".form #send");
   let confirmation = $(".confirmation");
   let regex = /[^@]+@[^@]+\.[^@]+/g;
-  let url = "http://vaccinocovid19.live/post/newsletter";
+  let url = "http://127.0.0.1:5000/post/newsletter";
 
   // preload text
   let default_text = "Inserisci la tua email";
@@ -49,7 +49,7 @@ $(document).ready(() => {
 
 
   const showError = (error) => {
-    // console.log("error", error);
+    console.log("error", error);
     confirmation.css({ "background-color": "Brown" });
     confirmation.html("<p>Errore interno del server.<br>Si prega di provare più tardi.</p>");
     showConfirmation();
