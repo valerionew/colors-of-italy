@@ -5,7 +5,7 @@ $(document).ready(() => {
   let send = $(".form #send");
   let confirmation = $(".confirmation");
   let regex = /[^@]+@[^@]+\.[^@]+/g;
-  let url = "http://127.0.0.1:5000/post/newsletter";
+  let url = "http://vaccinocovid19.live/post/newsletter";
 
   // preload text
   let default_text = "Inserisci la tua email";
