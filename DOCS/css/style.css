@@ -61,7 +61,6 @@ body {
   border-color: black;
   background-color: white;
 
-
   border-radius: 4px;
 }
 
@@ -75,6 +74,8 @@ body {
   border: 1px solid;
   border-color: black;
   background-color: white;
+
+  border-radius: 4px;
 }
 
 .form button:disabled {
