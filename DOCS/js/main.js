@@ -3,7 +3,9 @@
 $(document).ready(() => {
   let input = $(".form #emailinput");
   let send = $(".form #send");
+  let confirmation = $(".confirmation");
   let regex = /[^@]+@[^@]+\.[^@]+/g;
+  let url = "http://127.0.0.1:5000/post/newsletter";
 
   // preload text
   let default_text = "Inserisci la tua email";
@@ -19,37 +21,55 @@ $(document).ready(() => {
   });
 
   input.on("input", () => {
-    if (input.val().match(regex)) {
-      send.attr("disabled", false);
-    }
+    send.attr("disabled", !input.val().match(regex));
   });
 
   send.click(() => {
-    let data = JSON.stringify({
+    let data = {
       "email": input.val()
-    });
+    };
 
-    $.post("https://www.vaccinocovid19.live/post/newsletter", data, (response) => {
-
-      // success
-      if (response.errorcode == 200) {
-        showSuccess();
-      } else {
-        showError();
+    $.ajax({
+      url: url,
+      dataType: "json",
+      type: "post",
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      processData: false,
+      success: function (data) {
+        showSuccess(data);
+      },
+      error: function (error) {
+        showError(error);
       }
-    })
-      .fail(function () {
-        // fail
-        showError();
-      });
+    });
 
   });
 
-  const showError = () => {
-    console.log("error");
+
+
+  const showError = (error) => {
+    // console.log("error", error);
+    confirmation.css({ "background-color": "Brown" });
+    confirmation.html("<p>Errore interno del server.<br>Si prega di provare più tardi.</p>");
+    showConfirmation();
   };
 
-  const showSuccess = () => {
-    console.log("success")
+  const showSuccess = (success) => {
+    //console.log("success", success);
+    if (success.response != 200) {
+      showError();
+      return;
+    }
+
+    confirmation.css({ "background-color": "lightgreen" });
+    confirmation.html("<p>La tua email è stata salvata.<br>Verrai presto ricontattato!</p>");
+    showConfirmation();
+  };
+
+  const showConfirmation = () => {
+    confirmation.animate({
+      "height": "4rem"
+    }, 500);
   };
 });
