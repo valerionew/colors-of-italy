@@ -3,6 +3,7 @@
 $(document).ready(() => {
   let input = $(".form #emailinput");
   let send = $(".form #send");
+  let spinner = $(".loading");
   let confirmation = $(".confirmation");
   let regex = /[^@]+@[^@]+\.[^@]+/g;
   let url = "http://vaccinocovid19.live/post/newsletter";
@@ -25,6 +26,9 @@ $(document).ready(() => {
   });
 
   send.click(() => {
+    confirmation.css({ "display": "none" });
+    spinner.css({ "display": "block" });
+
     let data = {
       "email": input.val()
     };
@@ -36,10 +40,13 @@ $(document).ready(() => {
       contentType: 'application/json',
       data: JSON.stringify(data),
       processData: false,
+      cache: false,
       success: function (data) {
+        spinner.css({ "display": "none" });
         showSuccess(data);
       },
       error: function (error) {
+        spinner.css({ "display": "none" });
         showError(error);
       }
     });
@@ -49,7 +56,7 @@ $(document).ready(() => {
 
 
   const showError = (error) => {
-    console.log("error", error);
+    //console.log("error", error);
     confirmation.css({ "background-color": "Brown" });
     confirmation.html("<p>Errore interno del server.<br>Si prega di provare più tardi.</p>");
     showConfirmation();
@@ -68,6 +75,7 @@ $(document).ready(() => {
   };
 
   const showConfirmation = () => {
+    confirmation.css({ "display": "flex" });
     confirmation.animate({
       "height": "4rem"
     }, 500);
