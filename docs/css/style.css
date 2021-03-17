@@ -35,22 +35,62 @@ body {
 
 .text h1 {
   font-size: var(--title-size);
+  padding-top: calc(var(--title-size) / 8);
   padding-bottom: calc(var(--title-size) / 8);
 }
 
 .text h2 {
   font-size: var(--subtitle-size);
-  padding-bottom: calc(var(--subtitle-size) / 8);
+  padding-top: calc(var(--subtitle-size) / 8);
+  padding-bottom: calc(var(--subtitle-size) / 4);
 }
 
 .text h3 {
   font-size: var(--subsubtitle-size);
+  padding-top: calc(var(--subsubtitle-size) / 8);
   padding-bottom: calc(var(--subsubtitle-size) / 8);
 }
 
-.text p {
+.text p, .text ul {
   font-size: var(--text-size);
+  padding-top: calc(var(--text-size) / 8);
   padding-bottom: calc(var(--text-size) / 8);
+}
+
+.text li {
+  list-style: none;
+  margin-left: calc(var(--text-size) * 1);
+}
+
+.text li:before {
+  content:"·";
+  margin-right: calc(var(--text-size) / 4);
+  font-size: calc(var(--text-size) * 2);
+  vertical-align: text-top;
+  line-height: var(--text-size);
+}
+
+.text .italic {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.text .italic {
+  font-style: bold;
+}
+
+.text #showcase {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: top;
+}
+
+.text img {
+  width: 500px;
+  height: 350px;
+  background: black;
+  margin: 25px;
 }
 
 .form {
