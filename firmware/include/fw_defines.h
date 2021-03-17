@@ -6,7 +6,7 @@
 #define LED_NUMBER 22         // change this with the actual number of leds
 #define MAX_LEDS_PER_REGION 2 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
-#define WIFI_SSID_NAME "DCPM-map"
+#define WIFI_SSID_NAME "Colors-of-italy"
 #define UPDATE_INTERVAL 10000
 #define TERRITORIES_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define COLORS_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_rgb"
