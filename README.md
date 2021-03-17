@@ -1,6 +1,6 @@
 # Colors of Italy
 
-# [https://valerionew.github.io/colors-of-italy/](https://valerionew.github.io/colors-of-italy/)
+# <a href="https://valerionew.github.io/colors-of-italy/" target="_blank">https://valerionew.github.io/colors-of-italy/</a>
 
 inspired by http://www.lucadentella.it/en/2021/01/09/impariamo-insieme-mappa-dinamica-con-arduino/
 
