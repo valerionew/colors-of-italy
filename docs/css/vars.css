@@ -2,16 +2,16 @@
   :root {
     --vertical-spacing: 10vh;
     --title-size: 3.5rem;
-    --subtitle-size: 2.5rem;
+    --subtitle-size: 2rem;
     --subsubtitle-size: 2rem;
-    --text-size: 1.75rem;
+    --text-size: 1.5rem;
     --input-width: 300px;
   }  
 }
 
 @media only screen and (max-width: 600px) {
   :root {
-    --vertical-spacing: 15vh;
+    --vertical-spacing: 5vh;
     --title-size: 2.5rem;
     --subtitle-size: 1.75rem;
     --subsubtitle-size: 1.25rem;
