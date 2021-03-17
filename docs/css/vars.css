@@ -1,5 +1,6 @@
 @media only screen and (min-width: 600px) {
   :root {
+    --vertical-spacing: 30vh;
     --title-size: 3.5rem;
     --subtitle-size: 2.5rem;
     --font-size: 1.25rem;
@@ -9,6 +10,7 @@
 
 @media only screen and (max-width: 600px) {
   :root {
+    --vertical-spacing: 15vh;
     --title-size: 2rem;
     --subtitle-size: 1.5rem;
     --font-size: 1rem;
