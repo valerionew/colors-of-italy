@@ -27,23 +27,34 @@ body {
   align-items: center;
 }
 
-.title {
+.text {
   text-align: center;
 }
 
-.title h1 {
+.text h1 {
   font-size: var(--title-size);
-  padding-bottom: calc(var(--title-size)/8);
+  padding-bottom: calc(var(--title-size) / 8);
 }
 
-.title h2 {
+.text h2 {
   font-size: var(--subtitle-size);
+  padding-bottom: calc(var(--subtitle-size) / 4);
+}
+
+.text h3 {
+  font-size: var(--subsubtitle-size);
+  padding-bottom: calc(var(--subsubtitle-size) / 2);
+}
+
+.text p {
+  font-size: var(--text-size);
+  padding-bottom: calc(var(--text-size) / 2);
 }
 
 .form {
-  font-size: var(--font-size);
-  margin-top: calc(var(--font-size) * 2);
-  margin-bottom: calc(var(--font-size) * 2);
+  font-size: var(--text-size);
+  margin-top: calc(var(--text-size) * 2);
+  margin-bottom: calc(var(--text-size) * 2);
 
   display: flex;
   flex-direction: row;
@@ -52,8 +63,8 @@ body {
 }
 
 .form input {
-  font-size: inherit;
-  padding: calc(var(--font-size) / 4);
+  font-size: var(--text-size);
+  padding: calc(var(--text-size) / 4);
 
   opacity: 1;
   width: var(--input-width);
@@ -67,10 +78,10 @@ body {
 
 .form button {
   font-size: inherit;
-  margin-left: calc(var(--font-size) / 2);
+  margin-left: calc(var(--text-size) / 2);
 
-  padding-left: calc(var(--font-size) / 2);
-  padding-right: calc(var(--font-size) / 2);
+  padding-left: calc(var(--text-size) / 2);
+  padding-right: calc(var(--text-size) / 2);
 
   border: 1px solid;
   border-color: black;
@@ -112,12 +123,12 @@ body {
 }
 
 .confirmation {
-  padding: calc(var(--font-size) / 2);
+  padding: calc(var(--text-size) / 2);
 
   width: var(--input-width);
   height: 0;
 
-  font-size: var(--font-size);
+  font-size: var(--text-size);
   text-align: center;
 
   border-radius: 4px;

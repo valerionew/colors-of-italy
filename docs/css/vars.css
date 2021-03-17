@@ -3,7 +3,8 @@
     --vertical-spacing: 30vh;
     --title-size: 3.5rem;
     --subtitle-size: 2.5rem;
-    --font-size: 1.25rem;
+    --subsubtitle-size: 2rem;
+    --text-size: 1.5rem;
     --input-width: 300px;
   }  
 }
@@ -13,7 +14,8 @@
     --vertical-spacing: 15vh;
     --title-size: 2rem;
     --subtitle-size: 1.5rem;
-    --font-size: 1rem;
+    --subsubtitle-size: 1.25rem;
+    --text-size: 1rem;
     --input-width: 200px;
   }  
 }
