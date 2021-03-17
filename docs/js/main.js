@@ -56,14 +56,14 @@ $(document).ready(() => {
 
 
   const showError = (error) => {
-    //console.log("error", error);
+    console.log("error", error);
     confirmation.css({ "background-color": "Brown" });
     confirmation.html("<p>Errore interno del server.<br>Si prega di provare più tardi.</p>");
     showConfirmation();
   };
 
   const showSuccess = (success) => {
-    //console.log("success", success);
+    console.log("success", success);
     if (success.response != 200) {
       showError();
       return;
