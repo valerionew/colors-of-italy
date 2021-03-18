@@ -1,3 +1,10 @@
+/* Universal vars */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+/* Big screens vars */
 @media only screen and (min-width: 600px) {
   :root {
     --vertical-spacing: 10vh;
@@ -9,6 +16,7 @@
   }  
 }
 
+/* Small screens vars */
 @media only screen and (max-width: 600px) {
   :root {
     --vertical-spacing: 5vh;

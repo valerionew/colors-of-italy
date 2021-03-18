@@ -22,6 +22,9 @@ code {
 body {
   width: 100%;
   height: 100%;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 .container {
@@ -85,9 +88,32 @@ body {
   font-weight: 500;
 }
 
-.text .italic {
-  font-style: bold;
+.text .slide {
+  position: relative;
 }
+
+.text .slide::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 1px;
+  left: 0;
+  background-color: var(--text-color);
+
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards
+}
+
+@keyframes slide {
+  0% {width: 0;}
+  100% {width: 100%;}
+}
+
 
 .text #showcase {
   display: flex;
@@ -101,8 +127,23 @@ body {
 .text img {
   width: 400px;
   height: 350px;
-  background: black;
+  
   margin: 25px;
+  padding: 2px;
+
+  background-color: var(--background-color);
+
+  animation-name: image-gradient;
+  animation-duration: 3s;
+  animation-delay: 8s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards
+}
+
+@keyframes image-gradient {
+  0% {background-color: var(--background-color);}
+  100% {background-color: var(--text-color);}
 }
 
 .form {
@@ -216,7 +257,7 @@ body {
 
 @keyframes white {
   0% {color: inherit;background-color: inherit;}
-  100% {color: white;background-color: black;}
+  100% {color: var(--background-color);background-color: var(--text-color);}
 }
 
 @keyframes red {
