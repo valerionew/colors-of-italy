@@ -26,6 +26,37 @@ void setup()
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER).setCorrection(Tungsten40W);
   count = 0;
   color = 0;
+
+  initLeds();
+}
+
+void initLeds()
+{
+  // the first loop is not enough
+  // explain me why
+  // you have to set the colors twice
+  // or they all get fucky
+  for (int j = 0; j < 2; j++)
+  {
+    for (int i = 0; i < LED_NUMBER; i++)
+    {
+      leds[i] = 0xFF0000;
+    }
+    FastLED.show();
+  }
+}
+
+void fillLeds(long int color)
+{
+  for (int i = 0; i < LED_NUMBER; i++)
+  {
+    byte brightness;
+    brightness = 255 / LED_NUMBER * i;
+    leds[i] = color;
+    leds[i].fadeToBlackBy(brightness);
+  }
+
+  FastLED.show();
 }
 
 void loop()
@@ -66,16 +97,7 @@ void loop()
 
     if (count == 6)
     {
-      for (int i = 0; i < LED_NUMBER; i++)
-      {
-        byte brightness;
-        brightness = 255 / LED_NUMBER * i;
-
-        leds[i] = color;
-        leds[i].fadeToBlackBy(brightness);
-      }
-
-      FastLED.show();
+      fillLeds(color);
 
       Serial.print("Color #");
       Serial.print(color, HEX);
