@@ -83,7 +83,7 @@ void setup()
 #endif
 
   // set up WS2812b - in realtà sono 2813 mini
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER).setCorrection(Tungsten40W);
 
   // setup non blocking loop
 
@@ -163,7 +163,7 @@ void loop()
     httpResponseCode = http.GET();
     if (httpResponseCode > 0)
     {
-      StaticJsonDocument<128> doc;
+      StaticJsonDocument<256> doc;
       // buffer size calculated here: https://arduinojson.org/v6/assistant/
       String json_data = http.getString();
       // parse JSON data
