@@ -31,16 +31,22 @@ void fillLeds(long int color)
     float percent;
     percent = (float)brightness / 255.0;
 
+    byte red;
+    red = (color & 0xFF0000) >> 16;
+    long int dRed;
+    dRed = byte(red * percent) << 16;
+
     byte green;
     green = (color & 0x00FF00) >> 8;
     long int dGreen;
     dGreen = byte(green * percent) << 8;
 
-    byte red;
-    red = (color & 0xFF0000) >> 16;
-    long int dRed;
-    dRed = byte(red * percent) << 16;
-    color = color + byte(dGreen) + byte(dRed);
+    byte blue;
+    blue = (color && 0x0000FF);
+    long int dBlue;
+    dBlue = byte(blue * percent);
+
+    color = color + byte(dGreen) + byte(dRed) + byte(dBlue);
     // color correction ends here
 
     leds[i] = color;
