@@ -1,6 +1,8 @@
 *.kicad_pcb linguist-detectable=true
 *.sch linguist-detectable=true
 fp-lib-table linguist-generated=true
+sym-lib-table linguist-generated=true
 *.xml linguist-generated=true
 *.txt linguist-generated=true
 *.pretty/* linguist-vendored=true
+*.gcode linguist-generated=true
