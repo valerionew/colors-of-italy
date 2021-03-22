@@ -27,7 +27,8 @@ void fillLeds(long int color)
     // color correction begins here
     // basically, i did math
     // some kind of lerp i don't know
-    // adds green and red to darker brightness
+    // adds color darker brightness
+
     float percent;
     percent = (float)brightness / 255.0;
 
@@ -42,15 +43,18 @@ void fillLeds(long int color)
     dGreen = byte(green * percent) << 8;
 
     byte blue;
-    blue = (color && 0x0000FF);
+    blue = (color & 0x0000FF);
     long int dBlue;
     dBlue = byte(blue * percent);
 
+    // fix color
     color = color + byte(dGreen) + byte(dRed) + byte(dBlue);
+    // set brightness
+    color = (long int)(float(color) * percent);
+
     // color correction ends here
 
     leds[i] = color;
-    leds[i].fadeToBlackBy(brightness);
   }
 
   FastLED.show();
