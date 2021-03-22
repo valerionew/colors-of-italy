@@ -3,10 +3,13 @@
 
 #define LED_NUMBER 22
 #define LED_PIN 5
+#define MAX_BLEND 20
 
 CRGB leds[LED_NUMBER];
-long int colors[4] = {0xFF0000, 0xB95000, 0xFFBB00, 0xFFFFFF};
+CRGB offset;
+long int colors[4] = {0xFF0000, 0xB93C00, 0xFFBB00, 0xFFFFFF};
 byte count = 0;
+byte brightness = 40;
 
 void setup();
 void loop();
@@ -15,48 +18,20 @@ void setup()
 {
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER)
       .setCorrection(Tungsten40W);
+  offset = 0xFFFF00;
 }
 
 void fillLeds(long int color)
 {
   for (int i = 0; i < LED_NUMBER; i++)
   {
-    byte brightness;
-    brightness = 255 / LED_NUMBER * i;
-
-    // color correction begins here
-    // basically, i did math
-    // some kind of lerp i don't know
-    // adds color darker brightness
-
     float percent;
-    percent = (float)brightness / 255.0;
-
-    byte red;
-    red = (color & 0xFF0000) >> 16;
-    long int dRed;
-    dRed = byte(red * percent) << 16;
-
-    byte green;
-    green = (color & 0x00FF00) >> 8;
-    long int dGreen;
-    dGreen = byte(green * percent) << 8;
-
-    byte blue;
-    blue = (color & 0x0000FF);
-    long int dBlue;
-    dBlue = byte(blue * percent);
-
-    // fix color
-    color = color + byte(dGreen) + byte(dRed) + byte(dBlue);
-    // set brightness
-    color = (long int)(float(color) * percent);
-
-    // color correction ends here
-
-    leds[i] = color;
+    percent = map(brightness, 0, 255, MAX_BLEND, 0);
+    CRGB blended = blend(color, offset, percent);
+    leds[i] = blended;
   }
 
+  FastLED.setBrightness(brightness);
   FastLED.show();
 }
 
