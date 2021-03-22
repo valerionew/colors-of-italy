@@ -302,7 +302,7 @@ void loop()
     // read light level from sensor
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
     // calculate the actual brightness compared to the sensor output
-    float scaled_light = rescale(light, 2000, 0, 255, 30);
+    float scaled_light = rescale(light, 2000, 0, 255, 10);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
 #ifdef DEBUG
