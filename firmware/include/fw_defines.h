@@ -1,7 +1,6 @@
 #ifndef FW_DEFINES_H
 #define FW_DEFINES_H
 
-#define DEBUG
 
 #define LED_NUMBER 22         // change this with the actual number of leds
 #define MAX_LEDS_PER_REGION 2 // change this with the maximum number of led in each region
