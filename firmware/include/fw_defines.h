@@ -7,7 +7,9 @@
 #define MAX_LEDS_PER_REGION 2 // change this with the maximum number of led in each region
 #define WIFI_TIMEOUT 500
 #define WIFI_SSID_NAME "Colors-of-italy"
-#define UPDATE_INTERVAL 10000
+#define UPDATE_INTERVAL 300e3 // 300s -> 5 min
+#define REFRESH_INTERVAL 50   // 0.5s
+#define MAX_BRIGHTNESS 2000
 #define TERRITORIES_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
 #define COLORS_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_rgb"
 #define WIFI_RESET_BUTTON 32

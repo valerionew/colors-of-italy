@@ -16,13 +16,44 @@ CRGB leds[LED_NUMBER];
 
 unsigned long last_update;
 unsigned long last_pressed;
+unsigned long last_refresh;
 
 boolean wifi_connected;
+
+// LPF
+class LPF
+{
+public:
+  void LFP()
+  {
+    alpha = 0;
+    value = 0;
+  };
+  void init(float a)
+  {
+    alpha = a;
+    value = 0;
+  };
+  float update(float sample)
+  {
+    value += (sample - value) * alpha;
+    return value;
+  };
+
+private:
+  float alpha;
+  float value;
+};
+LPF brightness_filter;
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
 // initialization
-std::map<String, unsigned long> color_map;
+std::map<String, unsigned long>
+    color_map;
+
+// region mapping
+std::map<String, unsigned long> region_map;
 
 // territory mapping
 // ISTAT CODE -> led position translation
@@ -53,6 +84,25 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
         {"21", {8, NO_LED}}   // VENETO
 };
 
+float rescale(float value, float old_min, float old_max, float new_min, float new_max)
+{
+  // swap the interval if the scale is inverted
+  if (old_min > old_max)
+  {
+    float temp = old_min;
+    old_min = old_max;
+    old_max = temp;
+  }
+
+  // check if the value is in range
+  if (value > old_max)
+    value = old_max;
+  else if (value < old_min)
+    value = old_min;
+
+  return (value - old_min) * (new_max - new_min) / (old_max - old_min) + new_min;
+}
+
 // this function gets called when the parameters are set
 void wifiParametersSet()
 {
@@ -76,6 +126,9 @@ void setup()
   // variables initialization
   last_update = 0;
   last_pressed = 0;
+  last_refresh = 0;
+  // init brightness filter
+  brightness_filter.init(0.05);
 
 #ifdef DEBUG
   Serial.println(WiFi.status());
@@ -212,35 +265,23 @@ void loop()
           // iterate through each key and value
           // load color code
           String color_code = p.value().as<String>();
-          // translate it to actual hex color
+          // load region code
+          String region_code = p.key().c_str();
+          // load actual color
           unsigned long color = color_map.find(color_code)->second;
-          // load the list of addresses from the map
-          std::array<byte, MAX_LEDS_PER_REGION> addresses = led_map.find(p.key().c_str())->second;
-          for (const auto &address : addresses)
-          {
-            // color the corrisponding led
-            if (address != NO_LED)
-            {
-              // the address must be different from the array filler
-              leds[address] = color;
-            }
-          }
+          // save color into map
+          region_map[region_code] = color;
 
 #ifdef DEBUG
           Serial.print("key ");
           Serial.print(p.key().c_str());
           Serial.print(" value ");
           Serial.print(p.value().as<byte>());
-          Serial.print(" led addresses ");
-          for (const auto &address : addresses)
-          {
-            Serial.print(address);
-            Serial.print(" ");
-          }
-          Serial.print("color code ");
+          Serial.print(" color code ");
           Serial.print(color_code);
           Serial.print(" color hex ");
-          Serial.println(color);
+          Serial.print(color, HEX);
+          Serial.println();
 #endif
         }
       }
@@ -249,24 +290,47 @@ void loop()
       doc.clear();
     }
     http.end();
+    // set the leds brightness
+    // FastLED.setBrightness(brightness);
   }
-  // read light level from sensor
-  unsigned int light = analogRead(LIGHT_SENSOR_PIN);
-  // 500 should be the max value
-  // this will need some tweaking
-  if (light > 500)
-    light = 500;
-  // calculate the actual brightness compared to the sensor output
-  byte brightness = map(light, 500, 0, 255, 20);
-  // set the leds brightness
-  FastLED.setBrightness(brightness);
 
-  //      #ifdef DEBUG
-  //        Serial.print("ambient light ");
-  //        Serial.print(light);
-  //        Serial.print(" led brightness ");
-  //        Serial.println(brightness);
-  //      #endif
+  // check if it's time to refresh
+  if (last_refresh == 0 || millis() - last_refresh > REFRESH_INTERVAL)
+  {
+    // update last refreshed
+    last_refresh = millis();
+    // read light level from sensor
+    unsigned int light = analogRead(LIGHT_SENSOR_PIN);
+    // calculate the actual brightness compared to the sensor output
+    float scaled_light = rescale(light, 2000, 0, 255, 30);
+    byte brightness = (byte)brightness_filter.update(scaled_light);
+
+#ifdef DEBUG
+    Serial.print("ambient light ");
+    Serial.print(light);
+    Serial.print(" scaled level ");
+    Serial.print(scaled_light);
+    Serial.print(" led brightness ");
+    Serial.println(brightness);
+#endif
+
+    for (auto region : region_map)
+    {
+      // load the list of addresses from the map
+      std::array<byte, MAX_LEDS_PER_REGION> addresses = led_map.find(region.first)->second;
+      for (const auto &address : addresses)
+      {
+        // color the corrisponding led
+        if (address != NO_LED)
+        {
+          // the address must be different from the array filler
+          leds[address] = region.second;
+        }
+      }
+    }
+    FastLED.setBrightness(brightness);
+    FastLED.show();
+  }
 
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
   {
@@ -287,6 +351,5 @@ void loop()
     last_pressed = 0;
   }
 
-  FastLED.show();
   delay(10);
 }
