@@ -10,10 +10,10 @@
 #define NO_LED 255            // map filler
 
 // wifi related
-#define WIFI_SSID_NAME "Colors-of-italy"
-#define WIFI_RESET_BUTTON 32
-#define WIFI_RESET_TIMEOUT 5000
-#define WIFI_MAX_TIME 600000
+#define WIFI_SSID_NAME "Colors-of-italy" // SSID of the wifi portal
+#define WIFI_MAX_TIME 600000             // timeout before the wifi portal (and the whole ESP) gets reset
+#define WIFI_RESET_BUTTON 32             // wifi reset button
+#define WIFI_RESET_TIMEOUT 5000          // timeout for the reset button
 
 // routines related
 #define UPDATE_INTERVAL 300e3 // 300s -> 5 min
