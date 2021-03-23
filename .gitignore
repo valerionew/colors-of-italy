@@ -28,3 +28,25 @@ _autosave-*
 
 # VSCODE MAGIC
 firmware/.vscode
+
+
+# Created by https://www.toptal.com/developers/gitignore/api/vscode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vscode
+
+### vscode ###
+firmware/.vscode/*
+!firmware/.vscode/settings.json
+!firmware/.vscode/tasks.json
+!firmware/.vscode/launch.json
+!firmware/.vscode/extensions.json
+*firmware/.code-workspace
+
+### PlatformIO ###
+firmware/.pioenvs
+firmware/.piolibdeps
+firmware/.clang_complete
+firmware/.gcc-flags.json
+firmware/.pio
+
+
+# End of https://www.toptal.com/developers/gitignore/api/vscode
