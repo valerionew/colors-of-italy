@@ -17,6 +17,7 @@ WiFiClient client;
 CRGB leds[LED_NUMBER];
 CRGB offset = 0xFFFF00; // color that gets blended with original one (color correction)
 
+float brightness_offset;
 unsigned long last_update;
 unsigned long last_pressed;
 unsigned long last_refresh;
@@ -58,7 +59,7 @@ private:
   byte threshold;
   byte outlier_threshold;
   float old_reading;
-  bool pressed, old_pressed;
+  bool pressed, old_pressed, rising;
   LPF filter_1;
   LPF filter_2;
 
@@ -101,13 +102,15 @@ public:
 
   bool is_pressed()
   {
+    rising = pressed && !old_pressed;
     old_pressed = pressed;
+
     return pressed;
   }
 
-  bool is_released()
+  bool first_press()
   {
-    return pressed == false && old_pressed == true;
+    return rising;
   }
 };
 
@@ -154,6 +157,16 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
         {"21", {8, NO_LED}}   // VENETO
 };
 
+// force a value into and interval
+float force(float value, float min, float max)
+{
+  if (value > max)
+    value = max;
+  else if (value < min)
+    value = min;
+
+  return value;
+}
 // x: 0->1
 // return: 0->1
 float easing(float x)
@@ -162,6 +175,7 @@ float easing(float x)
   return 1 - (1 - x) * (1 - x);
 }
 
+// rescale a value to new interval
 float rescale(float value, float old_min, float old_max, float new_min, float new_max)
 {
   // swap the interval if the scale is inverted
@@ -213,6 +227,8 @@ void setup()
   last_update = 0;
   last_pressed = 0;
   last_refresh = 0;
+  brightness_offset = 0;
+  showing = true;
 
   // init brightness filter
   brightness_filter.init(0.05);
@@ -376,14 +392,15 @@ void loop()
   }
 
   // check if it's time to refresh
-  if (last_refresh == 0 || millis() - last_refresh > REFRESH_INTERVAL)
+  if (last_refresh == 0 || ((millis() - last_refresh > REFRESH_INTERVAL) && showing))
   {
     // update last refreshed
     last_refresh = millis();
     // read light level from sensor
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
     // calculate the actual brightness compared to the sensor output
-    float scaled_light = rescale(light, 2000, 0, 255, 10);
+    float scaled_light = rescale(light, 2000, 0, 255, MIN_BRIGHTNESS) + brightness_offset;
+    scaled_light = force(scaled_light, MIN_BRIGHTNESS, 255);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
     /*
@@ -409,10 +426,10 @@ void loop()
 
           // color correction
           CRGB blended;
-          if (brightness <= MIN_BRIGHTNESS)
+          if (brightness <= TRESHOLD_BRIGHTNESS)
           {
             // calculate percent
-            float percent = (float)brightness / MIN_BRIGHTNESS;
+            float percent = (float)brightness / TRESHOLD_BRIGHTNESS;
             // ease percent
             // we need to invert it (1-easing) in order to get 1 for low brightness values
             // and 0 for high brightness values, so that more color gets blended at lower
@@ -438,28 +455,50 @@ void loop()
   touch_reset.update();
   touch_plus.update();
 
-  if (touch_minus.is_pressed())
+  if (touch_minus.is_pressed() && touch_minus.first_press())
   {
 #ifdef DEBUG
     Serial.println("touch_minus is pressed");
 #endif
     //
+
+    if (showing)
+    {
+      brightness_offset -= BRIGHTNESS_INCREMENT;
+      brightness_offset = force(brightness_offset, -255, 255);
+    }
   }
 
-  if (touch_reset.is_pressed())
+  if (touch_reset.is_pressed() && touch_reset.first_press())
   {
 #ifdef DEBUG
     Serial.println("touch_reset is pressed");
 #endif
-    //
+
+    // toggle showing flag
+    showing = !showing;
+    // if not showing, turn off all leds
+    if (!showing)
+    {
+      FastLED.clear();
+      FastLED.show();
+    }
+    Serial.print(showing);
+    Serial.println();
   }
 
-  if (touch_plus.is_pressed())
+  if (touch_plus.is_pressed() && touch_plus.first_press())
   {
 #ifdef DEBUG
     Serial.println("touch_plus is pressed");
 #endif
     //
+
+    if (showing)
+    {
+      brightness_offset += BRIGHTNESS_INCREMENT;
+      brightness_offset = force(brightness_offset, -255, 255);
+    }
   }
 
   // check wifi reset Button
