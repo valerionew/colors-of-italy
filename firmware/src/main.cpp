@@ -1,14 +1,16 @@
-#include <Arduino.h>
-#include <WiFi.h>
-#include <WebServer.h>
-#include <WiFiManager.h> // https://github.com/tzapu/WiFiManager -use development branch to get it working on esp32
-#include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
-#include <FastLED.h>     // https://github.com/FastLED/FastLED
+#include <Arduino.h>     // built in library
+#include <WiFi.h>        // built in library
+#include <WebServer.h>   // built in library
 #include <HTTPClient.h>  // built in library
 #include <map>           // built in library
 #include <array>         // built in library
+#include <WiFiManager.h> // https://github.com/tzapu/WiFiManager -use development branch to get it working on esp32
+#include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
+#include <FastLED.h>     // https://github.com/FastLED/FastLED
 #include <fw_defines.h>
 #include <pacifica.h>
+
+#define DEBUG
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -21,7 +23,7 @@ unsigned long last_refresh;
 
 boolean wifi_connected;
 
-// LPF
+// LPF class
 class LPF
 {
 public:
@@ -30,10 +32,10 @@ public:
     alpha = 0;
     value = 0;
   };
-  void init(float a)
+  void init(float a, float _value = 0)
   {
     alpha = a;
-    value = 0;
+    value = _value;
   };
   float update(float sample)
   {
@@ -45,7 +47,66 @@ private:
   float alpha;
   float value;
 };
+
+// Button class
+class Button
+{
+
+private:
+  byte input_pin;
+  byte threshold;
+  byte outlier_threshold;
+  float old_reading;
+  bool pressed;
+  LPF filter_1;
+  LPF filter_2;
+
+  float read()
+  {
+    return touchRead(input_pin);
+  }
+
+public:
+  Button(byte _input_pin, byte _threshold = 5, byte _outlier_threshold = 100)
+  {
+    input_pin = _input_pin;
+    threshold = _threshold;
+    outlier_threshold = _outlier_threshold;
+  }
+
+  void init()
+  {
+    old_reading = read();
+    pressed = false;
+
+    filter_1.init(0.5, old_reading);   // filter input
+    filter_2.init(0.001, old_reading); // filter average
+  }
+
+  void update()
+  {
+    float reading = read();
+    if (abs(reading - old_reading) < outlier_threshold)
+    {
+      //ignore corrupt samples
+      float new_reading = filter_1.update(reading);
+      float new_average = filter_2.update(new_reading);
+      pressed = (new_average - new_reading) > threshold;
+    }
+    // update value
+    old_reading = reading;
+  }
+
+  bool is_pressed()
+  {
+    return pressed;
+  }
+};
+
 LPF brightness_filter;
+Button touch_minus(TOUCH_MINUS_PIN, 7);
+Button touch_reset(TOUCH_RESET_PIN, 5);
+Button touch_plus(TOUCH_PLUS_PIN, 5);
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
@@ -127,6 +188,14 @@ void setup()
 #ifdef DEBUG
   Serial.begin(115200);
 #endif
+  // WS2812b initialization - in realtà sono 2813 mini
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
+
+  // Touch initialization
+  touchSetCycles(0xA000, 0xA000);
+  touch_minus.init();
+  touch_reset.init();
+  touch_plus.init();
 
   // PINs initialization
   pinMode(WIFI_RESET_BUTTON, INPUT_PULLUP);
@@ -136,6 +205,7 @@ void setup()
   last_update = 0;
   last_pressed = 0;
   last_refresh = 0;
+
   // init brightness filter
   brightness_filter.init(0.05);
 
@@ -143,9 +213,6 @@ void setup()
   Serial.println(WiFi.status());
   //wifiManager.resetSettings();
 #endif
-
-  // set up WS2812b - in realtà sono 2813 mini
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 
   // setup non blocking loop
   wifiManager.setHostname(WIFI_SSID_NAME);
@@ -167,7 +234,7 @@ void setup()
         FastLED.show();
       }
 
-      // handle wifi reset button
+      // handle wifi reset Button
       if (digitalRead(WIFI_RESET_BUTTON) == LOW)
       {
         if (last_pressed == 0)
@@ -311,6 +378,7 @@ void loop()
     float scaled_light = rescale(light, 2000, 0, 255, 10);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
+    /*
 #ifdef DEBUG
     Serial.print("ambient light ");
     Serial.print(light);
@@ -319,7 +387,7 @@ void loop()
     Serial.print(" led brightness ");
     Serial.println(brightness);
 #endif
-
+*/
     for (auto region : region_map)
     {
       // load the list of addresses from the map
@@ -357,6 +425,37 @@ void loop()
     FastLED.show();
   }
 
+  // check touch buttons
+  touch_minus.update();
+  touch_reset.update();
+  touch_plus.update();
+
+  if (touch_minus.is_pressed())
+  {
+#ifdef DEBUG
+    Serial.println("touch_minus is pressed");
+#endif
+    //
+  }
+
+  if (touch_reset.is_pressed())
+  {
+#ifdef DEBUG
+    Serial.println("touch_reset is pressed");
+#endif
+
+    //
+  }
+
+  if (touch_plus.is_pressed())
+  {
+#ifdef DEBUG
+    Serial.println("touch_plus is pressed");
+#endif
+    //
+  }
+
+  // check wifi reset Button
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
   {
     if (last_pressed == 0)
