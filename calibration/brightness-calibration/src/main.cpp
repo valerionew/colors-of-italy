@@ -59,8 +59,9 @@ void fillLeds()
     blended = blend(colors[i % 3], offset, eased);
     // add color
     leds[i] = blended;
-    // color correction ends here
   }
+  // color correction ends here
+
   // set global brightness
   FastLED.setBrightness(brightness);
   // actually show leds
