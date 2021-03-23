@@ -136,7 +136,7 @@ void setup()
 #endif
 
   // set up WS2812b - in realtà sono 2813 mini
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER).setCorrection(Tungsten40W);
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 
   // setup non blocking loop
 
