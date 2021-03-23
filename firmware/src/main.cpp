@@ -13,6 +13,7 @@
 WiFiManager wifiManager;
 WiFiClient client;
 CRGB leds[LED_NUMBER];
+CRGB offset = 0xFFFF00; // color that gets blended with original one (color correction)
 
 unsigned long last_update;
 unsigned long last_pressed;
@@ -84,6 +85,14 @@ std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
         {"21", {8, NO_LED}}   // VENETO
 };
 
+// x: 0->1
+// return: 0->1
+float easing(float x)
+{
+  // quadratic easing
+  return 1 - (1 - x) * (1 - x);
+}
+
 float rescale(float value, float old_min, float old_max, float new_min, float new_max)
 {
   // swap the interval if the scale is inverted
@@ -139,7 +148,6 @@ void setup()
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 
   // setup non blocking loop
-
   wifiManager.setHostname(WIFI_SSID_NAME);
   wifiManager.setConfigPortalBlocking(false);
   wifiManager.setSaveConfigCallback(wifiParametersSet);
@@ -290,8 +298,6 @@ void loop()
       doc.clear();
     }
     http.end();
-    // set the leds brightness
-    // FastLED.setBrightness(brightness);
   }
 
   // check if it's time to refresh
@@ -323,7 +329,26 @@ void loop()
         // color the corrisponding led
         if (address != NO_LED)
         {
-          // the address must be different from the array filler
+          // the address must be different than the array filler
+
+          // color correction
+          CRGB blended;
+          if (brightness <= MIN_BRIGHTNESS)
+          {
+            // calculate percent
+            float percent = (float)brightness / MIN_BRIGHTNESS;
+            // ease percent
+            // we need to invert it (1-easing) in order to get 1 for low brightness values
+            // and 0 for high brightness values, so that more color gets blended at lower
+            // brightness to compensate the unbalancing of the leds
+            float eased = (1 - easing(percent)) * MAX_BLEND;
+            blended = blend(region.second, offset, eased);
+          }
+          else
+          {
+            // skip color correction if brightness if over the cutoff value
+            blended = region.second;
+          }
           leds[address] = region.second;
         }
       }
