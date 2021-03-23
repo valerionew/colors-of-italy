@@ -22,6 +22,7 @@ unsigned long last_pressed;
 unsigned long last_refresh;
 
 boolean wifi_connected;
+boolean showing;
 
 // LPF class
 class LPF
@@ -57,7 +58,7 @@ private:
   byte threshold;
   byte outlier_threshold;
   float old_reading;
-  bool pressed;
+  bool pressed, old_pressed;
   LPF filter_1;
   LPF filter_2;
 
@@ -78,6 +79,7 @@ public:
   {
     old_reading = read();
     pressed = false;
+    old_pressed = false;
 
     filter_1.init(0.5, old_reading);   // filter input
     filter_2.init(0.001, old_reading); // filter average
@@ -99,7 +101,13 @@ public:
 
   bool is_pressed()
   {
+    old_pressed = pressed;
     return pressed;
+  }
+
+  bool is_released()
+  {
+    return pressed == false && old_pressed == true;
   }
 };
 
@@ -443,7 +451,6 @@ void loop()
 #ifdef DEBUG
     Serial.println("touch_reset is pressed");
 #endif
-
     //
   }
 
