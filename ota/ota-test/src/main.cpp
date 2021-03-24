@@ -3,7 +3,8 @@
 #include <WiFi.h>        // built in library
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 #include <HTTPClient.h>  // built in library
-#include "esp_https_ota.h"
+#include "certs.h"
+#include "HttpsOTAUpdate.h"
 
 #define SSID "GatesNuovoOrdineMondiale"
 #define PASSWORD "piramidediastana"
@@ -15,6 +16,33 @@ extern const char server_cert_pem_start[] asm("_binary_server_certs_certs_pem_st
 extern const char server_cert_pem_end[] asm("_binary_server_certs_certs_pem_end");
 
 WiFiClient client;
+
+void HttpEvent(HttpEvent_t *event)
+{
+  switch (event->event_id)
+  {
+  case HTTP_EVENT_ERROR:
+    Serial.println("Http Event Error");
+    break;
+  case HTTP_EVENT_ON_CONNECTED:
+    Serial.println("Http Event On Connected");
+    break;
+  case HTTP_EVENT_HEADER_SENT:
+    Serial.println("Http Event Header Sent");
+    break;
+  case HTTP_EVENT_ON_HEADER:
+    Serial.printf("Http Event On Header, key=%s, value=%s\n", event->header_key, event->header_value);
+    break;
+  case HTTP_EVENT_ON_DATA:
+    break;
+  case HTTP_EVENT_ON_FINISH:
+    Serial.println("Http Event On Finish");
+    break;
+  case HTTP_EVENT_DISCONNECTED:
+    Serial.println("Http Event Disconnected");
+    break;
+  }
+}
 
 void setup()
 {
@@ -59,25 +87,22 @@ void setup()
         Serial.print("ota url: ");
         Serial.println(ota_url);
 
-        esp_http_client_config_t config;
-        config.url = ota_url.c_str();
-        config.cert_pem = server_cert_pem_start,
+        HttpsOTA.onHttpEvent(HttpEvent);
+        Serial.println("Starting OTA");
+        HttpsOTA.begin(ota_url, CERT_PEM);
 
         Serial.println("Config set...");
 
-        esp_err_t ret = esp_https_ota(&config);
-        if (ret == ESP_OK)
+        otastatus = HttpsOTA.status();
+        if (otastatus == HTTPS_OTA_SUCCESS)
         {
-          // update successfull
-          Serial.println("Update successfull!");
-          ESP.restart();
+          Serial.println("Firmware written successfully. To reboot device, call API ESP.restart() or PUSH restart button on device");
         }
-        else
+        else if (otastatus == HTTPS_OTA_FAIL)
         {
-          Serial.println("Update failed.");
-          // SOMETHING FAILED
+          Serial.println("Firmware Upgrade Fail");
         }
-      }
+            }
     }
 
     doc.clear();
