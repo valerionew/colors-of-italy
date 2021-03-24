@@ -9,59 +9,51 @@
 // This sketch shows how to implement HTTPS firmware update Over The Air.
 // Please provide your WiFi credentials, https URL to the firmware image and the server certificate.
 
-static const int MAX_TRIES = 5;
+static const uint8_t MAX_TRIES = 5;
 static const char *SSID = "GatesNuovoOrdineMondiale";                                      // your network SSID (name of wifi network)
 static const char *PASSWORD = "piramidediastana";                                          // your network password
 static const char *OTA_VERSION_REQUEST_URL = "https://vaccinocovid19.live/get/ota_update"; //state url of your firmware image
-#define VERSION "2.0.6"
+static const char *VERSION = "1.0.0";
 
 class Version
 {
 public:
-  byte major, minor, build;
+  uint16_t major, minor, build, patch;
 
   Version()
   {
     major = 0;
     minor = 0;
     build = 0;
+    patch = 0;
   };
 
-  bool fromString(String to_parse)
+  bool fromString(String _to_parse)
   {
-    unsigned int pos;
-    pos = findPos(to_parse, sep, 0);
-    major = to_parse.charAt(pos - 1) - 48;
-    if (major < 0 || major > 9)
-    {
-      major = 0;
-      return false;
-    }
+    to_parse = _to_parse;
 
-    pos = findPos(to_parse, sep, pos + 1);
-    minor = to_parse.charAt(pos - 1) - 48;
-    if (minor < 0 || minor > 9)
-    {
-      minor = 0;
-      return false;
-    }
+    uint16_t pos;
 
-    pos = findPos(to_parse, sep, pos + 1);
-    build = to_parse.charAt(pos - 1) - 48;
-    if (build < 0 || build > 9)
-    {
-      build = 0;
+    pos = parseValue(0, &major) + 1;
+    if (pos == -1 || pos == to_parse.length() - 1)
       return false;
-    }
+    pos = parseValue(pos, &minor) + 1;
+    if (pos == -1 || pos == to_parse.length() - 1)
+      return true;
+    pos = parseValue(pos, &build) + 1;
+    if (pos == -1 || pos == to_parse.length() - 1)
+      return true;
+    pos = parseValue(pos, &patch) + 1;
 
     return true;
   }
 
-  void fromInt(int _major, int _minor, int _build)
+  void fromInt(uint16_t _major = 0, uint16_t _minor = 0, uint16_t _build = 0, uint16_t _patch = 0)
   {
     major = _major;
     minor = _minor;
     build = _build;
+    patch = _patch;
   }
 
   void printString()
@@ -71,55 +63,84 @@ public:
     Serial.print(minor);
     Serial.print(".");
     Serial.print(build);
+    Serial.print(".");
+    Serial.print(patch);
     Serial.println();
   }
 
   boolean newerThan(Version other)
   {
+    // check if this version is newer than the other version
+
+    // compare major
     if (major > other.major)
     {
       return true;
     }
-
-    if (major == other.major)
+    // if major is the same, compare minor
+    if (minor > other.minor)
     {
-      if (minor > other.minor)
-      {
-        return true;
-      }
-
-      if (minor == other.minor && build > other.build)
-      {
-        return true;
-      }
+      return true;
+    }
+    // if minor is the same, compare build
+    if (build > other.build)
+    {
+      return true;
+    }
+    // if build is the same, compare patch
+    if (patch > other.patch)
+    {
+      return true;
     }
 
     return false;
   }
 
-  boolean asOldAs(Version other)
+  boolean
+  asOldAs(Version other)
   {
-    return major == other.major && minor == other.minor && build == other.build;
+    // check if this version is as old as the other version
+    return major == other.major && minor == other.minor && build == other.build && patch == other.patch;
   }
 
   boolean olderThan(Version other)
   {
+    // check if this version is older than the other version
     return !newerThan(other) && !asOldAs(other);
   }
 
 private:
   char sep = '.';
+  String to_parse;
 
-  unsigned int findPos(String str, char sep, byte start_pos)
+  uint16_t parseValue(uint8_t start_pos, uint16_t *dest)
   {
-    for (unsigned int i = start_pos; i < str.length(); i++)
+    // set destination value to be null
+    *dest = 0;
+    // start looping throught the string
+    for (uint16_t i = start_pos; i < to_parse.length(); i++)
     {
-      if (str.charAt(i) == sep)
+      if (to_parse.charAt(i) == sep)
       {
+        // if the current char is a separator, return the pos
         return i;
+      }
+      else
+      {
+        // otherwise, attempt to get the number
+        uint8_t new_digit;
+        new_digit = to_parse.charAt(i) - 48;
+        if (new_digit < 0 || new_digit > 9)
+        {
+          // if we hit something that's not a number, then return it
+          return i;
+        }
+        // current number is 10 times the old number plus the new number
+        *dest = *dest * 10 + new_digit;
       }
     }
 
+    // we hit the end, let's just return -1
     return -1;
   }
 };
@@ -157,10 +178,12 @@ void HttpEvent(HttpEvent_t *event)
 
 void setup()
 {
-  current_version.fromString(VERSION);
 
   Serial.begin(115200);
   Serial.println();
+
+  current_version.fromString(VERSION);
+
   Serial.print("Attempting to connect to SSID: ");
   WiFi.begin(SSID, PASSWORD);
 
@@ -175,7 +198,7 @@ void setup()
   Serial.println(SSID);
 
   HTTPClient http;
-  int httpResponseCode;
+  uint16_t httpResponseCode;
   http.begin(OTA_VERSION_REQUEST_URL);
   httpResponseCode = http.GET();
 
@@ -218,7 +241,7 @@ void setup()
 
         Serial.println("Starting set...");
 
-        int tries = 0;
+        uint8_t tries = 0;
         while (tries < MAX_TRIES)
         {
           otastatus = HttpsOTA.status();
