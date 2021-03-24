@@ -97,9 +97,14 @@ public:
     return false;
   }
 
+  boolean asOldAs(Version other)
+  {
+    return major == other.major && minor == other.minor && build == other.build;
+  }
+
   boolean olderThan(Version other)
   {
-    return !newerThan(other);
+    return !newerThan(other) && !asOldAs(other);
   }
 
 private:
