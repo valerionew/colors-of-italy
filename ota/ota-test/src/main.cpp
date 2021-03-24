@@ -34,16 +34,16 @@ public:
 
     uint16_t pos;
 
-    pos = parseValue(0, &major) + 1;
+    pos = parseValue(0, &major);
     if (pos == -1 || pos == to_parse.length() - 1)
       return false;
-    pos = parseValue(pos, &minor) + 1;
+    pos = parseValue(pos + 1, &minor);
     if (pos == -1 || pos == to_parse.length() - 1)
       return true;
-    pos = parseValue(pos, &build) + 1;
+    pos = parseValue(pos + 1, &build);
     if (pos == -1 || pos == to_parse.length() - 1)
       return true;
-    pos = parseValue(pos, &patch) + 1;
+    pos = parseValue(pos, &patch);
 
     return true;
   }
