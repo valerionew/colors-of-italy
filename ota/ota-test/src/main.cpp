@@ -10,12 +10,118 @@
 // Please provide your WiFi credentials, https URL to the firmware image and the server certificate.
 
 static const int MAX_TRIES = 5;
-static const char *VERSION = "0.0.9";
 static const char *SSID = "GatesNuovoOrdineMondiale";                                      // your network SSID (name of wifi network)
 static const char *PASSWORD = "piramidediastana";                                          // your network password
 static const char *OTA_VERSION_REQUEST_URL = "https://vaccinocovid19.live/get/ota_update"; //state url of your firmware image
+#define VERSION "2.0.6"
+
+class Version
+{
+public:
+  byte major, minor, build;
+
+  Version()
+  {
+    major = 0;
+    minor = 0;
+    build = 0;
+  };
+
+  bool fromString(String to_parse)
+  {
+    unsigned int pos;
+    pos = findPos(to_parse, sep, 0);
+    major = to_parse.charAt(pos - 1) - 48;
+    if (major < 0 || major > 9)
+    {
+      major = 0;
+      return false;
+    }
+
+    pos = findPos(to_parse, sep, pos + 1);
+    minor = to_parse.charAt(pos - 1) - 48;
+    if (minor < 0 || minor > 9)
+    {
+      minor = 0;
+      return false;
+    }
+
+    pos = findPos(to_parse, sep, pos + 1);
+    build = to_parse.charAt(pos - 1) - 48;
+    if (build < 0 || build > 9)
+    {
+      build = 0;
+      return false;
+    }
+
+    return true;
+  }
+
+  void fromInt(int _major, int _minor, int _build)
+  {
+    major = _major;
+    minor = _minor;
+    build = _build;
+  }
+
+  void printString()
+  {
+    Serial.print(major);
+    Serial.print(".");
+    Serial.print(minor);
+    Serial.print(".");
+    Serial.print(build);
+    Serial.println();
+  }
+
+  boolean newerThan(Version other)
+  {
+    if (major > other.major)
+    {
+      return true;
+    }
+
+    if (major == other.major)
+    {
+      if (minor > other.minor)
+      {
+        return true;
+      }
+
+      if (minor == other.minor && build > other.build)
+      {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  boolean olderThan(Version other)
+  {
+    return !newerThan(other);
+  }
+
+private:
+  char sep = '.';
+
+  unsigned int findPos(String str, char sep, byte start_pos)
+  {
+    for (unsigned int i = start_pos; i < str.length(); i++)
+    {
+      if (str.charAt(i) == sep)
+      {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+};
 
 static HttpsOTAStatus_t otastatus;
+
+static Version current_version;
 
 void HttpEvent(HttpEvent_t *event)
 {
@@ -46,8 +152,10 @@ void HttpEvent(HttpEvent_t *event)
 
 void setup()
 {
+  current_version.fromString(VERSION);
 
   Serial.begin(115200);
+  Serial.println();
   Serial.print("Attempting to connect to SSID: ");
   WiFi.begin(SSID, PASSWORD);
 
@@ -78,15 +186,22 @@ void setup()
     if (!err)
     {
       JsonObject obj = doc.as<JsonObject>();
-      String ota_version = obj["version"];
-      Serial.print("ota version: ");
-      Serial.print(ota_version);
-      Serial.println();
+      String ota_version = obj["v1"]["version"];
+      Version ota_version_obj;
+      ota_version_obj.fromString(ota_version);
+
+      Serial.print("Ota version: ");
+      ota_version_obj.printString();
+      Serial.print("Current version: ");
+      current_version.printString();
+
       // get remote version andcheck if the current version is different
-      if (ota_version != VERSION)
+      if (ota_version_obj.newerThan(current_version))
       {
+        Serial.print("Current version is older. Starting ota.");
+
         // get .bin url and update for real
-        String ota_url = obj["url"];
+        String ota_url = obj["v1"]["url"];
         const char *char_url = ota_url.c_str();
 
         Serial.print("ota url: ");
