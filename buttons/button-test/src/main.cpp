@@ -7,6 +7,10 @@
 // LPF class
 class LPF
 {
+private:
+  float alpha;
+  float value;
+
 public:
   void LFP()
   {
@@ -23,10 +27,46 @@ public:
     value += (sample - value) * alpha;
     return value;
   };
+};
 
+// Circular Buffer class
+class CircularBuffer
+{
 private:
-  float alpha;
-  float value;
+  byte position, size;
+  float *memory;
+
+public:
+  void init(byte _size)
+  {
+    size = _size;
+    // init array
+    memory = new float[size];
+    // set every value to zero
+    for (byte i = 0; i < size; i++)
+    {
+      memory[i] = 0;
+    }
+    position = 0;
+  }
+
+  float update(float value)
+  {
+    // add value to array
+    memory[position] = value;
+    // move current position
+    position = (position + 1) % size;
+
+    // compute and return memory sum
+    float sum;
+    sum = 0;
+    for (byte i = 0; i < size; i++)
+    {
+      sum += memory[i];
+    }
+
+    return sum;
+  }
 };
 
 // Button class
@@ -39,8 +79,8 @@ private:
   byte outlier_threshold;
   float old_reading;
   bool pressed, old_pressed, rising;
-  LPF filter_1;
-  LPF filter_2;
+  LPF low_pass;
+  CircularBuffer buffer;
 
   float read()
   {
@@ -61,8 +101,8 @@ public:
     pressed = false;
     old_pressed = false;
 
-    filter_1.init(0.5, old_reading);   // filter input
-    filter_2.init(0.001, old_reading); // filter average
+    low_pass.init(0.001, old_reading); // filter average
+    buffer.init(10);                   // circular buffer - remember to change threshold accordingly
   }
 
   void update()
@@ -71,9 +111,9 @@ public:
     if (abs(reading - old_reading) < outlier_threshold)
     {
       //ignore corrupt samples
-      float new_reading = filter_1.update(reading);
-      float new_average = filter_2.update(new_reading);
-      pressed = (new_average - new_reading) > threshold;
+      float lp_filtered = low_pass.update(reading);              // first low pass filtering
+      float box_filtered = buffer.update(reading - lp_filtered); // compare to average
+      pressed = box_filtered > threshold;                        // thresholding
     }
     // update value
     old_reading = reading;
@@ -81,21 +121,23 @@ public:
 
   bool is_pressed()
   {
+    // update rising state
     rising = pressed && !old_pressed;
     old_pressed = pressed;
-
+    // return current pressure state
     return pressed;
   }
 
   bool first_press()
   {
+    // is this the button first press?
     return rising;
   }
 };
 
-Button touch_minus(TOUCH_MINUS_PIN, 7);
-Button touch_reset(TOUCH_RESET_PIN, 5);
-Button touch_plus(TOUCH_PLUS_PIN, 5);
+Button touch_minus(TOUCH_MINUS_PIN, 70);
+Button touch_reset(TOUCH_RESET_PIN, 50);
+Button touch_plus(TOUCH_PLUS_PIN, 50);
 
 void setup()
 {
