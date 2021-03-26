@@ -171,10 +171,10 @@ body {
 
 .form button {
   font-size: inherit;
-  margin-left: calc(var(--text-size) / 2);
+  margin-left: calc(var(--text-size));
 
-  padding-left: calc(var(--text-size) / 2);
-  padding-right: calc(var(--text-size) / 2);
+  padding-left: calc(var(--text-size));
+  padding-right: calc(var(--text-size));
 
   border: 1px solid;
   border-color: black;

@@ -12,7 +12,7 @@
     --subtitle-size: 2rem;
     --subsubtitle-size: 2rem;
     --text-size: 1.5rem;
-    --input-width: 500px;
+    --input-width: 400px;
   }  
 }
 
@@ -24,6 +24,6 @@
     --subtitle-size: 1.75rem;
     --subsubtitle-size: 1.25rem;
     --text-size: 1rem;
-    --input-width: 300px;
+    --input-width: 175px;
   }  
 }
