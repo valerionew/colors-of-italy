@@ -227,7 +227,7 @@ void setup()
   last_update = 0;
   last_pressed = 0;
   last_refresh = 0;
-  brightness_offset = 0;
+  brightness_offset = -40;
   showing = true;
 
   // init brightness filter
@@ -462,11 +462,11 @@ void loop()
 #endif
     //
 
-    if (showing)
-    {
-      brightness_offset -= BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
-    }
+  //   if (showing)
+  //   {
+  //     brightness_offset -= BRIGHTNESS_INCREMENT;
+  //     brightness_offset = force(brightness_offset, -255, 255);
+  //   }
   }
 
   if (touch_reset.is_pressed() && touch_reset.first_press())
@@ -494,11 +494,11 @@ void loop()
 #endif
     //
 
-    if (showing)
-    {
-      brightness_offset += BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
-    }
+    // if (showing)
+    // {
+    //   brightness_offset += BRIGHTNESS_INCREMENT;
+    //   brightness_offset = force(brightness_offset, -255, 255);
+    // }
   }
 
   // check wifi reset Button

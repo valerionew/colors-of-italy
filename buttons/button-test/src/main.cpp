@@ -102,19 +102,24 @@ public:
     old_pressed = false;
 
     low_pass.init(0.001, old_reading); // filter average
-    buffer.init(10);                   // circular buffer - remember to change threshold accordingly
+    buffer.init(20);                   // circular buffer - remember to change threshold accordingly
   }
 
   void update()
   {
     float reading = read();
-    if (abs(reading - old_reading) < outlier_threshold)
-    {
+
       //ignore corrupt samples
       float lp_filtered = low_pass.update(reading);              // first low pass filtering
-      float box_filtered = buffer.update(reading - lp_filtered); // compare to average
+      float box_filtered = buffer.update(lp_filtered-reading); // compare to average
+      Serial.print("thd: ");
+      Serial.print(threshold);
+      Serial.print(" scarto: ");
+      Serial.print(lp_filtered-reading);
+      Serial.print(" box_filter: ");
+      Serial.print(box_filtered);
       pressed = box_filtered > threshold;                        // thresholding
-    }
+    
     // update value
     old_reading = reading;
   }
@@ -153,14 +158,16 @@ void loop()
 {
   // check touch buttons
   touch_minus.update();
-  touch_reset.update();
-  touch_plus.update();
+  // touch_reset.update();
+  // touch_plus.update();
 
   if (touch_minus.is_pressed() && touch_minus.first_press())
   {
-    Serial.println("touch_minus is pressed");
+    Serial.println(" pressed: 10");
     // DECREASE BRIGHTNESS
   }
+  else
+    Serial.println(" pressed: 0");
 
   if (touch_reset.is_pressed() && touch_reset.first_press())
   {
