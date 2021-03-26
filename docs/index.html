@@ -22,6 +22,20 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/vars.css">
 
+  <!-- Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+      We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+      @media (max-width: 400px) {
+        #mc_embed_signup input.email {width:100%; margin-bottom:5px;}
+        #mc_embed_signup .clear {display: block; width: 100% }
+        #mc_embed_signup .button {width: 100%; margin:0; }
+       }
+  </style>
+  <!-- Mailchimp Signup Form -->
+
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/main.js"></script>
 </head>
@@ -94,15 +108,7 @@
       <p> In tal caso, basterà tenere premuto per 5 secondi con uno stuzzicadenti il
         pulsante sopra alla presa di alimentazione e la procedura di installazione verrà ripetuta dall'inizio.</p>
 
-      <h2>Dove posso trovare schemi e codici?</h2>
-      <p>
-        La nostra repo di GitHub <a
-          href="https://github.com/valerionew/colors-of-italy/">github.com/valerionew/colors-of-italy</a> contiene tutte
-        le informazioni e i file necessari per costruire una propria versione di <span class="italic">Colors of
-          Italy.</span> <br>
-        Il progetto è mirato a hobbisti dell'elettronica, ma è comunque richiesta una minima conoscenza in: <span
-          class="italic">produzione di PCB, stampa 3D, programmazione software.</span> </p>
-
+      
       <h2>Cosa succederà a fine pandemia?</h2>
       <p>Quando l'assegnazione dei colori non sarà più necessaria ai fini dell'emergenza, <span class="italic">Colors of
           Italy</span>
@@ -115,14 +121,38 @@
       </p>
 
       <h2>Come posso averne uno?</h2>
-      <p><span class="bold">Attualmente, <span class="italic">Colors of Italy</span> è ancora in fase di
-          sviluppo.</span><br>Lascia la tua mail nel form qui sotto e ti ricontatteremo non appena sarà pronta!</p>
+      <p><span class="bold">Attualmente il primo pezzo di <span class="italic">Colors of Italy</span> è <a href="https://www.ebay.it/itm/preview/2596718020100" target="_blank">all'asta su eBay</a><br>
+        Con quest'asta speriamo di coprire i costi di progettazione e realizzazione di questo progetto. Coperti questi costi, doneremo la somma restante alla Croce Rossa Italiana.</p>
+      <p>  Se ne vuoi una o per restare aggiornato sulle novità della mappa <span class="italic">(niente spam, promesso!)</span> lascia la tua email qua sotto.</p>
+    
     </div>
     <div class="form">
-      <input id="emailinput" , name="emailinput" , type="email">
-      <button id="send" , name="send" disabled>Invia</button>
-    </div>
 
+  <!-- Mailchimp Signup Form -->
+      <div id="mc_embed_signup">
+      <form action="https://github.us1.list-manage.com/subscribe/post?u=efd79ce00bddb77ecb6982de2&amp;id=d6ca4541f8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+        
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email@example.com" required>
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_efd79ce00bddb77ecb6982de2_d6ca4541f8" tabindex="-1" value=""></div>
+          <div class="clear"><input type="submit" value="Iscriviti" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+          </div>
+      </form>
+      </div>
+      <!--End mc_embed_signup-->
+      
+    </div>
+<div class="text">
+      <h2>Dove posso trovare schemi e codici?</h2>
+      <p>
+        La nostra repo di GitHub <a target="_blank"
+          href="https://github.com/valerionew/colors-of-italy/" class="sources">github.com/valerionew/colors-of-italy</a> contiene tutte
+        le informazioni e i file necessari per costruire una propria versione di <span class="italic">Colors of
+          Italy.</span> <br>
+        Il progetto è mirato a hobbisti dell'elettronica, ma è comunque richiesta una minima conoscenza in: <span
+          class="italic">produzione di PCB, stampa 3D, programmazione software.</span> </p>
+        </div>
     <div class="loading">
       <div class="spinner"></div>
     </div>

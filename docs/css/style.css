@@ -23,6 +23,18 @@ code {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
 }
 
+a {
+  color: #e60000;
+}
+a:hover{
+  color: #ffffff;
+  background-color: #e60000;
+}
+a:hover.sources {
+  color: #e60000;
+  background-color: #ffffff;
+
+}
 body {
   width: 100%;
   height: 100%;
