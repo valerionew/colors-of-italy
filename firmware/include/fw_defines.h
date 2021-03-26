@@ -12,6 +12,7 @@
 // wifi related
 #define WIFI_SSID_NAME "Colors-of-italy" // SSID of the wifi portal
 #define WIFI_MAX_TIME 600000             // timeout before the wifi portal (and the whole ESP) gets reset
+#define WIFI_MAX_UNCONNECTED 1.8e6       // how much time the ESP can go without being connected to the wifi
 #define WIFI_RESET_BUTTON 32             // wifi reset button
 #define WIFI_RESET_TIMEOUT 5000          // timeout for the reset button
 

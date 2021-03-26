@@ -18,6 +18,7 @@ CRGB leds[LED_NUMBER];
 CRGB offset = 0xFFFF00; // color that gets blended with original one (color correction)
 
 unsigned long last_update;
+unsigned long last_connected;
 unsigned long last_pressed;
 unsigned long last_refresh;
 
@@ -286,7 +287,7 @@ void setup()
         FastLED.show();
       }
 
-      // handle wifi reset Button
+      // handle WiFi reset Button
       if (digitalRead(WIFI_RESET_BUTTON) == LOW)
       {
         if (last_pressed == 0)
@@ -295,7 +296,7 @@ void setup()
         }
         else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
         {
-          // delete wifi credentials and reset esp
+          // delete WiFi credentials and reset esp
           wifiManager.resetSettings();
           ESP.restart();
         }
@@ -306,7 +307,7 @@ void setup()
         last_pressed = 0;
       }
 
-      // handle wifi timeout
+      // handle WiFi timeout
       if (millis() - wifiStarted > WIFI_MAX_TIME)
       {
         // it's taking too long to connect in
@@ -315,6 +316,9 @@ void setup()
       }
     }
   }
+
+  // now WiFi is connected
+  last_connected = millis();
 }
 
 void loop()
@@ -323,103 +327,113 @@ void loop()
   if (last_update == 0 || millis() - last_update > UPDATE_INTERVAL)
   {
     // check if client is still connected
-    // if not, set the esp in wifimanager again
-    if (!client.connected())
+    // if not, if enough time has passed, set the esp in wifimanager again
+    if (!client.connected() && millis() - last_connected > WIFI_MAX_UNCONNECTED)
     {
       if (!wifiManager.autoConnect(WIFI_SSID_NAME))
       {
         // blocking loop waiting for connection
         // this code gets called after timeout is hit
         ESP.restart();
-      }
-    }
-    last_update = millis();
-
-    HTTPClient http;
-    int httpResponseCode;
-
-    // get rgb colors
-    http.begin(COLORS_REQUEST_URL);
-    httpResponseCode = http.GET();
-    if (httpResponseCode > 0)
-    {
-      StaticJsonDocument<256> doc;
-      // buffer size calculated here: https://arduinojson.org/v6/assistant/
-      String json_data = http.getString();
-      // parse JSON data
-      DeserializationError err = deserializeJson(doc, json_data);
-
-      if (!err)
-      {
-        // no error in parsing
-        JsonObject obj = doc.as<JsonObject>();
-        for (JsonPair p : obj)
-        {
-          // iterate through each key and value
-          // load color code
-          String color_code = p.key().c_str();
-          // load color value
-          unsigned long color_hex = p.value().as<unsigned long>();
-          // assing to map
-          color_map[color_code] = color_hex;
-#ifdef DEBUG
-          Serial.print("color code ");
-          Serial.print(color_code);
-          Serial.print(" color hex ");
-          Serial.println(color_hex);
-#endif
-        }
+        // TODO: add pacifica here (non blocking loop)
       }
     }
 
-    // get territories color
-    http.begin(TERRITORIES_REQUEST_URL);
-    httpResponseCode = http.GET();
-    if (httpResponseCode > 0)
+    // if it is not connected, simply skip this whole block
+    // this means that the variable last_connected will not be updated
+    // and that after a while (WIFI_MAX_UNCONNECTED) the esp will
+    // enter wifi portal mode
+    if (client.connected())
     {
-      StaticJsonDocument<512> doc;
-      // buffer size calculated here: https://arduinojson.org/v6/assistant/
-      String json_data = http.getString();
-      // parse JSON data
-      DeserializationError err = deserializeJson(doc, json_data);
+      last_update = millis();
+      last_connected = millis();
 
-      if (!err)
+      HTTPClient http;
+      int httpResponseCode;
+
+      // get rgb colors
+      http.begin(COLORS_REQUEST_URL);
+      httpResponseCode = http.GET();
+      if (httpResponseCode > 0)
       {
-        // no error in parsing
-        JsonObject obj = doc.as<JsonObject>();
-        for (JsonPair p : obj)
-        {
-          // iterate through each key and value
-          // load color code
-          String color_code = p.value().as<String>();
-          // load region code
-          String region_code = p.key().c_str();
-          // load actual color
-          unsigned long color = color_map.find(color_code)->second;
-          // save color into map
-          region_map[region_code] = color;
+        StaticJsonDocument<256> doc;
+        // buffer size calculated here: https://arduinojson.org/v6/assistant/
+        String json_data = http.getString();
+        // parse JSON data
+        DeserializationError err = deserializeJson(doc, json_data);
 
+        if (!err)
+        {
+          // no error in parsing
+          JsonObject obj = doc.as<JsonObject>();
+          for (JsonPair p : obj)
+          {
+            // iterate through each key and value
+            // load color code
+            String color_code = p.key().c_str();
+            // load color value
+            unsigned long color_hex = p.value().as<unsigned long>();
+            // assing to map
+            color_map[color_code] = color_hex;
 #ifdef DEBUG
-          Serial.print("key ");
-          Serial.print(p.key().c_str());
-          Serial.print(" value ");
-          Serial.print(p.value().as<byte>());
-          Serial.print(" color code ");
-          Serial.print(color_code);
-          Serial.print(" color hex ");
-          Serial.print(color, HEX);
-          Serial.println();
+            Serial.print("color code ");
+            Serial.print(color_code);
+            Serial.print(" color hex ");
+            Serial.println(color_hex);
 #endif
+          }
         }
       }
 
-      // free the memory
-      doc.clear();
+      // get territories color
+      http.begin(TERRITORIES_REQUEST_URL);
+      httpResponseCode = http.GET();
+      if (httpResponseCode > 0)
+      {
+        StaticJsonDocument<512> doc;
+        // buffer size calculated here: https://arduinojson.org/v6/assistant/
+        String json_data = http.getString();
+        // parse JSON data
+        DeserializationError err = deserializeJson(doc, json_data);
+
+        if (!err)
+        {
+          // no error in parsing
+          JsonObject obj = doc.as<JsonObject>();
+          for (JsonPair p : obj)
+          {
+            // iterate through each key and value
+            // load color code
+            String color_code = p.value().as<String>();
+            // load region code
+            String region_code = p.key().c_str();
+            // load actual color
+            unsigned long color = color_map.find(color_code)->second;
+            // save color into map
+            region_map[region_code] = color;
+
+#ifdef DEBUG
+            Serial.print("key ");
+            Serial.print(p.key().c_str());
+            Serial.print(" value ");
+            Serial.print(p.value().as<byte>());
+            Serial.print(" color code ");
+            Serial.print(color_code);
+            Serial.print(" color hex ");
+            Serial.print(color, HEX);
+            Serial.println();
+#endif
+          }
+        }
+
+        // free the memory
+        doc.clear();
+      }
+      http.end();
     }
-    http.end();
   }
 
-  // check if it's time to refresh
+  // check if it's time to refresh the leds
   if (last_refresh == 0 || millis() - last_refresh > REFRESH_INTERVAL)
   {
     // update last refreshed
@@ -506,7 +520,7 @@ void loop()
     //
   }
 
-  // check wifi reset Button
+  // check WiFi reset Button
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
   {
     if (last_pressed == 0)
@@ -515,7 +529,7 @@ void loop()
     }
     else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
     {
-      // delete wifi credentials and reset esp
+      // delete WiFi credentials and reset esp
       wifiManager.resetSettings();
       ESP.restart();
     }
