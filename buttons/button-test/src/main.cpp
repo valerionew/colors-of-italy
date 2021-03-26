@@ -4,6 +4,8 @@
 #define TOUCH_RESET_PIN T2 // GPIO 2
 #define TOUCH_MINUS_PIN T0 // GPIO 15
 
+#define DEBUG
+
 // LPF class
 class LPF
 {
@@ -72,6 +74,8 @@ public:
 // Button class
 class Button
 {
+  public:
+  bool debug_print = false;
 
 private:
   byte input_pin;
@@ -112,12 +116,14 @@ public:
       //ignore corrupt samples
       float lp_filtered = low_pass.update(reading);              // first low pass filtering
       float box_filtered = buffer.update(lp_filtered-reading); // compare to average
-      Serial.print("thd: ");
-      Serial.print(threshold);
-      Serial.print(" scarto: ");
-      Serial.print(lp_filtered-reading);
-      Serial.print(" box_filter: ");
-      Serial.print(box_filtered);
+      if(debug_print){
+        Serial.print("reading: ");
+        Serial.print(reading);
+        Serial.print(" avg: ");
+        Serial.print(lp_filtered);
+        Serial.print(" box_filter: ");
+        Serial.print(box_filtered);
+      }
       pressed = box_filtered > threshold;                        // thresholding
     
     // update value
@@ -140,7 +146,7 @@ public:
   }
 };
 
-Button touch_minus(TOUCH_MINUS_PIN, 70);
+Button touch_minus(TOUCH_MINUS_PIN, 100);
 Button touch_reset(TOUCH_RESET_PIN, 50);
 Button touch_plus(TOUCH_PLUS_PIN, 50);
 
@@ -152,14 +158,17 @@ void setup()
   touch_minus.init();
   touch_reset.init();
   touch_plus.init();
+  #ifdef DEBUG
+    touch_minus.debug_print = true;
+  #endif
 }
 
 void loop()
 {
   // check touch buttons
   touch_minus.update();
-  // touch_reset.update();
-  // touch_plus.update();
+  touch_reset.update();
+  touch_plus.update();
 
   if (touch_minus.is_pressed() && touch_minus.first_press())
   {
