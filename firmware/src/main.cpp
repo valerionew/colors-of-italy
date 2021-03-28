@@ -484,10 +484,10 @@ void loop()
 
           // color correction
           CRGB blended;
-          if (brightness <= MIN_LED_BRIGHTNESS)
+          if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
           {
             // calculate percent
-            float percent = (float)brightness / MIN_LED_BRIGHTNESS;
+            float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
             // ease percent
             // we need to invert it (1-easing) in order to get 1 for low brightness values
             // and 0 for high brightness values, so that more color gets blended at lower
