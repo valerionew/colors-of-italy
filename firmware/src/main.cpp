@@ -341,24 +341,25 @@ void loop()
   // check if it's time to update
   if (last_update == 0 || millis() - last_update > UPDATE_INTERVAL)
   {
-    Serial.println("TIME TO UPDATE");
     // check if client is still connected
-    // if not, if enough time has passed, set the esp in wifimanager again
+    // if not, if enough time has passed, reboot the esp (will be set in wifimanager mode again)
     if (WiFi.status() != WL_CONNECTED && millis() - last_connected > WIFI_MAX_UNCONNECTED)
     {
-      // reset portal to blocking, otherwise it gets stuck
-      wifiManager.setConfigPortalBlocking(true);
-      if (!wifiManager.autoConnect(WIFI_SSID_NAME))
-      {
-        // blocking loop waiting for connection
-        // this code gets called after timeout is hit
-        ESP.restart();
-        // TODO: add pacifica here (non blocking loop)
-      }
+#ifdef DEBUG
+      Serial.println("Cannot find wifi. Resetting");
+#endif
+      // reset LEDs (not really necessary)
+      FastLED.clear();
+      FastLED.show();
+      // restart ESP
+      ESP.restart();
     }
 
     if (WiFi.status() == WL_CONNECTED)
     {
+#ifdef DEBUG
+      Serial.println("Updating");
+#endif
       last_update = millis();
       last_connected = millis();
 
@@ -549,8 +550,6 @@ void loop()
 #ifdef DEBUG
     Serial.println("touch_plus is pressed");
 #endif
-    //
-
     if (showing)
     {
       brightness_offset += BRIGHTNESS_INCREMENT;
