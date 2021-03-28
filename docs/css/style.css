@@ -59,13 +59,36 @@ body {
 
   text-align: justify;
 }
-
 .language-picker a {
   font-size: var(--text-size);
   padding-left: calc(var(--text-size) / 4);
   padding-right: calc(var(--text-size) / 4);
 
   cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+flag {
+  user-select: none;
+  margin-left: calc(var(--text-size) / 4);
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+#it {
+  background-image: url("/img/it.svg");
+  height: calc(var(--text-size) * 0.75);
+  width: calc(var(--text-size) * 1.5 * 0.75);
+}
+
+#en {
+  background-image: url("/img/gb.svg");
+  height: calc(var(--text-size) * 0.75);
+  width: calc(var(--text-size) * 2 * 0.75);
 }
 
 .text {

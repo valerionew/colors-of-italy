@@ -8,8 +8,8 @@ $(document).ready(() => {
   }
 
   $(".language-picker a").click((e) => {
-    let dest_lang = $(e.target).attr("lang");
-
+    let dest_lang = $(e.currentTarget).attr("lang");
+    console.log(e);
     if (dest_lang == "en-EN") {
       switchToItalian();
     } else {
