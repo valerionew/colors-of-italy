@@ -80,13 +80,13 @@ flag {
 }
 
 #it {
-  background-image: url("/img/it.svg");
+  background-image: url("svg/it.svg");
   height: calc(var(--text-size) * 0.75);
   width: calc(var(--text-size) * 1.5 * 0.75);
 }
 
 #en {
-  background-image: url("/img/gb.svg");
+  background-image: url("svg/gb.svg");
   height: calc(var(--text-size) * 0.75);
   width: calc(var(--text-size) * 2 * 0.75);
 }
