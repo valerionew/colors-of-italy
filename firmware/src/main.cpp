@@ -312,6 +312,9 @@ void setup()
         else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
         {
           // delete WiFi credentials and reset esp
+          #ifdef DEBUG
+            Serial.println("WIFI reset pressed, resetting credentials");
+          #endif
           wifiManager.resetSettings();
           ESP.restart();
         }
@@ -327,6 +330,9 @@ void setup()
       {
         // it's taking too long to connect in
         // reset everything
+        #ifdef DEBUG
+          Serial.println("WIFI TIMEOUT, resetting");
+        #endif
         ESP.restart();
       }
     }
