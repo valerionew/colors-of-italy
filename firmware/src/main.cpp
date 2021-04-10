@@ -506,7 +506,7 @@ void loop()
             // skip color correction if brightness if over the cutoff value
             blended = region.second;
           }
-          leds[address] = region.second;
+          leds[address] = blended;
         }
       }
     }
