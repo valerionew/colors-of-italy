@@ -32,7 +32,7 @@ F 2 "" H 1200 5000 50  0001 C CNN
 F 3 "" H 1200 5000 50  0001 C CNN
 	1    1200 5000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	1350 4700 1950 4700
 Connection ~ 1350 4700
@@ -82,7 +82,7 @@ F 2 "" H 2050 6000 50  0001 C CNN
 F 3 "" H 2050 6000 50  0001 C CNN
 	1    2050 6000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR063
 U 1 1 601E8834
@@ -93,7 +93,7 @@ F 2 "" H 6800 7500 50  0001 C CNN
 F 3 "" H 6800 7500 50  0001 C CNN
 	1    6800 7500
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 6600 7200 0    50   Input ~ 0
 LDR
 Connection ~ 6800 7200
@@ -107,7 +107,7 @@ F 2 "" H 6800 6900 50  0001 C CNN
 F 3 "" H 6800 6900 50  0001 C CNN
 	1    6800 6900
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text Notes 5800 8000 0    50   ~ 0
 fotoresistenza per adattare \nla luminosità dei led \na quella ambientale
 $Comp
@@ -120,7 +120,7 @@ F 2 "" H 6750 5050 50  0001 C CNN
 F 3 "" H 6750 5050 50  0001 C CNN
 	1    6750 5050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6750 5050 7000 5050
 Connection ~ 6750 5050
@@ -136,7 +136,7 @@ F 2 "" H 6750 4750 50  0001 C CNN
 F 3 "" H 6750 4750 50  0001 C CNN
 	1    6750 4750
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6750 4750 7000 4750
 Connection ~ 6750 4750
@@ -157,7 +157,7 @@ F 2 "" H 12900 6950 50  0001 C CNN
 F 3 "" H 12900 6950 50  0001 C CNN
 	1    12900 6950
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+3.3V #SUPPLY05
 U 1 1 601B94FA
@@ -168,7 +168,7 @@ F 2 "" H 5350 4800 50  0001 C CNN
 F 3 "" H 5350 4800 50  0001 C CNN
 	1    5350 4800
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR064
 U 1 1 601B88DD
@@ -179,7 +179,7 @@ F 2 "" H 5350 7600 50  0001 C CNN
 F 3 "" H 5350 7600 50  0001 C CNN
 	1    5350 7600
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 5950 5500 2    50   Input ~ 0
 LED_CHAIN
 Text Notes 3850 8600 0    50   ~ 0
@@ -198,7 +198,7 @@ F 2 "" H 850 7350 50  0001 C CNN
 F 3 "" H 850 7350 50  0001 C CNN
 	1    850  7350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	850  7050 1050 7050
 $Comp
@@ -211,7 +211,7 @@ F 2 "" H 1900 7350 50  0001 C CNN
 F 3 "" H 1900 7350 50  0001 C CNN
 	1    1900 7350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	1900 7050 1700 7050
 $Comp
@@ -224,7 +224,7 @@ F 2 "" H 1350 7350 50  0001 C CNN
 F 3 "" H 1350 7350 50  0001 C CNN
 	1    1350 7350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR062
 U 1 1 60442E3A
@@ -235,7 +235,7 @@ F 2 "" H 2850 7400 50  0001 C CNN
 F 3 "" H 2850 7400 50  0001 C CNN
 	1    2850 7400
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+5V #PWR057
 U 1 1 60455886
@@ -246,7 +246,7 @@ F 2 "" H 850 7050 50  0001 C CNN
 F 3 "" H 850 7050 50  0001 C CNN
 	1    850  7050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR065
 U 1 1 604FDEC6
@@ -257,7 +257,7 @@ F 2 "" H 9450 7650 50  0001 C CNN
 F 3 "" H 9450 7650 50  0001 C CNN
 	1    9450 7650
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 9450 7650
 Wire Wire Line
 	9450 7650 9550 7650
@@ -271,7 +271,7 @@ F 2 "" H 10350 4750 50  0001 C CNN
 F 3 "" H 10350 4750 50  0001 C CNN
 	1    10350 4750
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10350 4750 10150 4750
 Wire Notes Line
@@ -320,7 +320,7 @@ F 2 "" H 2050 4700 50  0001 C CNN
 F 3 "" H 2050 4700 50  0001 C CNN
 	1    2050 4700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR047
 U 1 1 60586481
@@ -331,7 +331,7 @@ F 2 "" H 850 3350 50  0001 C CNN
 F 3 "" H 850 3350 50  0001 C CNN
 	1    850  3350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR054
 U 1 1 6058D28F
@@ -342,7 +342,7 @@ F 2 "" H 7300 6100 50  0001 C CNN
 F 3 "" H 7300 6100 50  0001 C CNN
 	1    7300 6100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7300 6100 7200 6100
 Text GLabel 7200 6000 2    50   Input ~ 0
@@ -381,7 +381,7 @@ F 2 "" H 7550 7250 50  0001 C CNN
 F 3 "" H 7550 7250 50  0001 C CNN
 	1    7550 7250
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 5950 7000 2    50   Input ~ 0
 WIFI_RESET
 Text GLabel 10150 5750 2    50   Input ~ 0
@@ -408,7 +408,7 @@ F 4 "C1797" H 11750 6550 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 11750 6550 50  0001 C CNN "Basic part"
 	1    11750 6550
 	1    0    0    1   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:Crystal_GND24 Y1
 U 1 1 601F6E0D
@@ -421,7 +421,7 @@ F 4 "C9002" H 11950 6300 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 11950 6300 50  0001 C CNN "Basic part"
 	1    11950 6300
 	-1   0    0    1   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Interface_USB:CH340G U2
 U 1 1 601F47C0
@@ -434,7 +434,7 @@ F 4 "C14267" H 12900 5500 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 12900 5500 50  0001 C CNN "Basic part"
 	1    12900 5500
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Switch:SW_Push SW1
 U 1 1 601D4A1A
@@ -448,7 +448,7 @@ F 5 "~" H 7550 7050 50  0001 C CNN "LCSC Part"
 F 6 "False" H 7550 7050 50  0001 C CNN "JLCPCB BOM"
 	1    7550 7050
 	0    1    1    0   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x01_Female J9
 U 1 1 601CF152
@@ -462,7 +462,7 @@ F 5 "~" H 4500 9200 50  0001 C CNN "LCSC Part"
 F 6 "False" H 4500 9200 50  0001 C CNN "JLCPCB BOM"
 	1    4500 9200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x01_Female J6
 U 1 1 601CEEE7
@@ -476,7 +476,7 @@ F 5 "~" H 4500 9000 50  0001 C CNN "LCSC Part"
 F 6 "False" H 4500 9000 50  0001 C CNN "JLCPCB BOM"
 	1    4500 9000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x01_Female J5
 U 1 1 601CE24F
@@ -490,7 +490,7 @@ F 5 "~" H 4500 8800 50  0001 C CNN "LCSC Part"
 F 6 "False" H 4500 8800 50  0001 C CNN "JLCPCB BOM"
 	1    4500 8800
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x06_Male J1
 U 1 1 6058C8EF
@@ -504,7 +504,7 @@ F 5 "~" H 7000 5800 50  0001 C CNN "Basic part"
 F 6 "False" H 7000 5800 50  0001 C CNN "JLCPCB BOM"
 	1    7000 5800
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C1
 U 1 1 60586493
@@ -517,7 +517,7 @@ F 4 "C19702" H 850 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 850 3200 50  0001 C CNN "Basic part"
 	1    850  3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C39
 U 1 1 604499CB
@@ -530,7 +530,7 @@ F 4 "C19702" H 3050 7250 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3050 7250 50  0001 C CNN "Basic part"
 	1    3050 7250
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C38
 U 1 1 60442E46
@@ -543,7 +543,7 @@ F 4 "C19702" H 2850 7250 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 2850 7250 50  0001 C CNN "Basic part"
 	1    2850 7250
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C37
 U 1 1 604174AB
@@ -556,7 +556,7 @@ F 4 "C19702" H 1900 7200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1900 7200 50  0001 C CNN "Basic part"
 	1    1900 7200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C35
 U 1 1 6040111E
@@ -569,7 +569,7 @@ F 4 "C19702" H 850 7200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 850 7200 50  0001 C CNN "Basic part"
 	1    850  7200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L RF_Module:ESP32-WROOM-32 U3
 U 1 1 60040EE5
@@ -582,7 +582,7 @@ F 4 "C82899" H 5350 6200 50  0001 C CNN "LCSC Part"
 F 5 "N" H 5350 6200 50  0001 C CNN "Basic part"
 	1    5350 6200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Sensor:BME280 U1
 U 1 1 6004718F
@@ -596,7 +596,7 @@ F 5 "~" H 2050 5400 50  0001 C CNN "Basic part"
 F 6 "False" H 2050 5400 50  0001 C CNN "JLCPCB BOM"
 	1    2050 5400
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:USB_C_Plug P1
 U 1 1 601B2C32
@@ -609,7 +609,7 @@ F 4 "C165948" H 9550 6050 50  0001 C CNN "LCSC Part"
 F 5 "N" H 9550 6050 50  0001 C CNN "Basic part"
 	1    9550 6050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R R6
 U 1 1 601D016D
@@ -622,7 +622,7 @@ F 4 "C25804" H 12900 7100 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 12900 7100 50  0001 C CNN "Basic part"
 	1    12900 7100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C29
 U 1 1 601E01DF
@@ -635,7 +635,7 @@ F 4 "C19702" H 6500 4900 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6500 4900 50  0001 C CNN "Basic part"
 	1    6500 4900
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C30
 U 1 1 601E2833
@@ -648,7 +648,7 @@ F 4 "C19702" H 6750 4900 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6750 4900 50  0001 C CNN "Basic part"
 	1    6750 4900
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C31
 U 1 1 601E3074
@@ -661,7 +661,7 @@ F 4 "C14663" H 7000 4900 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 7000 4900 50  0001 C CNN "Basic part"
 	1    7000 4900
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R R5
 U 1 1 601E8419
@@ -674,7 +674,7 @@ F 4 "C25804" H 6800 7050 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6800 7050 50  0001 C CNN "Basic part"
 	1    6800 7050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R_PHOTO R8
 U 1 1 601B11CF
@@ -688,7 +688,7 @@ F 5 "~" H 6800 7350 50  0001 C CNN "Basic part"
 F 6 "False" H 6800 7350 50  0001 C CNN "JLCPCB BOM"
 	1    6800 7350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R R2
 U 1 1 601FE988
@@ -701,7 +701,7 @@ F 4 "C25804" H 3150 4850 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3150 4850 50  0001 C CNN "Basic part"
 	1    3150 4850
 	-1   0    0    1   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R R1
 U 1 1 601FA002
@@ -714,7 +714,7 @@ F 4 "C25804" H 2850 4850 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 2850 4850 50  0001 C CNN "Basic part"
 	1    2850 4850
 	-1   0    0    1   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C28
 U 1 1 602201DA
@@ -727,7 +727,7 @@ F 4 "C14663" H 1350 4850 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1350 4850 50  0001 C CNN "Basic part"
 	1    1350 4850
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C27
 U 1 1 602208FD
@@ -740,7 +740,7 @@ F 4 "C19702" H 1050 4850 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1050 4850 50  0001 C CNN "Basic part"
 	1    1050 4850
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C_Small C34
 U 1 1 602213E0
@@ -753,7 +753,7 @@ F 4 "C1797" H 12150 6550 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 12150 6550 50  0001 C CNN "Basic part"
 	1    12150 6550
 	1    0    0    1   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C40
 U 1 1 6022BA5E
@@ -766,7 +766,7 @@ F 4 "C14663" H 3250 7250 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3250 7250 50  0001 C CNN "Basic part"
 	1    3250 7250
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	3250 7400 3050 7400
 $Comp
@@ -781,7 +781,7 @@ F 4 "C14663" H 1700 7200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1700 7200 50  0001 C CNN "Basic part"
 	1    1700 7200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 1700 7050
 Wire Wire Line
 	1700 7050 1650 7050
@@ -800,7 +800,7 @@ F 4 "C14663" H 7250 4900 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 7250 4900 50  0001 C CNN "Basic part"
 	1    7250 4900
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7250 4750 7000 4750
 Connection ~ 7000 4750
@@ -837,7 +837,7 @@ F 4 "C25804" H 13800 5300 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 13800 5300 50  0001 C CNN "Basic part"
 	1    13800 5300
 	0    -1   -1   0   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:R_Small R4
 U 1 1 601DB1D9
@@ -850,7 +850,7 @@ F 4 "C25804" H 13800 5900 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 13800 5900 50  0001 C CNN "Basic part"
 	1    13800 5900
 	0    -1   -1   0   
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13700 5300 13650 5300
 Wire Wire Line
@@ -878,7 +878,7 @@ F 2 "" H 13500 4750 50  0001 C CNN
 F 3 "" H 13500 4750 50  0001 C CNN
 	1    13500 4750
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13500 4750 13750 4750
 Connection ~ 13500 4750
@@ -892,7 +892,7 @@ F 2 "" H 13500 4450 50  0001 C CNN
 F 3 "" H 13500 4450 50  0001 C CNN
 	1    13500 4450
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13500 4450 13750 4450
 Connection ~ 13500 4450
@@ -908,7 +908,7 @@ F 4 "C19702" H 13500 4600 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 13500 4600 50  0001 C CNN "Basic part"
 	1    13500 4600
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C25
 U 1 1 6021E591
@@ -921,7 +921,7 @@ F 4 "C14663" H 13750 4600 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 13750 4600 50  0001 C CNN "Basic part"
 	1    13750 4600
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13750 4750 14000 4750
 Connection ~ 13750 4750
@@ -935,7 +935,7 @@ F 2 "" H 12800 4850 50  0001 C CNN
 F 3 "" H 12800 4850 50  0001 C CNN
 	1    12800 4850
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12800 4850 12800 4900
 Wire Wire Line
@@ -951,7 +951,7 @@ F 2 "" H 12900 6100 50  0001 C CNN
 F 3 "" H 12900 6100 50  0001 C CNN
 	1    12900 6100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 13750 4450
 Wire Wire Line
 	14000 4450 13750 4450
@@ -967,7 +967,7 @@ F 4 "C14663" H 14000 4600 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 14000 4600 50  0001 C CNN "Basic part"
 	1    14000 4600
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 12900 7400
 $Comp
 L Device:C C42
@@ -981,7 +981,7 @@ F 4 "C14663" H 13150 7550 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 13150 7550 50  0001 C CNN "Basic part"
 	1    13150 7550
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x02_Male J2
 U 1 1 601D3245
@@ -995,7 +995,7 @@ F 5 "~" H 12700 7500 50  0001 C CNN "Basic part"
 F 6 "False" H 12700 7500 50  0001 C CNN "JLCPCB BOM"
 	1    12700 7500
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12900 7500 12900 7400
 $Comp
@@ -1008,7 +1008,7 @@ F 2 "" H 12900 7750 50  0001 C CNN
 F 3 "" H 12900 7750 50  0001 C CNN
 	1    12900 7750
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12900 7750 12900 7700
 Wire Wire Line
@@ -1033,7 +1033,7 @@ F 2 "" H 14100 6950 50  0001 C CNN
 F 3 "" H 14100 6950 50  0001 C CNN
 	1    14100 6950
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text Notes 13850 8100 0    50   ~ 0
 BOOT jumper
 $Comp
@@ -1048,7 +1048,7 @@ F 4 "C25804" H 14100 7100 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 14100 7100 50  0001 C CNN "Basic part"
 	1    14100 7100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 14000 7250 0    50   Input ~ 0
 BOOT0
 Wire Wire Line
@@ -1066,7 +1066,7 @@ F 4 "C19702" H 14350 7550 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 14350 7550 50  0001 C CNN "Basic part"
 	1    14350 7550
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x02_Male J3
 U 1 1 602532B3
@@ -1080,7 +1080,7 @@ F 5 "~" H 13900 7500 50  0001 C CNN "Basic part"
 F 6 "False" H 13900 7500 50  0001 C CNN "JLCPCB BOM"
 	1    13900 7500
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	14100 7500 14100 7400
 $Comp
@@ -1093,7 +1093,7 @@ F 2 "" H 14100 7750 50  0001 C CNN
 F 3 "" H 14100 7750 50  0001 C CNN
 	1    14100 7750
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	14100 7750 14100 7700
 Wire Wire Line
@@ -1125,7 +1125,7 @@ F 2 "" H 11950 6650 50  0001 C CNN
 F 3 "" H 11950 6650 50  0001 C CNN
 	1    11950 6650
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	11750 6650 11950 6650
 Connection ~ 11950 6650
@@ -1177,7 +1177,7 @@ F 2 "" H 10700 8600 50  0001 C CNN
 F 3 "" H 10700 8600 50  0001 C CNN
 	1    10700 8600
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10700 8600 10700 8650
 $Comp
@@ -1190,7 +1190,7 @@ F 2 "" H 10700 9050 50  0001 C CNN
 F 3 "" H 10700 9050 50  0001 C CNN
 	1    10700 9050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 11450 9250 0    50   Input ~ 0
 SDA
 Text GLabel 11450 9150 0    50   Input ~ 0
@@ -1213,7 +1213,7 @@ F 4 "Y" H 14100 5300 50  0001 C CNN "Basic part"
 F 5 "C8545" H 14100 5300 50  0001 C CNN "LCSC Part"
 	1    14100 5300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:Q_NMOS_GSD Q2
 U 1 1 601FA823
@@ -1226,7 +1226,7 @@ F 4 "Y" H 14100 5900 50  0001 C CNN "Basic part"
 F 5 "C8545" H 14100 5900 50  0001 C CNN "LCSC Part"
 	1    14100 5900
 	1    0    0    1   
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	3050 7400 2850 7400
 Connection ~ 3050 7400
@@ -1247,7 +1247,7 @@ F 2 "" H 2050 4700 50  0001 C CNN
 F 3 "" H 2050 4700 50  0001 C CNN
 	1    2050 4700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 2050 4700
 Wire Wire Line
 	2050 4700 2150 4700
@@ -1261,7 +1261,7 @@ F 2 "" H 1900 7050 50  0001 C CNN
 F 3 "" H 1900 7050 50  0001 C CNN
 	1    1900 7050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 1900 7050
 $Comp
 L power:+3.3V #SUPPLY012
@@ -1273,7 +1273,7 @@ F 2 "" H 3250 7100 50  0001 C CNN
 F 3 "" H 3250 7100 50  0001 C CNN
 	1    3250 7100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 3250 7100
 $Comp
 L Regulator_Linear:AZ1117-3.3 U4
@@ -1287,7 +1287,7 @@ F 4 "Y" H 1350 7050 50  0001 C CNN "Basic part"
 F 5 "C6186" H 1350 7050 50  0001 C CNN "LCSC Part"
 	1    1350 7050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+5V #PWR045
 U 1 1 6022A90E
@@ -1298,7 +1298,7 @@ F 2 "" H 850 3050 50  0001 C CNN
 F 3 "" H 850 3050 50  0001 C CNN
 	1    850  3050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C2
 U 1 1 6022F829
@@ -1311,7 +1311,7 @@ F 4 "C14663" H 1350 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1350 3200 50  0001 C CNN "Basic part"
 	1    1350 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR048
 U 1 1 60256954
@@ -1322,7 +1322,7 @@ F 2 "" H 1350 3350 50  0001 C CNN
 F 3 "" H 1350 3350 50  0001 C CNN
 	1    1350 3350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+5V #PWR046
 U 1 1 60256C8E
@@ -1333,7 +1333,7 @@ F 2 "" H 1350 3050 50  0001 C CNN
 F 3 "" H 1350 3050 50  0001 C CNN
 	1    1350 3050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR072
 U 1 1 60238E9A
@@ -1344,7 +1344,7 @@ F 2 "" H 7400 9350 50  0001 C CNN
 F 3 "" H 7400 9350 50  0001 C CNN
 	1    7400 9350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR073
 U 1 1 602427E3
@@ -1355,7 +1355,7 @@ F 2 "" H 8000 9350 50  0001 C CNN
 F 3 "" H 8000 9350 50  0001 C CNN
 	1    8000 9350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Switch:SW_Push SW3
 U 1 1 60243313
@@ -1369,7 +1369,7 @@ F 5 "~" H 8000 9150 50  0001 C CNN "LCSC Part"
 F 6 "False" H 8000 9150 50  0001 C CNN "JLCPCB BOM"
 	1    8000 9150
 	0    1    1    0   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Jumper:SolderJumper_3_Open JP2
 U 1 1 6025DE88
@@ -1383,7 +1383,7 @@ F 5 "~" H 10700 8850 50  0001 C CNN "LCSC Part"
 F 6 "False" H 10700 8850 50  0001 C CNN "JLCPCB BOM"
 	1    10700 8850
 	0    -1   -1   0   
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+3.3V #SUPPLY014
 U 1 1 6027F07F
@@ -1394,7 +1394,7 @@ F 2 "" H 10950 9100 50  0001 C CNN
 F 3 "" H 10950 9100 50  0001 C CNN
 	1    10950 9100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10950 9100 10950 9150
 $Comp
@@ -1407,7 +1407,7 @@ F 2 "" H 10950 9550 50  0001 C CNN
 F 3 "" H 10950 9550 50  0001 C CNN
 	1    10950 9550
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Jumper:SolderJumper_3_Open JP3
 U 1 1 6027FC06
@@ -1421,7 +1421,7 @@ F 5 "~" H 10950 9350 50  0001 C CNN "LCSC Part"
 F 6 "False" H 10950 9350 50  0001 C CNN "JLCPCB BOM"
 	1    10950 9350
 	0    -1   -1   0   
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10850 8850 11150 8850
 Wire Wire Line
@@ -1442,7 +1442,7 @@ F 2 "" H 8550 9350 50  0001 C CNN
 F 3 "" H 8550 9350 50  0001 C CNN
 	1    8550 9350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Switch:SW_Push SW4
 U 1 1 602A4E6A
@@ -1456,7 +1456,7 @@ F 5 "~" H 8550 9150 50  0001 C CNN "LCSC Part"
 F 6 "False" H 8550 9150 50  0001 C CNN "JLCPCB BOM"
 	1    8550 9150
 	0    1    1    0   
-$Colors-of-Italy
+$EndComp
 Text GLabel 7400 8950 1    50   Input ~ 0
 TOUCH_+
 Text GLabel 8000 8950 1    50   Input ~ 0
@@ -1476,7 +1476,7 @@ F 5 "~" H 7400 9150 50  0001 C CNN "LCSC Part"
 F 6 "False" H 7400 9150 50  0001 C CNN "JLCPCB BOM"
 	1    7400 9150
 	0    1    1    0   
-$Colors-of-Italy
+$EndComp
 Text Notes 7400 9950 0    50   ~ 0
 SWITCH fisici fallback \nnel caso ci fossero problemi col touch \nstesso footprint del wifi reset\n
 NoConn ~ 10150 5250
@@ -1508,7 +1508,7 @@ F 2 "" H 7550 5800 50  0001 C CNN
 F 3 "" H 7550 5800 50  0001 C CNN
 	1    7550 5800
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x06_Female J8
 U 1 1 6027DD30
@@ -1522,7 +1522,7 @@ F 5 "~" H 11750 9150 50  0001 C CNN "LCSC Part"
 F 6 "False" H 11750 9150 50  0001 C CNN "JLCPCB BOM"
 	1    11750 9150
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	11200 9350 11550 9350
 Connection ~ 11200 9350
@@ -1548,7 +1548,7 @@ F 5 "~" H 14850 9100 50  0001 C CNN "LCSC Part"
 F 6 "False" H 14850 9100 50  0001 C CNN "JLCPCB BOM"
 	1    14850 9100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Mechanical:MountingHole_Pad H3
 U 1 1 602B1993
@@ -1562,7 +1562,7 @@ F 5 "~" H 15050 9100 50  0001 C CNN "LCSC Part"
 F 6 "False" H 15050 9100 50  0001 C CNN "JLCPCB BOM"
 	1    15050 9100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Mechanical:MountingHole_Pad H1
 U 1 1 602E83E6
@@ -1576,7 +1576,7 @@ F 5 "~" H 14650 9100 50  0001 C CNN "LCSC Part"
 F 6 "False" H 14650 9100 50  0001 C CNN "JLCPCB BOM"
 	1    14650 9100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Mechanical:MountingHole_Pad H4
 U 1 1 6031EB49
@@ -1590,7 +1590,7 @@ F 5 "~" H 15250 9100 50  0001 C CNN "LCSC Part"
 F 6 "False" H 15250 9100 50  0001 C CNN "JLCPCB BOM"
 	1    15250 9100
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C41
 U 1 1 60289898
@@ -1603,7 +1603,7 @@ F 4 "C19702" H 7100 7350 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 7100 7350 50  0001 C CNN "Basic part"
 	1    7100 7350
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR068
 U 1 1 6028A171
@@ -1614,7 +1614,7 @@ F 2 "" H 7100 7800 50  0001 C CNN
 F 3 "" H 7100 7800 50  0001 C CNN
 	1    7100 7800
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6800 7200 7100 7200
 Wire Wire Line
@@ -1631,7 +1631,7 @@ F 4 "C19702" H 7100 7650 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 7100 7650 50  0001 C CNN "Basic part"
 	1    7100 7650
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x03_Female J4
 U 1 1 6029ACEA
@@ -1645,7 +1645,7 @@ F 5 "~" H 6000 8700 50  0001 C CNN "LCSC Part"
 F 6 "False" H 6000 8700 50  0001 C CNN "JLCPCB BOM"
 	1    6000 8700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x03_Female J7
 U 1 1 6029B7EB
@@ -1659,7 +1659,7 @@ F 5 "~" H 6000 9050 50  0001 C CNN "LCSC Part"
 F 6 "False" H 6000 9050 50  0001 C CNN "JLCPCB BOM"
 	1    6000 9050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Connector:Conn_01x03_Female J10
 U 1 1 6029C189
@@ -1673,7 +1673,7 @@ F 5 "~" H 6000 9400 50  0001 C CNN "LCSC Part"
 F 6 "False" H 6000 9400 50  0001 C CNN "JLCPCB BOM"
 	1    6000 9400
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Text GLabel 5750 8700 0    50   Input ~ 0
 TOUCH_+
 Text GLabel 5750 9050 0    50   Input ~ 0
@@ -1713,7 +1713,7 @@ F 2 "" H 15250 9200 50  0001 C CNN
 F 3 "" H 15250 9200 50  0001 C CNN
 	1    15250 9200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Notes Line
 	13950 8350 13950 9700
 Wire Notes Line
@@ -1730,7 +1730,7 @@ F 2 "" H 14850 9200 50  0001 C CNN
 F 3 "" H 14850 9200 50  0001 C CNN
 	1    14850 9200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 NoConn ~ 15050 9200
 NoConn ~ 14650 9200
 Wire Wire Line
@@ -1749,7 +1749,7 @@ F 4 "Y" H 800 1400 50  0001 C CNN "Basic part"
 F 5 "C81598" H 800 1400 50  0001 C CNN "LCSC Part"
 	1    800  1400
 	0    -1   -1   0   
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:Jumper JP1
 U 1 1 607E34B5
@@ -1763,7 +1763,7 @@ F 5 "~" H 950 1400 50  0001 C CNN "LCSC Part"
 F 6 "False" H 950 1400 50  0001 C CNN "JLCPCB BOM"
 	1    950  1400
 	0    1    1    0   
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	950  1050 950  1100
 Wire Wire Line
@@ -1790,7 +1790,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 1000 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 1050 1625 50  0001 L TNN
 	1    950  2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+5V #PWR01
 U 1 1 60A45FE0
@@ -1801,7 +1801,7 @@ F 2 "" H 900 1050 50  0001 C CNN
 F 3 "" H 900 1050 50  0001 C CNN
 	1    900  1050
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 900  1050
 Wire Wire Line
 	900  1050 950  1050
@@ -1815,7 +1815,7 @@ F 2 "" H 950 2300 50  0001 C CNN
 F 3 "" H 950 2300 50  0001 C CNN
 	1    950  2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Connection ~ 950  2300
 $Comp
 L LED:WS2813 D3
@@ -1827,7 +1827,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 1700 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 1750 1625 50  0001 L TNN
 	1    1650 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR024
 U 1 1 60A4779E
@@ -1838,7 +1838,7 @@ F 2 "" H 1650 2300 50  0001 C CNN
 F 3 "" H 1650 2300 50  0001 C CNN
 	1    1650 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	1250 2000 1300 2000
 Wire Wire Line
@@ -1853,7 +1853,7 @@ F 2 "" H 1650 1700 50  0001 C CNN
 F 3 "" H 1650 1700 50  0001 C CNN
 	1    1650 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	1550 1700 1650 1700
 Connection ~ 1650 1700
@@ -1867,7 +1867,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 2400 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 2450 1625 50  0001 L TNN
 	1    2350 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR025
 U 1 1 60A9F5FB
@@ -1878,7 +1878,7 @@ F 2 "" H 2350 2300 50  0001 C CNN
 F 3 "" H 2350 2300 50  0001 C CNN
 	1    2350 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	1950 2000 2000 2000
 $Comp
@@ -1891,7 +1891,7 @@ F 2 "" H 2350 1700 50  0001 C CNN
 F 3 "" H 2350 1700 50  0001 C CNN
 	1    2350 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	2250 1700 2350 1700
 Connection ~ 2350 1700
@@ -1931,7 +1931,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 3100 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 3150 1625 50  0001 L TNN
 	1    3050 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR026
 U 1 1 60B3A7F2
@@ -1942,7 +1942,7 @@ F 2 "" H 3050 2300 50  0001 C CNN
 F 3 "" H 3050 2300 50  0001 C CNN
 	1    3050 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	2650 2000 2700 2000
 $Comp
@@ -1955,7 +1955,7 @@ F 2 "" H 3050 1700 50  0001 C CNN
 F 3 "" H 3050 1700 50  0001 C CNN
 	1    3050 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	2950 1700 3050 1700
 Connection ~ 3050 1700
@@ -1969,7 +1969,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 3800 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 3850 1625 50  0001 L TNN
 	1    3750 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR027
 U 1 1 60B3A807
@@ -1980,7 +1980,7 @@ F 2 "" H 3750 2300 50  0001 C CNN
 F 3 "" H 3750 2300 50  0001 C CNN
 	1    3750 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	3350 2000 3400 2000
 $Comp
@@ -1993,7 +1993,7 @@ F 2 "" H 3750 1700 50  0001 C CNN
 F 3 "" H 3750 1700 50  0001 C CNN
 	1    3750 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	3650 1700 3750 1700
 Connection ~ 3750 1700
@@ -2029,7 +2029,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 4500 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 4550 1625 50  0001 L TNN
 	1    4450 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR028
 U 1 1 60B4EA22
@@ -2040,7 +2040,7 @@ F 2 "" H 4450 2300 50  0001 C CNN
 F 3 "" H 4450 2300 50  0001 C CNN
 	1    4450 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	4050 2000 4100 2000
 $Comp
@@ -2053,7 +2053,7 @@ F 2 "" H 4450 1700 50  0001 C CNN
 F 3 "" H 4450 1700 50  0001 C CNN
 	1    4450 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	4350 1700 4450 1700
 Connection ~ 4450 1700
@@ -2067,7 +2067,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 5200 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 5250 1625 50  0001 L TNN
 	1    5150 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR029
 U 1 1 60B4EA37
@@ -2078,7 +2078,7 @@ F 2 "" H 5150 2300 50  0001 C CNN
 F 3 "" H 5150 2300 50  0001 C CNN
 	1    5150 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	4750 2000 4800 2000
 $Comp
@@ -2091,7 +2091,7 @@ F 2 "" H 5150 1700 50  0001 C CNN
 F 3 "" H 5150 1700 50  0001 C CNN
 	1    5150 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	5050 1700 5150 1700
 Connection ~ 5150 1700
@@ -2127,7 +2127,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 5900 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 5950 1625 50  0001 L TNN
 	1    5850 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR030
 U 1 1 60B65C0D
@@ -2138,7 +2138,7 @@ F 2 "" H 5850 2300 50  0001 C CNN
 F 3 "" H 5850 2300 50  0001 C CNN
 	1    5850 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	5450 2000 5500 2000
 $Comp
@@ -2151,7 +2151,7 @@ F 2 "" H 5850 1700 50  0001 C CNN
 F 3 "" H 5850 1700 50  0001 C CNN
 	1    5850 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	5750 1700 5850 1700
 Connection ~ 5850 1700
@@ -2165,7 +2165,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 6600 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 6650 1625 50  0001 L TNN
 	1    6550 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR031
 U 1 1 60B65C22
@@ -2176,7 +2176,7 @@ F 2 "" H 6550 2300 50  0001 C CNN
 F 3 "" H 6550 2300 50  0001 C CNN
 	1    6550 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6150 2000 6200 2000
 $Comp
@@ -2189,7 +2189,7 @@ F 2 "" H 6550 1700 50  0001 C CNN
 F 3 "" H 6550 1700 50  0001 C CNN
 	1    6550 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6450 1700 6550 1700
 Connection ~ 6550 1700
@@ -2225,7 +2225,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 7300 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 7350 1625 50  0001 L TNN
 	1    7250 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR032
 U 1 1 60B7E283
@@ -2236,7 +2236,7 @@ F 2 "" H 7250 2300 50  0001 C CNN
 F 3 "" H 7250 2300 50  0001 C CNN
 	1    7250 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	6850 2000 6900 2000
 $Comp
@@ -2249,7 +2249,7 @@ F 2 "" H 7250 1700 50  0001 C CNN
 F 3 "" H 7250 1700 50  0001 C CNN
 	1    7250 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7150 1700 7250 1700
 Connection ~ 7250 1700
@@ -2274,7 +2274,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 8000 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 8050 1625 50  0001 L TNN
 	1    7950 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR033
 U 1 1 60B9734A
@@ -2285,7 +2285,7 @@ F 2 "" H 7950 2300 50  0001 C CNN
 F 3 "" H 7950 2300 50  0001 C CNN
 	1    7950 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7550 2000 7600 2000
 $Comp
@@ -2298,7 +2298,7 @@ F 2 "" H 7950 1700 50  0001 C CNN
 F 3 "" H 7950 1700 50  0001 C CNN
 	1    7950 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7850 1700 7950 1700
 Connection ~ 7950 1700
@@ -2323,7 +2323,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 9400 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 9450 1625 50  0001 L TNN
 	1    9350 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR035
 U 1 1 60BC4FEA
@@ -2334,7 +2334,7 @@ F 2 "" H 9350 2300 50  0001 C CNN
 F 3 "" H 9350 2300 50  0001 C CNN
 	1    9350 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	8950 2000 9000 2000
 $Comp
@@ -2347,7 +2347,7 @@ F 2 "" H 9350 1700 50  0001 C CNN
 F 3 "" H 9350 1700 50  0001 C CNN
 	1    9350 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	9250 1700 9350 1700
 Connection ~ 9350 1700
@@ -2361,7 +2361,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 10100 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 10150 1625 50  0001 L TNN
 	1    10050 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR036
 U 1 1 60BC4FFF
@@ -2372,7 +2372,7 @@ F 2 "" H 10050 2300 50  0001 C CNN
 F 3 "" H 10050 2300 50  0001 C CNN
 	1    10050 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	9650 2000 9700 2000
 $Comp
@@ -2385,7 +2385,7 @@ F 2 "" H 10050 1700 50  0001 C CNN
 F 3 "" H 10050 1700 50  0001 C CNN
 	1    10050 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	9950 1700 10050 1700
 Connection ~ 10050 1700
@@ -2421,7 +2421,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 10800 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 10850 1625 50  0001 L TNN
 	1    10750 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR037
 U 1 1 60BC5020
@@ -2432,7 +2432,7 @@ F 2 "" H 10750 2300 50  0001 C CNN
 F 3 "" H 10750 2300 50  0001 C CNN
 	1    10750 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10350 2000 10400 2000
 $Comp
@@ -2445,7 +2445,7 @@ F 2 "" H 10750 1700 50  0001 C CNN
 F 3 "" H 10750 1700 50  0001 C CNN
 	1    10750 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	10650 1700 10750 1700
 Connection ~ 10750 1700
@@ -2459,7 +2459,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 11500 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 11550 1625 50  0001 L TNN
 	1    11450 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR038
 U 1 1 60BC5035
@@ -2470,7 +2470,7 @@ F 2 "" H 11450 2300 50  0001 C CNN
 F 3 "" H 11450 2300 50  0001 C CNN
 	1    11450 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	11050 2000 11100 2000
 $Comp
@@ -2483,7 +2483,7 @@ F 2 "" H 11450 1700 50  0001 C CNN
 F 3 "" H 11450 1700 50  0001 C CNN
 	1    11450 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	11350 1700 11450 1700
 Connection ~ 11450 1700
@@ -2519,7 +2519,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 12200 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 12250 1625 50  0001 L TNN
 	1    12150 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR039
 U 1 1 60BC5056
@@ -2530,7 +2530,7 @@ F 2 "" H 12150 2300 50  0001 C CNN
 F 3 "" H 12150 2300 50  0001 C CNN
 	1    12150 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	11750 2000 11800 2000
 $Comp
@@ -2543,7 +2543,7 @@ F 2 "" H 12150 1700 50  0001 C CNN
 F 3 "" H 12150 1700 50  0001 C CNN
 	1    12150 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12050 1700 12150 1700
 Connection ~ 12150 1700
@@ -2557,7 +2557,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 12900 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 12950 1625 50  0001 L TNN
 	1    12850 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR040
 U 1 1 60BC506B
@@ -2568,7 +2568,7 @@ F 2 "" H 12850 2300 50  0001 C CNN
 F 3 "" H 12850 2300 50  0001 C CNN
 	1    12850 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12450 2000 12500 2000
 $Comp
@@ -2581,7 +2581,7 @@ F 2 "" H 12850 1700 50  0001 C CNN
 F 3 "" H 12850 1700 50  0001 C CNN
 	1    12850 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	12750 1700 12850 1700
 Connection ~ 12850 1700
@@ -2617,7 +2617,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 13600 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 13650 1625 50  0001 L TNN
 	1    13550 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR041
 U 1 1 60BC508C
@@ -2628,7 +2628,7 @@ F 2 "" H 13550 2300 50  0001 C CNN
 F 3 "" H 13550 2300 50  0001 C CNN
 	1    13550 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13150 2000 13200 2000
 $Comp
@@ -2641,7 +2641,7 @@ F 2 "" H 13550 1700 50  0001 C CNN
 F 3 "" H 13550 1700 50  0001 C CNN
 	1    13550 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13450 1700 13550 1700
 Connection ~ 13550 1700
@@ -2655,7 +2655,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 14300 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 14350 1625 50  0001 L TNN
 	1    14250 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR042
 U 1 1 60BC50A1
@@ -2666,7 +2666,7 @@ F 2 "" H 14250 2300 50  0001 C CNN
 F 3 "" H 14250 2300 50  0001 C CNN
 	1    14250 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	13850 2000 13900 2000
 $Comp
@@ -2679,7 +2679,7 @@ F 2 "" H 14250 1700 50  0001 C CNN
 F 3 "" H 14250 1700 50  0001 C CNN
 	1    14250 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	14150 1700 14250 1700
 Connection ~ 14250 1700
@@ -2715,7 +2715,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 15000 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 15050 1625 50  0001 L TNN
 	1    14950 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR043
 U 1 1 60BC50C2
@@ -2726,7 +2726,7 @@ F 2 "" H 14950 2300 50  0001 C CNN
 F 3 "" H 14950 2300 50  0001 C CNN
 	1    14950 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	14550 2000 14600 2000
 $Comp
@@ -2739,7 +2739,7 @@ F 2 "" H 14950 1700 50  0001 C CNN
 F 3 "" H 14950 1700 50  0001 C CNN
 	1    14950 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	14850 1700 14950 1700
 Connection ~ 14950 1700
@@ -2764,7 +2764,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 15700 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 15750 1625 50  0001 L TNN
 	1    15650 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR044
 U 1 1 60BC50DD
@@ -2775,7 +2775,7 @@ F 2 "" H 15650 2300 50  0001 C CNN
 F 3 "" H 15650 2300 50  0001 C CNN
 	1    15650 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:+5V #PWR022
 U 1 1 60BC50E4
@@ -2786,7 +2786,7 @@ F 2 "" H 15650 1700 50  0001 C CNN
 F 3 "" H 15650 1700 50  0001 C CNN
 	1    15650 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	15550 1700 15650 1700
 Connection ~ 15650 1700
@@ -2805,7 +2805,7 @@ F 2 "WS2813MINI:LED_WS2813-MINI" H 8700 1700 50  0001 L TNN
 F 3 "http://www.normandled.com/upload/201605/WS2813%20LED%20Datasheet.pdf" H 8750 1625 50  0001 L TNN
 	1    8650 2000
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L power:GND #PWR034
 U 1 1 60C0FC24
@@ -2816,7 +2816,7 @@ F 2 "" H 8650 2300 50  0001 C CNN
 F 3 "" H 8650 2300 50  0001 C CNN
 	1    8650 2300
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	8250 2000 8300 2000
 $Comp
@@ -2829,7 +2829,7 @@ F 2 "" H 8650 1700 50  0001 C CNN
 F 3 "" H 8650 1700 50  0001 C CNN
 	1    8650 1700
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	8550 1700 8650 1700
 Connection ~ 8650 1700
@@ -2854,7 +2854,7 @@ F 4 "C14663" H 1600 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1600 3200 50  0001 C CNN "Basic part"
 	1    1600 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C4
 U 1 1 60D7453A
@@ -2867,7 +2867,7 @@ F 4 "C14663" H 1850 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 1850 3200 50  0001 C CNN "Basic part"
 	1    1850 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C5
 U 1 1 60D74542
@@ -2880,7 +2880,7 @@ F 4 "C14663" H 2100 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 2100 3200 50  0001 C CNN "Basic part"
 	1    2100 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C6
 U 1 1 60DE4C92
@@ -2893,7 +2893,7 @@ F 4 "C14663" H 2350 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 2350 3200 50  0001 C CNN "Basic part"
 	1    2350 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C7
 U 1 1 60DE718E
@@ -2906,7 +2906,7 @@ F 4 "C14663" H 2750 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 2750 3200 50  0001 C CNN "Basic part"
 	1    2750 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C8
 U 1 1 60DE7196
@@ -2919,7 +2919,7 @@ F 4 "C14663" H 3000 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3000 3200 50  0001 C CNN "Basic part"
 	1    3000 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C9
 U 1 1 60DE719E
@@ -2932,7 +2932,7 @@ F 4 "C14663" H 3250 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3250 3200 50  0001 C CNN "Basic part"
 	1    3250 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C10
 U 1 1 60DE71A6
@@ -2945,7 +2945,7 @@ F 4 "C14663" H 3500 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3500 3200 50  0001 C CNN "Basic part"
 	1    3500 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C11
 U 1 1 60DE71AE
@@ -2958,7 +2958,7 @@ F 4 "C14663" H 3750 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 3750 3200 50  0001 C CNN "Basic part"
 	1    3750 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C12
 U 1 1 60E04D75
@@ -2971,7 +2971,7 @@ F 4 "C14663" H 4150 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 4150 3200 50  0001 C CNN "Basic part"
 	1    4150 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C13
 U 1 1 60E04D7D
@@ -2984,7 +2984,7 @@ F 4 "C14663" H 4400 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 4400 3200 50  0001 C CNN "Basic part"
 	1    4400 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C14
 U 1 1 60E04D85
@@ -2997,7 +2997,7 @@ F 4 "C14663" H 4650 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 4650 3200 50  0001 C CNN "Basic part"
 	1    4650 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C15
 U 1 1 60E04D8D
@@ -3010,7 +3010,7 @@ F 4 "C14663" H 4900 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 4900 3200 50  0001 C CNN "Basic part"
 	1    4900 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C16
 U 1 1 60E04D95
@@ -3023,7 +3023,7 @@ F 4 "C14663" H 5150 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 5150 3200 50  0001 C CNN "Basic part"
 	1    5150 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C17
 U 1 1 60E66081
@@ -3036,7 +3036,7 @@ F 4 "C14663" H 5550 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 5550 3200 50  0001 C CNN "Basic part"
 	1    5550 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C18
 U 1 1 60E66089
@@ -3049,7 +3049,7 @@ F 4 "C14663" H 5800 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 5800 3200 50  0001 C CNN "Basic part"
 	1    5800 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C19
 U 1 1 60E66091
@@ -3062,7 +3062,7 @@ F 4 "C14663" H 6050 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6050 3200 50  0001 C CNN "Basic part"
 	1    6050 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C20
 U 1 1 60E66099
@@ -3075,7 +3075,7 @@ F 4 "C14663" H 6300 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6300 3200 50  0001 C CNN "Basic part"
 	1    6300 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C21
 U 1 1 60E660A1
@@ -3088,7 +3088,7 @@ F 4 "C14663" H 6550 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6550 3200 50  0001 C CNN "Basic part"
 	1    6550 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C22
 U 1 1 60E81E33
@@ -3101,7 +3101,7 @@ F 4 "C14663" H 6950 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 6950 3200 50  0001 C CNN "Basic part"
 	1    6950 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 $Comp
 L Device:C C23
 U 1 1 60E81E3B
@@ -3114,7 +3114,7 @@ F 4 "C14663" H 7200 3200 50  0001 C CNN "LCSC Part"
 F 5 "Y" H 7200 3200 50  0001 C CNN "Basic part"
 	1    7200 3200
 	1    0    0    -1  
-$Colors-of-Italy
+$EndComp
 Wire Wire Line
 	7200 3050 6950 3050
 Connection ~ 1600 3050
