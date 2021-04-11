@@ -18,7 +18,6 @@ CRGB leds[LED_NUMBER];
 CRGB offset = 0xFFFF00; // color that gets blended with original one (color correction)
 
 float brightness_offset;
-
 unsigned long last_update;
 unsigned long last_connected;
 unsigned long last_pressed;
@@ -102,9 +101,11 @@ private:
   byte outlier_threshold;
   float old_reading;
   bool pressed, old_pressed, rising;
-  LPF low_pass;
-  CircularBuffer buffer;
 
+  LPF filter_1;
+  LPF filter_2;
+  CircularBuffer buffer;
+  
   float read()
   {
     return touchRead(input_pin);
@@ -148,12 +149,13 @@ public:
     rising = pressed && !old_pressed;
     old_pressed = pressed;
     // return current pressure state
+
     return pressed;
   }
 
   bool first_press()
   {
-    // is this the button first press?
+    //is the button first press?
     return rising;
   }
 };
@@ -220,6 +222,7 @@ float easing(float x)
   return 1 - (1 - x) * (1 - x);
 }
 
+// rescale a value to new interval
 float rescale(float value, float old_min, float old_max, float new_min, float new_max)
 {
   // swap the interval if the scale is inverted
@@ -271,7 +274,7 @@ void setup()
   last_update = 0;
   last_pressed = 0;
   last_refresh = 0;
-  brightness_offset = 0;
+  brightness_offset = -40;
   showing = true;
 
   // init brightness filter
@@ -462,8 +465,8 @@ void loop()
     // read light level from sensor
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
     // calculate the actual brightness compared to the sensor output
-    float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_offset;
-    scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
+    float scaled_light = rescale(light, 2000, 0, 255, MIN_BRIGHTNESS) + brightness_offset;
+    scaled_light = force(scaled_light, MIN_BRIGHTNESS, 255);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
     /*
@@ -490,10 +493,11 @@ void loop()
 
           // color correction
           CRGB blended;
-          if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
+
+          if (brightness <= TRESHOLD_BRIGHTNESS)
           {
             // calculate percent
-            float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
+            float percent = (float)brightness / TRESHOLD_BRIGHTNESS;
             // ease percent
             // we need to invert it (1-easing) in order to get 1 for low brightness values
             // and 0 for high brightness values, so that more color gets blended at lower
@@ -533,6 +537,7 @@ void loop()
 #ifdef DEBUG
     Serial.println(brightness_offset);
 #endif
+    
   }
 
   if (touch_reset.is_pressed() && touch_reset.first_press())
@@ -549,6 +554,9 @@ void loop()
       FastLED.clear();
       FastLED.show();
     }
+
+    Serial.print(showing);
+    Serial.println();
   }
 
   if (touch_plus.is_pressed() && touch_plus.first_press())
@@ -556,6 +564,7 @@ void loop()
 #ifdef DEBUG
     Serial.println("touch_plus is pressed");
 #endif
+
     if (showing)
     {
       brightness_offset += BRIGHTNESS_INCREMENT;
@@ -564,6 +573,7 @@ void loop()
 #ifdef DEBUG
     Serial.println(brightness_offset);
 #endif
+
   }
 
   // check WiFi reset Button
