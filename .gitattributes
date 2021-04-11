@@ -1,4 +1,4 @@
-*.kicad_pcb linguist-detectable=true
+*.kicad_pcb linguist-detectable=false
 *.sch linguist-detectable=true
 fp-lib-table linguist-generated=true
 sym-lib-table linguist-generated=true
