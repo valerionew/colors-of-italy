@@ -3,6 +3,7 @@ name: Build
 # Because a PR results in a push; this workflow will run when a PR is merged
 # or when a commit is pushed directly to any branch.
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'firmware/**'
