@@ -102,8 +102,7 @@ private:
   float old_reading;
   bool pressed, old_pressed, rising;
 
-  LPF filter_1;
-  LPF filter_2;
+  LPF low_pass;
   CircularBuffer buffer;
   
   float read()
@@ -465,8 +464,8 @@ void loop()
     // read light level from sensor
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
     // calculate the actual brightness compared to the sensor output
-    float scaled_light = rescale(light, 2000, 0, 255, MIN_BRIGHTNESS) + brightness_offset;
-    scaled_light = force(scaled_light, MIN_BRIGHTNESS, 255);
+    float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_offset;
+    scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
     /*
@@ -494,10 +493,10 @@ void loop()
           // color correction
           CRGB blended;
 
-          if (brightness <= TRESHOLD_BRIGHTNESS)
+          if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
           {
             // calculate percent
-            float percent = (float)brightness / TRESHOLD_BRIGHTNESS;
+            float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
             // ease percent
             // we need to invert it (1-easing) in order to get 1 for low brightness values
             // and 0 for high brightness values, so that more color gets blended at lower
