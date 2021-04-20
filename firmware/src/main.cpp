@@ -111,6 +111,7 @@ private:
   }
 
 public:
+  bool debug_print = false;
   Button(byte _input_pin, byte _threshold = 5, byte _outlier_threshold = 100)
   {
     input_pin = _input_pin;
@@ -137,6 +138,17 @@ public:
       float lp_filtered = low_pass.update(reading);              // first low pass filtering
       float box_filtered = buffer.update(lp_filtered - reading); // compare to average
       pressed = box_filtered > threshold;                        // thresholding
+      if (debug_print) {
+        Serial.print(" reading: ");
+        Serial.print(reading);
+        Serial.print(" lp_filtered: ");
+        Serial.print(lp_filtered);
+        Serial.print(" box_filtered: ");
+        Serial.print(box_filtered);
+        Serial.print(" threshold: ");
+        Serial.print(threshold);
+        Serial.println();
+      }
     }
     // update value
     old_reading = reading;
@@ -160,9 +172,9 @@ public:
 };
 
 LPF brightness_filter;
-Button touch_minus(TOUCH_MINUS_PIN, 7);
-Button touch_reset(TOUCH_RESET_PIN, 5);
-Button touch_plus(TOUCH_PLUS_PIN, 5);
+Button touch_minus(TOUCH_MINUS_PIN, 70);
+Button touch_reset(TOUCH_RESET_PIN, 70);
+Button touch_plus (TOUCH_PLUS_PIN , 70);
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
@@ -264,6 +276,8 @@ void setup()
   touch_minus.init();
   touch_reset.init();
   touch_plus.init();
+  
+  touch_reset.debug_print = true;
 
   // PINs initialization
   pinMode(WIFI_RESET_BUTTON, INPUT_PULLUP);
@@ -273,7 +287,7 @@ void setup()
   last_update = 0;
   last_pressed = 0;
   last_refresh = 0;
-  brightness_offset = -40;
+  brightness_offset = 0;
   showing = true;
 
   // init brightness filter
@@ -529,8 +543,8 @@ void loop()
 #endif
     if (showing)
     {
-      brightness_offset -= BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
+      // brightness_offset -= BRIGHTNESS_INCREMENT;
+      // brightness_offset = force(brightness_offset, -255, 255);
     }
 
 #ifdef DEBUG
@@ -566,8 +580,8 @@ void loop()
 
     if (showing)
     {
-      brightness_offset += BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
+      // brightness_offset += BRIGHTNESS_INCREMENT;
+      // brightness_offset = force(brightness_offset, -255, 255);
     }
 #ifdef DEBUG
     Serial.println(brightness_offset);
