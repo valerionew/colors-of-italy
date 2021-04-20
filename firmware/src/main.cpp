@@ -160,9 +160,9 @@ public:
 };
 
 LPF brightness_filter;
-Button touch_minus(TOUCH_MINUS_PIN, 7);
-Button touch_reset(TOUCH_RESET_PIN, 5);
-Button touch_plus(TOUCH_PLUS_PIN, 5);
+Button touch_minus(TOUCH_MINUS_PIN, 70);
+Button touch_reset(TOUCH_RESET_PIN, 70);
+Button touch_plus (TOUCH_PLUS_PIN , 70);
 
 // color mapping
 // e.g. red -> color 0 -> 0xdd222a (red)
