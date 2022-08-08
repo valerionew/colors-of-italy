@@ -479,10 +479,10 @@ void loop()
               }
           }
 
-          // calcolo percentuali
+          // calculation of percentages for color selection
           unsigned long perc25max = numberNorMax - ((numberNorMax * 25) / 100);
           unsigned long perc25min = numberNorMin + ((numberNorMin * 25) / 100);
-          unsigned long percMedia = (numberNorMax + numberNorMin) / 2 ;
+          unsigned long percMedia = (numberNorMax - numberNorMin) / 2 ;
 
 #ifdef DEBUG 
           Serial.print("max: "); Serial.println(numberNorMax);
@@ -496,15 +496,19 @@ void loop()
           for(int i = 0; i < 20; i++) 
           {
             if (numberNormArr[i] > perc25max) {
+              //Serial.print(numberNormArr[i]); Serial.println(" percmax");  
               numberNormArr[i] = 0xff0000; //rosso
             }
-            else if ((numberNormArr[i] < perc25max) && (numberNormArr[i] > percMedia)) {
+            else if ((numberNormArr[i] <= perc25max) && (numberNormArr[i] > percMedia)) {
+              //Serial.print(numberNormArr[i]); Serial.println(" max-media"); 
               numberNormArr[i] = 0xff5203; //arancio
             }
-            else if ((numberNormArr[i] < percMedia) && (numberNormArr[i] > perc25min)) {
+            else if ((numberNormArr[i] <= percMedia) && (numberNormArr[i] > perc25min)) {
+              //Serial.print(numberNormArr[i]); Serial.println(" media-min"); 
               numberNormArr[i] = 0xffd103; //giallo
             }            
-            else if (numberNormArr[i] < perc25min) {
+            else if (numberNormArr[i] <= perc25min) {
+              //Serial.print(numberNormArr[i]); Serial.println(" percmin"); 
               numberNormArr[i] = 0xffffff; //bianco
             }            
 
