@@ -11,19 +11,19 @@
 #define NO_LED 255                 // map filler
 
 // wifi related
-#define WIFI_SSID_NAME "Colors-of-italy" // SSID of the wifi portal
+#define WIFI_SSID_NAME "Colors-of-Italy" // SSID of the wifi portal
 #define WIFI_RESET_BUTTON 32             // wifi reset button
 #define WIFI_MAX_TIME 6e5                // timeout before the wifi portal (and the whole ESP) gets reset 6e5ms -> 10min
 #define WIFI_MAX_UNCONNECTED 1.8e6       // how much time the ESP can go without being connected to the wifi 1.8e6ms -> 30 min
-#define WIFI_RESET_TIMEOUT 5e3           // timeout for the reset button 500ms -> 5s
+#define WIFI_RESET_TIMEOUT 5e3           // timeout for the WiFi AP reset button 5000ms -> 5s
 
 // routines related
+//#define UPDATE_INTERVAL 10000
 #define UPDATE_INTERVAL 300e3 // 300s -> 5 min
 #define REFRESH_INTERVAL 50   // 50ms -> 20fps
 
 // URLS
-#define TERRITORIES_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_slim"
-#define COLORS_REQUEST_URL "https://vaccinocovid19.live/get/colore_territori_rgb"
+#define COLORS_REQUEST_URL "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json"
 
 // light sensor related
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
