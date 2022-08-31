@@ -361,7 +361,7 @@ void setup()
 
 
   // Blank screen
-  for(int i = 0; i < LED_NUMBER; i++) leds[i] = 0x000000;
+  FastLED.clear(); 
   FastLED.show();
 
 
@@ -426,9 +426,7 @@ void loop()
 
           unsigned long trentinoSum = 0;
 
-          //dati abitanti Regioni http://dati.istat.it/Index.aspx?DataSetCode=DCIS_POPRES1
-          unsigned long abitantiRegArr[20] = 
-          { 4252279, 123337, 9965046, 1077932, 4854633, 1197295, 1507438, 4431816, 3676285, 859572, 1489789, 5715190, 1273660, 290769, 5590681, 3912166, 539999, 1844586, 4801468, 1579181 };
+          unsigned long abitantiRegArr[20] = { INHABITANTS_REGIONS };
           
           unsigned long numberNorm;
           unsigned long numberNormArr[20];

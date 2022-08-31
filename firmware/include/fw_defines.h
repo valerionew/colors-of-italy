@@ -25,6 +25,9 @@
 // URLS
 #define COLORS_REQUEST_URL "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json"
 
+// Italian regions inhabitants - http://dati.istat.it/Index.aspx?DataSetCode=DCIS_POPRES1
+#define INHABITANTS_REGIONS 4252279, 123337, 9965046, 1077932, 4854633, 1197295, 1507438, 4431816, 3676285, 859572, 1489789, 5715190, 1273660, 290769, 5590681, 3912166, 539999, 1844586, 4801468, 1579181 
+
 // light sensor related
 #define LIGHT_SENSOR_PIN 33 // must be and ADC PIN, cannot use ADC2
 #define MAX_BRIGHTNESS 2000 // sensor max brightness read (min is 0)
