@@ -25,4 +25,4 @@ jobs:
     - name: Run PlatformIO build on selected platforms
       run: |
         cd firmware/
-        platformio run -e debug -e produzione
+        platformio run -e release

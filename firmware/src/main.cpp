@@ -4,13 +4,15 @@
 #include <HTTPClient.h>  // built in library
 #include <map>           // built in library
 #include <array>         // built in library
-#include <WiFiManager.h> // https://github.com/tzapu/WiFiManager -use development branch to get it working on esp32
+#include <WiFiManager.h> // https://github.com/tzapu/WiFiManager
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 #include <FastLED.h>     // https://github.com/FastLED/FastLED
 #include <fw_defines.h>
 #include <pacifica.h>
 
 #define DEBUG
+
+
 
 WiFiManager wifiManager;
 WiFiClient client;
@@ -164,43 +166,40 @@ Button touch_minus(TOUCH_MINUS_PIN, 70);
 Button touch_reset(TOUCH_RESET_PIN, 70);
 Button touch_plus (TOUCH_PLUS_PIN , 70);
 
-// color mapping
-// e.g. red -> color 0 -> 0xdd222a (red)
-// initialization
-std::map<String, unsigned long>
-    color_map;
 
 // region mapping
-std::map<String, unsigned long> region_map;
+std::map<String, unsigned long> 
+    region_map;
+
 
 // territory mapping
-// ISTAT CODE -> led position translation
-// e.g. code 01 -> addresses of led_map["01"]
-// source https://www.agenziaentrate.gov.it/portale/Strumenti/Codici+attivita+e+tributo/F24+Codici+tributo+per+i+versamenti/Tabelle+dei+codici+tributo+e+altri+codici+per+il+modello+F24/Tabella+T0+codici+delle+Regioni+e+delle+Province+autonome
+// 1 must be subtracted from the numbering of the regions for the array
+// source https://github.com/pcm-dpc/COVID-19/blob/master/dati-regioni/dpc-covid19-ita-regioni-latest.csv
 std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
     led_map = {
-        {"01", {14, NO_LED}}, // ABRUZZO
-        {"02", {19, NO_LED}}, // BASILICATA
-        {"03", {NO_LED}},     // BOLZANO
-        {"04", {20, NO_LED}}, // CALABRIA
-        {"05", {16, NO_LED}}, // CAMPANIA
-        {"06", {9, NO_LED}},  // EMILIA ROMAGNA
-        {"07", {7, NO_LED}},  // FRIULI VENEZIA GIULIA
-        {"08", {12, NO_LED}}, // LAZIO
-        {"09", {1, 2}},       // LIGURIA
-        {"10", {5, NO_LED}},  // LOMBARDIA
-        {"11", {10, NO_LED}}, // MARCHE
-        {"12", {15, NO_LED}}, // MOLISE
-        {"13", {3, NO_LED}},  // PIEMONTE
-        {"14", {17, 18}},     // PUGLIA
-        {"15", {13, NO_LED}}, // SARDEGNA
-        {"16", {21, NO_LED}}, // SICILIA
-        {"17", {0, NO_LED}},  // TOSCANA
-        {"18", {6, NO_LED}},  // TRENTO
-        {"19", {11, NO_LED}}, // UMBRIA
-        {"20", {4, NO_LED}},  // VALLE D'AOSTA
-        {"21", {8, NO_LED}}   // VENETO
+        {"12", {14, NO_LED}}, // ABRUZZO
+        {"16", {19, NO_LED}}, // BASILICATA
+        {"20", {NO_LED}},     // BOLZANO
+        {"17", {20, NO_LED}}, // CALABRIA
+        {"14", {16, NO_LED}}, // CAMPANIA
+        {"7", {9, NO_LED}},  // EMILIA ROMAGNA
+        {"5", {7, NO_LED}},  // FRIULI VENEZIA GIULIA
+        {"11", {12, NO_LED}}, // LAZIO
+        {"6", {1, 2}},       // LIGURIA
+        {"2", {5, NO_LED}},  // LOMBARDIA
+        {"10", {10, NO_LED}}, // MARCHE
+        {"13", {15, NO_LED}}, // MOLISE
+        {"0", {3, NO_LED}},  // PIEMONTE
+        {"15", {17, 18}},     // PUGLIA
+        {"19", {13, NO_LED}}, // SARDEGNA
+        {"18", {21, NO_LED}}, // SICILIA
+        {"8", {0, NO_LED}},  // TOSCANA
+        {"3", {6, NO_LED}},  // TRENTO
+        {"9", {11, NO_LED}}, // UMBRIA
+        {"1", {4, NO_LED}},  // VALLE D'AOSTA
+        {"4", {8, NO_LED}}   // VENETO
 };
+
 
 // force a value into and interval
 float force(float value, float min, float max)
@@ -250,14 +249,35 @@ void wifiParametersSet()
   ESP.restart();
 }
 
+
+
+
+//---------------------------------SETUP----------------------------------------------
 void setup()
 {
 
 #ifdef DEBUG
   Serial.begin(115200);
 #endif
-  // WS2812b initialization - in realtà sono 2813 mini
+
+  //delay(3000);
+  //Serial.println("-------SETUP-------");  
+
+
+  // WS2812b initialization - actually they are 2813 mini
+  // GRB = Color order depends on the Led model
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
+
+  // Reset LEDs
+  FastLED.clear();
+  FastLED.show();
+
+  // Splashscreen Italia
+  for(int i = 1; i < 10; i++) leds[i] = 0x008c45;                       //Verde: pantone 17-6153 
+  for(int i = 10; i < 15; i++) leds[i] = 0xf4f5f0; leds[0] = 0xf4f5f0;  //Bianco: pantone 11-0601
+  for(int i = 15; i < LED_NUMBER; i++) leds[i] = 0xcd212a;              //Rosso: pantone 18-1662
+  FastLED.show();
+  delay(3000);
 
   // Touch initialization
   touchSetCycles(0xA000, 0xA000);
@@ -281,7 +301,6 @@ void setup()
 
 #ifdef DEBUG
   Serial.println(WiFi.status());
-  //wifiManager.resetSettings();
 #endif
 
   // setup non blocking loop
@@ -298,13 +317,13 @@ void setup()
       wifiManager.process();
 
       // handle led animation
-      EVERY_N_MILLISECONDS(20)
+      EVERY_N_MILLISECONDS(0)
       {
         pacifica_loop();
         FastLED.show();
       }
 
-      // handle WiFi reset Button
+      // check Reset Button
       if (digitalRead(WIFI_RESET_BUTTON) == LOW)
       {
         if (last_pressed == 0)
@@ -313,18 +332,15 @@ void setup()
         }
         else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
         {
-          // delete WiFi credentials and reset esp
-          #ifdef DEBUG
-            Serial.println("WIFI reset pressed, resetting credentials");
-          #endif
+          // if the button is long pressed: delete WiFi credentials and reset esp
           wifiManager.resetSettings();
           ESP.restart();
         }
-      }
+      }  
       else if (digitalRead(WIFI_RESET_BUTTON) == HIGH && last_pressed != 0)
       {
-        // reset last pressed
-        last_pressed = 0;
+        // if the button is short pressed: only reset esp
+        ESP.restart();
       }
 
       // handle WiFi timeout
@@ -342,8 +358,20 @@ void setup()
 
   // now WiFi is connected
   last_connected = millis();
+
+
+  // Blank screen
+  FastLED.clear(); 
+  FastLED.show();
+
+
+  //Serial.println("-------Fine SETUP-------");  
 }
 
+
+
+
+//-----------------------------------LOOP-----------------------------------------------------
 void loop()
 {
   // check if it's time to update
@@ -377,78 +405,115 @@ void loop()
       // get rgb colors
       http.begin(COLORS_REQUEST_URL);
       httpResponseCode = http.GET();
+
       if (httpResponseCode > 0)
       {
-        StaticJsonDocument<256> doc;
+        //StaticJsonDocument<256> doc;
+        DynamicJsonDocument doc(16384);
         // buffer size calculated here: https://arduinojson.org/v6/assistant/
         String json_data = http.getString();
+
         // parse JSON data
         DeserializationError err = deserializeJson(doc, json_data);
-
-        if (!err)
-        {
-          // no error in parsing
-          JsonObject obj = doc.as<JsonObject>();
-          for (JsonPair p : obj)
-          {
-            // iterate through each key and value
-            // load color code
-            String color_code = p.key().c_str();
-            // load color value
-            unsigned long color_hex = p.value().as<unsigned long>();
-            // assing to map
-            color_map[color_code] = color_hex;
-#ifdef DEBUG
-            Serial.print("color code ");
-            Serial.print(color_code);
-            Serial.print(" color hex ");
-            Serial.println(color_hex);
-#endif
-          }
+        if (err) {
+          Serial.print("deserializeJson() failed: ");
+          Serial.println(err.f_str());
+          return;
         }
-      }
-
-      // get territories color
-      http.begin(TERRITORIES_REQUEST_URL);
-      httpResponseCode = http.GET();
-      if (httpResponseCode > 0)
-      {
-        StaticJsonDocument<512> doc;
-        // buffer size calculated here: https://arduinojson.org/v6/assistant/
-        String json_data = http.getString();
-        // parse JSON data
-        DeserializationError err = deserializeJson(doc, json_data);
-
         if (!err)
         {
-          // no error in parsing
-          JsonObject obj = doc.as<JsonObject>();
-          for (JsonPair p : obj)
+           Serial.println("deserializeJson() passed: ");
+
+          unsigned long trentinoSum = 0;
+
+          unsigned long abitantiRegArr[20] = { INHABITANTS_REGIONS };
+          
+          unsigned long numberNorm;
+          unsigned long numberNormArr[20];
+
+          for (JsonObject item : doc.as<JsonArray>()) 
           {
-            // iterate through each key and value
-            // load color code
-            String color_code = p.value().as<String>();
-            // load region code
-            String region_code = p.key().c_str();
-            // load actual color
-            unsigned long color = color_map.find(color_code)->second;
+            String region_code = item["codice_regione"];
+            unsigned long number = item["nuovi_positivi"];
+
+            // sum P.A. Bolzano and P.A. Trento
+            if(region_code == "21") {
+              trentinoSum += number;
+              continue;
+            }
+            if(region_code == "22") {
+              number += trentinoSum;
+              region_code = 4;
+            }
+
+            // Normalizzazione 100k abitanti (numero casi/popolazione)*100000
+            unsigned long abitantiReg = abitantiRegArr[region_code.toInt()-1];
+            numberNorm = (number * 100000) / abitantiReg;
+
+            //Array numeri normalizzati
+            numberNormArr[region_code.toInt()-1] = numberNorm;
+
+#ifdef DEBUG           
+            Serial.print(" region code ");
+            Serial.print(region_code);
+            Serial.print(" number ");
+            Serial.println(number);
+            Serial.print(" abitanti ");
+            Serial.print(abitantiReg);
+            Serial.print(" number norm ");
+            Serial.println(numberNorm);
+#endif 
+          }
+
+          // selezione min max numeri normalizzati
+          unsigned long numberNorMax = numberNormArr[0];
+          unsigned long numberNorMin = numberNormArr[0];
+          for(int i = 0; i < sizeof(numberNormArr) / sizeof(numberNormArr)[0]; i++) {
+              if (numberNormArr[i] > numberNorMax) {
+                numberNorMax = numberNormArr[i];
+              }
+              if (numberNormArr[i] < numberNorMin) {
+                numberNorMin = numberNormArr[i];
+              }
+          }
+
+          // thresholds for color selection
+          unsigned long mediana = numberNorMax - ((numberNorMax - numberNorMin) / 2);
+          unsigned long medianaMax = numberNorMax - ((numberNorMax - mediana) / 2);
+          unsigned long medianaMin = mediana - ((mediana - numberNorMin) / 2);
+
+#ifdef DEBUG 
+          Serial.print("max: "); Serial.println(numberNorMax);
+          Serial.print("min: "); Serial.println(numberNorMin);
+          Serial.print("mediana: "); Serial.println(mediana);
+          Serial.print("medianaMax: "); Serial.println(medianaMax);
+          Serial.print("medianaMin: "); Serial.println(medianaMin);
+#endif 
+
+          // color selection
+          for(int i = 0; i < 20; i++) 
+          {
+            if (numberNormArr[i] > medianaMax) {
+              //Serial.print(numberNormArr[i]); Serial.println(" medmax");  
+              numberNormArr[i] = 0xff0000; //rosso
+            }
+            else if ((numberNormArr[i] <= medianaMax) && (numberNormArr[i] > mediana)) {
+              //Serial.print(numberNormArr[i]); Serial.println(" max-media"); 
+              numberNormArr[i] = 0xff5203; //arancio
+            }
+            else if ((numberNormArr[i] <= mediana) && (numberNormArr[i] > medianaMin)) {
+              //Serial.print(numberNormArr[i]); Serial.println(" media-min"); 
+              numberNormArr[i] = 0xffd103; //giallo
+            }            
+            else if (numberNormArr[i] <= medianaMin) {
+              //Serial.print(numberNormArr[i]); Serial.println(" medmin"); 
+              numberNormArr[i] = 0xffffff; //bianco
+            }            
+
             // save color into map
-            region_map[region_code] = color;
-
-#ifdef DEBUG
-            Serial.print("key ");
-            Serial.print(p.key().c_str());
-            Serial.print(" value ");
-            Serial.print(p.value().as<byte>());
-            Serial.print(" color code ");
-            Serial.print(color_code);
-            Serial.print(" color hex ");
-            Serial.print(color, HEX);
-            Serial.println();
-#endif
+            region_map[String(i)] = numberNormArr[i];
           }
         }
-
         // free the memory
         doc.clear();
       }
@@ -468,16 +533,16 @@ void loop()
     scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
     byte brightness = (byte)brightness_filter.update(scaled_light);
 
-    /*
-#ifdef DEBUG
+
+/* #ifdef DEBUG
     Serial.print("ambient light ");
     Serial.print(light);
     Serial.print(" scaled level ");
     Serial.print(scaled_light);
     Serial.print(" led brightness ");
     Serial.println(brightness);
-#endif
-*/
+#endif */
+
 
     for (auto region : region_map)
     {
@@ -517,7 +582,8 @@ void loop()
     FastLED.show();
   }
 
-  // check touch buttons
+  // TEMPORARILY DISABLED
+/*   // check touch buttons
   touch_minus.update();
   touch_reset.update();
   touch_plus.update();
@@ -573,9 +639,9 @@ void loop()
     Serial.println(brightness_offset);
 #endif
 
-  }
+  } */
 
-  // check WiFi reset Button
+  // check Reset Button
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
   {
     if (last_pressed == 0)
@@ -584,15 +650,15 @@ void loop()
     }
     else if (millis() - last_pressed > WIFI_RESET_TIMEOUT)
     {
-      // delete WiFi credentials and reset esp
+      // if the button is long pressed: delete WiFi credentials and reset esp
       wifiManager.resetSettings();
       ESP.restart();
     }
-  }
+  }  
   else if (digitalRead(WIFI_RESET_BUTTON) == HIGH && last_pressed != 0)
   {
-    // reset last pressed
-    last_pressed = 0;
+    // if the button is short pressed: only reset esp
+    ESP.restart();
   }
 
   delay(10);
