@@ -2,93 +2,83 @@
 #include <WiFi.h>        // built in library
 #include <WebServer.h>   // built in library
 #include <HTTPClient.h>  // built in library
-#include <map>           // built in library
+#include <numeric>       // built in library
 #include <array>         // built in library
 #include <WiFiManager.h> // https://github.com/tzapu/WiFiManager
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 #include <FastLED.h>     // https://github.com/FastLED/FastLED
-#include <fw_defines.h>
-#include <pacifica.h>
+#include "fw_defines.h"
+#include "pacifica.h"
 
 #define DEBUG
 
-
-
 WiFiManager wifiManager;
 WiFiClient client;
-CRGB leds[LED_NUMBER];
-CRGB offset = 0xFFFF00; // color that gets blended with original one (color correction)
+const CRGB OFFSET = 0xFFFF00; // color that gets blended with original one (color correction)
 
-float brightness_offset;
-unsigned long last_update;
-unsigned long last_connected;
-unsigned long last_pressed;
-unsigned long last_refresh;
+float brightness_offset{-40};
+unsigned long last_connected{0};
+unsigned long last_pressed{0};
 
-boolean wifi_connected;
-boolean showing;
+bool showing{true};
 
 // LPF class
 class LPF
 {
 private:
-  float alpha;
-  float value;
+  const float alpha;
+  float value{0};
 
 public:
-  void LFP()
+  LPF(float _alpha):
+    alpha(_alpha)
   {
-    alpha = 0;
-    value = 0;
-  };
-  void init(float a, float _value = 0)
+  }
+
+  void reset(float _value = 0)
   {
-    alpha = a;
     value = _value;
-  };
+  }
+
   float update(float sample)
   {
     value += (sample - value) * alpha;
     return value;
-  };
+  }
 };
 
 // Circular Buffer class
+template <size_t SIZE>
 class CircularBuffer
 {
-private:
-  byte position, size;
-  float *memory;
+ private:
+  byte position{0};
+  float memory[SIZE]{};
+  float sum {0};
 
-public:
-  void init(byte _size)
+ public:
+  void reset(float value = 0)
   {
-    size = _size;
-    // init array
-    memory = new float[size];
-    // set every value to zero
-    for (byte i = 0; i < size; i++)
-    {
-      memory[i] = 0;
-    }
+    memset(memory, value, SIZE);
     position = 0;
+    // initialize sum accordantly
+    sum = value * SIZE;
   }
 
   float update(float value)
   {
-    // add value to array
-    memory[position] = value;
-    // move current position
-    position = (position + 1) % size;
+    //update sum by removing old value, but adding the new one
+    sum -= memory[position] + value;
 
-    // compute and return memory sum
-    float sum;
-    sum = 0;
-    for (byte i = 0; i < size; i++)
-    {
-      sum += memory[i];
+    // add value to array and increment position
+    memory[position++] = value;
+
+    // if overflow, restart from 0
+    if (position >= SIZE){
+      position = 0;
     }
 
+    // return memory sum
     return sum;
   }
 };
@@ -97,37 +87,26 @@ public:
 class Button
 {
 
-private:
-  byte input_pin;
-  byte threshold;
-  byte outlier_threshold;
-  float old_reading;
-  bool pressed, old_pressed, rising;
+ private:
+  const byte input_pin;
+  const byte threshold;
+  const byte outlier_threshold;
 
-  LPF low_pass;
-  CircularBuffer buffer;
+  float old_reading = read();
+  bool pressed{false}, old_pressed{false}, rising{false};
+
+  LPF low_pass{0.001}; // filter average
+  CircularBuffer<10> buffer{}; // circular buffer - remember to change threshold accordingly
   
   float read()
   {
     return touchRead(input_pin);
   }
 
-public:
-  Button(byte _input_pin, byte _threshold = 5, byte _outlier_threshold = 100)
+ public:
+  Button(byte _input_pin, byte _threshold = 5, byte _outlier_threshold = 100):
+    input_pin(_input_pin), threshold(_threshold), outlier_threshold(_outlier_threshold) // initialization list
   {
-    input_pin = _input_pin;
-    threshold = _threshold;
-    outlier_threshold = _outlier_threshold;
-  }
-
-  void init()
-  {
-    old_reading = read();
-    pressed = false;
-    old_pressed = false;
-
-    low_pass.init(0.001, old_reading); // filter average
-    buffer.init(10);                   // circular buffer - remember to change threshold accordingly
   }
 
   void update()
@@ -161,45 +140,23 @@ public:
   }
 };
 
-LPF brightness_filter;
+LPF brightness_filter{0.05};
+
 Button touch_minus(TOUCH_MINUS_PIN, 70);
 Button touch_reset(TOUCH_RESET_PIN, 70);
 Button touch_plus (TOUCH_PLUS_PIN , 70);
 
+const CRGB VERDE {0x008c45};
+const CRGB BIANCO {0xf4f5f0};
+const CRGB ROSSO {0xcd212a};
 
-// region mapping
-std::map<String, unsigned long> 
-    region_map;
-
-
-// territory mapping
-// 1 must be subtracted from the numbering of the regions for the array
-// source https://github.com/pcm-dpc/COVID-19/blob/master/dati-regioni/dpc-covid19-ita-regioni-latest.csv
-std::map<String, std::array<byte, MAX_LEDS_PER_REGION>>
-    led_map = {
-        {"12", {14, NO_LED}}, // ABRUZZO
-        {"16", {19, NO_LED}}, // BASILICATA
-        {"20", {NO_LED}},     // BOLZANO
-        {"17", {20, NO_LED}}, // CALABRIA
-        {"14", {16, NO_LED}}, // CAMPANIA
-        {"7", {9, NO_LED}},  // EMILIA ROMAGNA
-        {"5", {7, NO_LED}},  // FRIULI VENEZIA GIULIA
-        {"11", {12, NO_LED}}, // LAZIO
-        {"6", {1, 2}},       // LIGURIA
-        {"2", {5, NO_LED}},  // LOMBARDIA
-        {"10", {10, NO_LED}}, // MARCHE
-        {"13", {15, NO_LED}}, // MOLISE
-        {"0", {3, NO_LED}},  // PIEMONTE
-        {"15", {17, 18}},     // PUGLIA
-        {"19", {13, NO_LED}}, // SARDEGNA
-        {"18", {21, NO_LED}}, // SICILIA
-        {"8", {0, NO_LED}},  // TOSCANA
-        {"3", {6, NO_LED}},  // TRENTO
-        {"9", {11, NO_LED}}, // UMBRIA
-        {"1", {4, NO_LED}},  // VALLE D'AOSTA
-        {"4", {8, NO_LED}}   // VENETO
-};
-
+// x: 0->1
+// return: 0->1
+float easing(float x)
+{
+  // quadratic easing
+  return 1 - (1 - x) * (1 - x);
+}
 
 // force a value into and interval
 float force(float value, float min, float max)
@@ -210,14 +167,6 @@ float force(float value, float min, float max)
     value = min;
 
   return value;
-}
-
-// x: 0->1
-// return: 0->1
-float easing(float x)
-{
-  // quadratic easing
-  return 1 - (1 - x) * (1 - x);
 }
 
 // rescale a value to new interval
@@ -249,8 +198,75 @@ void wifiParametersSet()
   ESP.restart();
 }
 
+CRGB leds[LED_NUMBER];
 
+class Regioni{
+  byte brightness = 255;
+  CRGB base_color = 0;
+  CRGB* const led[2];
+  public:
+  Regioni(const CRGB _color, CRGB * const _led0, CRGB * const _led1):
+    led{_led0, _led1}
+  {
+    setColor(_color);
+  }
 
+  void setColor(const CRGB color){
+    base_color = color;
+    updateColor();
+  }
+
+  void setBrightness(const byte _brightness){
+    brightness = _brightness;
+    updateColor();
+  }
+
+  void updateColor(){
+    CRGB color = base_color;
+    // color correction
+    if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
+    {
+      // calculate percent
+      float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
+      // ease percent
+      // we need to invert it (1-easing) in order to get 1 for low brightness values
+      // and 0 for high brightness values, so that more color gets blended at lower
+      // brightness to compensate the unbalancing of the leds
+      float eased = (1 - easing(percent)) * MAX_BLEND;
+      color = blend(base_color, OFFSET, eased);
+    }
+    for (auto &l : led)
+      if (l) *l = color;
+    
+  }
+};
+
+// territory mapping
+// 1 must be subtracted from the numbering of the regions for the array
+// source https://github.com/pcm-dpc/COVID-19/blob/master/dati-regioni/dpc-covid19-ita-regioni-latest.csv
+Regioni region_map[21] {
+  {VERDE,  &leds[3],  nullptr},  // 0, PIEMONTE
+  {VERDE,  &leds[4],  nullptr},  // 1, VALLE D'AOSTA
+  {VERDE,  &leds[5],  nullptr},  // 2, LOMBARDIA
+  {VERDE,  &leds[6],  nullptr},  // 3, TRENTO
+  {VERDE,  &leds[8],  nullptr},  // 4, VENETO
+  {VERDE,  &leds[7],  nullptr},  // 5, FRIULI VENEZIA GIULIA
+  {VERDE,  &leds[1],  &leds[2]}, // 6, LIGURIA
+  {VERDE,  &leds[9],  nullptr},  // 7, EMILIA ROMAGNA
+  {BIANCO, &leds[0],  nullptr},  // 8, TOSCANA
+  {BIANCO, &leds[11], nullptr},  // 9, UMBRIA
+  {BIANCO, &leds[10], nullptr},  // 10, MARCHE
+  {BIANCO, &leds[12], nullptr},  // 11, LAZIO
+  {BIANCO, &leds[14], nullptr},  // 12, ABRUZZO
+  {BIANCO, &leds[15], nullptr},  // 13, MOLISE
+  {ROSSO,  &leds[16], nullptr},  // 14, CAMPANIA
+  {ROSSO,  &leds[17], &leds[18]},// 15, PUGLIA
+  {ROSSO,  &leds[19], nullptr},  // 16, BASILICATA
+  {ROSSO,  &leds[20], nullptr},  // 17, CALABRIA
+  {ROSSO,  &leds[21], nullptr},  // 18, SICILIA
+  {ROSSO,  &leds[13], nullptr},  // 19, SARDEGNA
+  {VERDE,  nullptr,   nullptr},  // 20, BOLZANO
+};
 
 //---------------------------------SETUP----------------------------------------------
 void setup()
@@ -281,23 +297,10 @@ void setup()
 
   // Touch initialization
   touchSetCycles(0xA000, 0xA000);
-  touch_minus.init();
-  touch_reset.init();
-  touch_plus.init();
 
   // PINs initialization
   pinMode(WIFI_RESET_BUTTON, INPUT_PULLUP);
   pinMode(LIGHT_SENSOR_PIN, INPUT);
-
-  // variables initialization
-  last_update = 0;
-  last_pressed = 0;
-  last_refresh = 0;
-  brightness_offset = -40;
-  showing = true;
-
-  // init brightness filter
-  brightness_filter.init(0.05);
 
 #ifdef DEBUG
   Serial.println(WiFi.status());
@@ -368,14 +371,12 @@ void setup()
   //Serial.println("-------Fine SETUP-------");  
 }
 
-
-
-
 //-----------------------------------LOOP-----------------------------------------------------
 void loop()
 {
   // check if it's time to update
-  if (last_update == 0 || millis() - last_update > UPDATE_INTERVAL)
+  static unsigned long last_update_wifi = 0;
+  if (last_update_wifi == 0 || millis() - last_update_wifi > UPDATE_INTERVAL)
   {
     // check if client is still connected
     // if not, if enough time has passed, reboot the esp (will be set in wifimanager mode again)
@@ -396,7 +397,7 @@ void loop()
 #ifdef DEBUG
       Serial.println("Updating");
 #endif
-      last_update = millis();
+      last_update_wifi = millis();
       last_connected = millis();
 
       HTTPClient http;
@@ -422,7 +423,7 @@ void loop()
         }
         if (!err)
         {
-           Serial.println("deserializeJson() passed: ");
+          Serial.println("deserializeJson() passed: ");
 
           unsigned long trentinoSum = 0;
 
@@ -433,25 +434,31 @@ void loop()
 
           for (JsonObject item : doc.as<JsonArray>()) 
           {
-            String region_code = item["codice_regione"];
+            int region_code = item["codice_regione"];
+            region_code--;
             unsigned long number = item["nuovi_positivi"];
 
             // sum P.A. Bolzano and P.A. Trento
-            if(region_code == "21") {
+            if(region_code == 20) {
               trentinoSum += number;
               continue;
             }
-            if(region_code == "22") {
+            if(region_code == 21) {
               number += trentinoSum;
-              region_code = 4;
+              region_code = 3;
+            }
+            if(region_code > 21) {
+              Serial.print("Too many region: ");
+              Serial.println(region_code);
+              continue;//ignore to avoid overflow
             }
 
             // Normalizzazione 100k abitanti (numero casi/popolazione)*100000
-            unsigned long abitantiReg = abitantiRegArr[region_code.toInt()-1];
+            unsigned long abitantiReg = abitantiRegArr[region_code];
             numberNorm = (number * 100000) / abitantiReg;
 
             //Array numeri normalizzati
-            numberNormArr[region_code.toInt()-1] = numberNorm;
+            numberNormArr[region_code] = numberNorm;
 
 #ifdef DEBUG           
             Serial.print(" region code ");
@@ -495,23 +502,20 @@ void loop()
           {
             if (numberNormArr[i] > medianaMax) {
               //Serial.print(numberNormArr[i]); Serial.println(" medmax");  
-              numberNormArr[i] = 0xff0000; //rosso
+              region_map[i].setColor(0xff0000); //rosso
             }
             else if ((numberNormArr[i] <= medianaMax) && (numberNormArr[i] > mediana)) {
               //Serial.print(numberNormArr[i]); Serial.println(" max-media"); 
-              numberNormArr[i] = 0xff5203; //arancio
+              region_map[i].setColor(0xff5203); //arancio
             }
             else if ((numberNormArr[i] <= mediana) && (numberNormArr[i] > medianaMin)) {
               //Serial.print(numberNormArr[i]); Serial.println(" media-min"); 
-              numberNormArr[i] = 0xffd103; //giallo
+              region_map[i].setColor(0xffd103); //giallo
             }            
             else if (numberNormArr[i] <= medianaMin) {
               //Serial.print(numberNormArr[i]); Serial.println(" medmin"); 
-              numberNormArr[i] = 0xffffff; //bianco
-            }            
-
-            // save color into map
-            region_map[String(i)] = numberNormArr[i];
+              region_map[i].setColor(0xffffff); //bianco
+            }
           }
         }
         // free the memory
@@ -521,8 +525,9 @@ void loop()
     }
   }
 
+  static unsigned long last_refresh{0};
   // check if it's time to refresh the leds
-  if (last_refresh == 0 || ((millis() - last_refresh > REFRESH_INTERVAL) && showing))
+  if (showing && (millis() - last_refresh > REFRESH_INTERVAL))
   {
     // update last refreshed
     last_refresh = millis();
@@ -544,40 +549,12 @@ void loop()
 #endif */
 
 
-    for (auto region : region_map)
+    //for every region
+    for(auto &region : region_map) 
     {
-      // load the list of addresses from the map
-      std::array<byte, MAX_LEDS_PER_REGION> addresses = led_map.find(region.first)->second;
-      for (const auto &address : addresses)
-      {
-        // color the corrisponding led
-        if (address != NO_LED)
-        {
-          // the address must be different than the array filler
-
-          // color correction
-          CRGB blended;
-
-          if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
-          {
-            // calculate percent
-            float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
-            // ease percent
-            // we need to invert it (1-easing) in order to get 1 for low brightness values
-            // and 0 for high brightness values, so that more color gets blended at lower
-            // brightness to compensate the unbalancing of the leds
-            float eased = (1 - easing(percent)) * MAX_BLEND;
-            blended = blend(region.second, offset, eased);
-          }
-          else
-          {
-            // skip color correction if brightness if over the cutoff value
-            blended = region.second;
-          }
-          leds[address] = blended;
-        }
-      }
+      region.setBrightness(brightness);
     }
+
     FastLED.setBrightness(brightness);
     FastLED.show();
   }
