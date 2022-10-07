@@ -1,6 +1,14 @@
 #ifndef FW_DEFINES_H
 #define FW_DEFINES_H
 
+//Colori ufficiali Bandiera Italiana
+const CRGB VERDE {0x008c45};    //Verde: pantone 17-6153
+const CRGB BIANCO {0xf4f5f0};   //Bianco: pantone 11-0601
+const CRGB ROSSO {0xcd212a};    //Rosso: pantone 18-1662
+
+// Color for MAP init
+const CRGB NERO {0x0};
+
 // led related
 #define LED_NUMBER 22              // change this with the actual number of leds
 #define MAX_LEDS_PER_REGION 2      // change this with the maximum number of led in each region
