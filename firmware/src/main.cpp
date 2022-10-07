@@ -8,151 +8,28 @@
 #include <ArduinoJson.h> // https://github.com/bblanchon/ArduinoJson
 #include <FastLED.h>     // https://github.com/FastLED/FastLED
 #include "fw_defines.h"
+#include "CircularBuffer.h"
+#include "Regioni.h"
 #include "pacifica.h"
+#include "LPF.h"
+#include "Button.h"
 
 #define DEBUG
 
 WiFiManager wifiManager;
 WiFiClient client;
-const CRGB OFFSET = 0xFFFF00; // color that gets blended with original one (color correction)
 
-float brightness_offset{-40};
+uint8_t brightness_scale{0};
 unsigned long last_connected{0};
 unsigned long last_pressed{0};
 
 bool showing{true};
 
-// LPF class
-class LPF
-{
-private:
-  const float alpha;
-  float value{0};
-
-public:
-  LPF(float _alpha):
-    alpha(_alpha)
-  {
-  }
-
-  void reset(float _value = 0)
-  {
-    value = _value;
-  }
-
-  float update(float sample)
-  {
-    value += (sample - value) * alpha;
-    return value;
-  }
-};
-
-// Circular Buffer class
-template <size_t SIZE>
-class CircularBuffer
-{
- private:
-  byte position{0};
-  float memory[SIZE]{};
-  float sum {0};
-
- public:
-  void reset(float value = 0)
-  {
-    memset(memory, value, SIZE);
-    position = 0;
-    // initialize sum accordantly
-    sum = value * SIZE;
-  }
-
-  float update(float value)
-  {
-    //update sum by removing old value, but adding the new one
-    sum -= memory[position] + value;
-
-    // add value to array and increment position
-    memory[position++] = value;
-
-    // if overflow, restart from 0
-    if (position >= SIZE){
-      position = 0;
-    }
-
-    // return memory sum
-    return sum;
-  }
-};
-
-// Button class
-class Button
-{
-
- private:
-  const byte input_pin;
-  const byte threshold;
-  const byte outlier_threshold;
-
-  float old_reading = read();
-  bool pressed{false}, old_pressed{false}, rising{false};
-
-  LPF low_pass{0.001}; // filter average
-  CircularBuffer<10> buffer{}; // circular buffer - remember to change threshold accordingly
-  
-  float read()
-  {
-    return touchRead(input_pin);
-  }
-
- public:
-  Button(byte _input_pin, byte _threshold = 5, byte _outlier_threshold = 100):
-    input_pin(_input_pin), threshold(_threshold), outlier_threshold(_outlier_threshold) // initialization list
-  {
-  }
-
-  void update()
-  {
-    float reading = read();
-    if (abs(reading - old_reading) < outlier_threshold)
-    {
-      //ignore corrupt samples
-      float lp_filtered = low_pass.update(reading);              // first low pass filtering
-      float box_filtered = buffer.update(lp_filtered - reading); // compare to average
-      pressed = box_filtered > threshold;                        // thresholding
-    }
-    // update value
-    old_reading = reading;
-  }
-
-  bool is_pressed()
-  {
-    // update rising state
-    rising = pressed && !old_pressed;
-    old_pressed = pressed;
-    // return current pressure state
-
-    return pressed;
-  }
-
-  bool first_press()
-  {
-    //is the button first press?
-    return rising;
-  }
-};
-
 LPF brightness_filter{0.05};
 
-Button touch_minus(TOUCH_MINUS_PIN, 70);
-Button touch_reset(TOUCH_RESET_PIN, 70);
-Button touch_plus (TOUCH_PLUS_PIN , 70);
-
-// x: 0->1
-// return: 0->1
-float easing(float x)
-{
-  // quadratic easing
-  return 1 - (1 - x) * (1 - x);
-}
+Button touch_minus(TOUCH_MINUS_PIN);
+Button touch_reset(TOUCH_RESET_PIN);
+Button touch_plus (TOUCH_PLUS_PIN);
 
 // force a value into and interval
 float force(float value, float min, float max)
@@ -196,84 +73,61 @@ void wifiParametersSet()
 
 CRGB leds[LED_NUMBER];
 
-class Regioni{
-  byte brightness = 255;
-  CRGB base_color = 0;
-  CRGB* const led[2];
-  public:
-  Regioni(const CRGB _color, CRGB * const _led0, CRGB * const _led1):
-    led{_led0, _led1}
-  {
-    setColor(_color);
-  }
-
-  void setColor(const CRGB color){
-    base_color = color;
-    updateColor();
-  }
-
-  void setBrightness(const byte _brightness){
-    brightness = _brightness;
-    updateColor();
-  }
-
-  void updateColor(){
-    CRGB color = base_color;
-    // color correction
-    if (brightness <= BRIGHTNESS_BLEND_CUTOFF)
-    {
-      // calculate percent
-      float percent = (float)brightness / BRIGHTNESS_BLEND_CUTOFF;
-      // ease percent
-      // we need to invert it (1-easing) in order to get 1 for low brightness values
-      // and 0 for high brightness values, so that more color gets blended at lower
-      // brightness to compensate the unbalancing of the leds
-      float eased = (1 - easing(percent)) * MAX_BLEND;
-      color = blend(base_color, OFFSET, eased);
-    }
-    for (auto &l : led)
-      if (l) *l = color;
-    
-  }
-};
-
 // territory mapping
 // 1 must be subtracted from the numbering of the regions for the array
 // source https://github.com/pcm-dpc/COVID-19/blob/master/dati-regioni/dpc-covid19-ita-regioni-latest.csv
-Regioni region_map[21] {
-  {NERO,  &leds[3],  nullptr},  // 0, PIEMONTE
-  {NERO,  &leds[4],  nullptr},  // 1, VALLE D'AOSTA
-  {NERO,  &leds[5],  nullptr},  // 2, LOMBARDIA
-  {NERO,  &leds[6],  nullptr},  // 3, TRENTO
-  {NERO,  &leds[8],  nullptr},  // 4, VENETO
-  {NERO,  &leds[7],  nullptr},  // 5, FRIULI VENEZIA GIULIA
-  {NERO,  &leds[1],  &leds[2]}, // 6, LIGURIA
-  {NERO,  &leds[9],  nullptr},  // 7, EMILIA ROMAGNA
+
+constexpr uint8_t NUMERO_REGIONI = 21;
+Regioni region_map[NUMERO_REGIONI] {
+  {NERO, &leds[3],  nullptr},  // 0, PIEMONTE
+  {NERO, &leds[4],  nullptr},  // 1, VALLE D'AOSTA
+  {NERO, &leds[5],  nullptr},  // 2, LOMBARDIA
+  {NERO, &leds[6],  nullptr},  // 3, TRENTO
+  {NERO, &leds[8],  nullptr},  // 4, VENETO
+  {NERO, &leds[7],  nullptr},  // 5, FRIULI VENEZIA GIULIA
+  {NERO, &leds[1],  &leds[2]}, // 6, LIGURIA
+  {NERO, &leds[9],  nullptr},  // 7, EMILIA ROMAGNA
   {NERO, &leds[0],  nullptr},  // 8, TOSCANA
   {NERO, &leds[11], nullptr},  // 9, UMBRIA
   {NERO, &leds[10], nullptr},  // 10, MARCHE
   {NERO, &leds[12], nullptr},  // 11, LAZIO
   {NERO, &leds[14], nullptr},  // 12, ABRUZZO
   {NERO, &leds[15], nullptr},  // 13, MOLISE
-  {NERO,  &leds[16], nullptr},  // 14, CAMPANIA
-  {NERO,  &leds[17], &leds[18]},// 15, PUGLIA
-  {NERO,  &leds[19], nullptr},  // 16, BASILICATA
-  {NERO,  &leds[20], nullptr},  // 17, CALABRIA
-  {NERO,  &leds[21], nullptr},  // 18, SICILIA
-  {NERO,  &leds[13], nullptr},  // 19, SARDEGNA
-  {NERO,  nullptr,   nullptr},  // 20, BOLZANO
+  {NERO, &leds[16], nullptr},  // 14, CAMPANIA
+  {NERO, &leds[17], &leds[18]},// 15, PUGLIA
+  {NERO, &leds[19], nullptr},  // 16, BASILICATA
+  {NERO, &leds[20], nullptr},  // 17, CALABRIA
+  {NERO, &leds[21], nullptr},  // 18, SICILIA
+  {NERO, &leds[13], nullptr},  // 19, SARDEGNA
+  {NERO, nullptr,   nullptr},  // 20, BOLZANO
 };
+
+typedef CRGB SplashScreen[NUMERO_REGIONI];
+/*struct SplashScreen{
+  CRGB colors[NUMERO_REGIONI];
+};*/
+
+constexpr SplashScreen splashScreenItalia{
+    VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE,
+    BIANCO, BIANCO, BIANCO, BIANCO, BIANCO,
+    ROSSO, ROSSO, ROSSO, ROSSO, ROSSO, ROSSO, ROSSO,
+};
+
+void printSplashScreen(const SplashScreen &screen){
+  for (int i = 0; i < NUMERO_REGIONI; i++){
+    region_map[i].setColor(screen[i]);
+  }
+}
 
 //---------------------------------SETUP----------------------------------------------
 void setup()
 {
 
 #ifdef DEBUG
-  Serial.begin(115200);
+  Serial.begin(921600);
 #endif
 
-  //delay(3000);
-  //Serial.println("-------SETUP-------");  
+  Serial.println("-------SETUP-------");  
 
 
   // WS2812b initialization - actually they are 2813 mini
@@ -284,15 +138,17 @@ void setup()
   FastLED.clear();
   FastLED.show();
 
-  // Splashscreen Italia                                            
-  for(int i = 1; i < 10; i++) leds[i] = VERDE;
-  for(int i = 10; i < 15; i++) leds[i] = BIANCO; leds[0] = BIANCO;
+  printSplashScreen(splashScreenItalia);
+  // Splashscreen Italia                  
+  for(int i = 0; i < 10; i++) leds[i] = VERDE;
+  for(int i = 10; i < 15; i++) leds[i] = BIANCO;
   for(int i = 15; i < LED_NUMBER; i++) leds[i] = ROSSO;
   FastLED.show();
+
   delay(3000);
 
   // Touch initialization
-  touchSetCycles(0xA000, 0xA000);
+  touchSetCycles(0x1000, 0xA000);
 
   // PINs initialization
   pinMode(WIFI_RESET_BUTTON, INPUT_PULLUP);
@@ -368,6 +224,7 @@ void setup()
 }
 
 //-----------------------------------LOOP-----------------------------------------------------
+
 void loop()
 {
   // check if it's time to update
@@ -529,55 +386,56 @@ void loop()
     last_refresh = millis();
     // read light level from sensor
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
+
     // calculate the actual brightness compared to the sensor output
-    float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_offset;
-    scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
-    byte brightness = (byte)brightness_filter.update(scaled_light);
+    //float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_offset;
+    //scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
+    //byte brightness = (byte)brightness_filter.update(scaled_light);
 
 
-/* #ifdef DEBUG
+#ifdef DEBUG
     Serial.print("ambient light ");
     Serial.print(light);
-    Serial.print(" scaled level ");
-    Serial.print(scaled_light);
+//    Serial.print(" scaled level ");
+//    Serial.print(scaled_light);
     Serial.print(" led brightness ");
-    Serial.println(brightness);
-#endif */
+    Serial.println(brightness_scale);
+#endif
 
 
     //for every region
     for(auto &region : region_map) 
     {
-      region.setBrightness(brightness);
+      region.setBrightness(brightness_scale);
     }
 
-    FastLED.setBrightness(brightness);
+    FastLED.setBrightness(brightness_scale);
     FastLED.show();
   }
 
-  // TEMPORARILY DISABLED
-/*   // check touch buttons
   touch_minus.update();
-  touch_reset.update();
-  touch_plus.update();
-
-  if (touch_minus.is_pressed() && touch_minus.first_press())
+  if (touch_minus.is_pressed())
   {
 #ifdef DEBUG
-    Serial.println("touch_minus is pressed");
+    static int count = 0;
+    Serial.println(count++);
+    Serial.println(" touch_minus is pressed");
 #endif
-    if (showing)
-    {
-      brightness_offset -= BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
+    
+    if (brightness_scale >= BRIGHTNESS_INCREMENT){
+      brightness_scale -= BRIGHTNESS_INCREMENT;
+    }else{
+      brightness_scale = 0;
     }
 
 #ifdef DEBUG
-    Serial.println(brightness_offset);
+    Serial.println(brightness_scale);
 #endif
     
   }
 
+/*
+  touch_reset.update();
   if (touch_reset.is_pressed() && touch_reset.first_press())
   {
 #ifdef DEBUG
@@ -596,23 +454,26 @@ void loop()
     Serial.print(showing);
     Serial.println();
   }
+*/
 
-  if (touch_plus.is_pressed() && touch_plus.first_press())
+  touch_plus.update();
+  if (touch_plus.is_pressed())
   {
 #ifdef DEBUG
+    static int count = 0;
+    Serial.println(count++);
     Serial.println("touch_plus is pressed");
 #endif
 
-    if (showing)
-    {
-      brightness_offset += BRIGHTNESS_INCREMENT;
-      brightness_offset = force(brightness_offset, -255, 255);
+    if (255 - brightness_scale > BRIGHTNESS_INCREMENT){
+      brightness_scale += BRIGHTNESS_INCREMENT;
+    }else{
+      brightness_scale = 255u;
     }
 #ifdef DEBUG
-    Serial.println(brightness_offset);
+    Serial.println(brightness_scale);
 #endif
-
-  } */
+  }
 
   // check Reset Button
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
