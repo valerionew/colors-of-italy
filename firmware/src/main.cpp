@@ -146,10 +146,6 @@ Button touch_minus(TOUCH_MINUS_PIN, 70);
 Button touch_reset(TOUCH_RESET_PIN, 70);
 Button touch_plus (TOUCH_PLUS_PIN , 70);
 
-const CRGB VERDE {0x008c45};
-const CRGB BIANCO {0xf4f5f0};
-const CRGB ROSSO {0xcd212a};
-
 // x: 0->1
 // return: 0->1
 float easing(float x)
@@ -245,27 +241,27 @@ class Regioni{
 // 1 must be subtracted from the numbering of the regions for the array
 // source https://github.com/pcm-dpc/COVID-19/blob/master/dati-regioni/dpc-covid19-ita-regioni-latest.csv
 Regioni region_map[21] {
-  {VERDE,  &leds[3],  nullptr},  // 0, PIEMONTE
-  {VERDE,  &leds[4],  nullptr},  // 1, VALLE D'AOSTA
-  {VERDE,  &leds[5],  nullptr},  // 2, LOMBARDIA
-  {VERDE,  &leds[6],  nullptr},  // 3, TRENTO
-  {VERDE,  &leds[8],  nullptr},  // 4, VENETO
-  {VERDE,  &leds[7],  nullptr},  // 5, FRIULI VENEZIA GIULIA
-  {VERDE,  &leds[1],  &leds[2]}, // 6, LIGURIA
-  {VERDE,  &leds[9],  nullptr},  // 7, EMILIA ROMAGNA
-  {BIANCO, &leds[0],  nullptr},  // 8, TOSCANA
-  {BIANCO, &leds[11], nullptr},  // 9, UMBRIA
-  {BIANCO, &leds[10], nullptr},  // 10, MARCHE
-  {BIANCO, &leds[12], nullptr},  // 11, LAZIO
-  {BIANCO, &leds[14], nullptr},  // 12, ABRUZZO
-  {BIANCO, &leds[15], nullptr},  // 13, MOLISE
-  {ROSSO,  &leds[16], nullptr},  // 14, CAMPANIA
-  {ROSSO,  &leds[17], &leds[18]},// 15, PUGLIA
-  {ROSSO,  &leds[19], nullptr},  // 16, BASILICATA
-  {ROSSO,  &leds[20], nullptr},  // 17, CALABRIA
-  {ROSSO,  &leds[21], nullptr},  // 18, SICILIA
-  {ROSSO,  &leds[13], nullptr},  // 19, SARDEGNA
-  {VERDE,  nullptr,   nullptr},  // 20, BOLZANO
+  {NERO,  &leds[3],  nullptr},  // 0, PIEMONTE
+  {NERO,  &leds[4],  nullptr},  // 1, VALLE D'AOSTA
+  {NERO,  &leds[5],  nullptr},  // 2, LOMBARDIA
+  {NERO,  &leds[6],  nullptr},  // 3, TRENTO
+  {NERO,  &leds[8],  nullptr},  // 4, VENETO
+  {NERO,  &leds[7],  nullptr},  // 5, FRIULI VENEZIA GIULIA
+  {NERO,  &leds[1],  &leds[2]}, // 6, LIGURIA
+  {NERO,  &leds[9],  nullptr},  // 7, EMILIA ROMAGNA
+  {NERO, &leds[0],  nullptr},  // 8, TOSCANA
+  {NERO, &leds[11], nullptr},  // 9, UMBRIA
+  {NERO, &leds[10], nullptr},  // 10, MARCHE
+  {NERO, &leds[12], nullptr},  // 11, LAZIO
+  {NERO, &leds[14], nullptr},  // 12, ABRUZZO
+  {NERO, &leds[15], nullptr},  // 13, MOLISE
+  {NERO,  &leds[16], nullptr},  // 14, CAMPANIA
+  {NERO,  &leds[17], &leds[18]},// 15, PUGLIA
+  {NERO,  &leds[19], nullptr},  // 16, BASILICATA
+  {NERO,  &leds[20], nullptr},  // 17, CALABRIA
+  {NERO,  &leds[21], nullptr},  // 18, SICILIA
+  {NERO,  &leds[13], nullptr},  // 19, SARDEGNA
+  {NERO,  nullptr,   nullptr},  // 20, BOLZANO
 };
 
 //---------------------------------SETUP----------------------------------------------
@@ -288,10 +284,10 @@ void setup()
   FastLED.clear();
   FastLED.show();
 
-  // Splashscreen Italia
-  for(int i = 1; i < 10; i++) leds[i] = 0x008c45;                       //Verde: pantone 17-6153 
-  for(int i = 10; i < 15; i++) leds[i] = 0xf4f5f0; leds[0] = 0xf4f5f0;  //Bianco: pantone 11-0601
-  for(int i = 15; i < LED_NUMBER; i++) leds[i] = 0xcd212a;              //Rosso: pantone 18-1662
+  // Splashscreen Italia                                            
+  for(int i = 1; i < 10; i++) leds[i] = VERDE;
+  for(int i = 10; i < 15; i++) leds[i] = BIANCO; leds[0] = BIANCO;
+  for(int i = 15; i < LED_NUMBER; i++) leds[i] = ROSSO;
   FastLED.show();
   delay(3000);
 
