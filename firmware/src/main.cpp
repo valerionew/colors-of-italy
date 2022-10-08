@@ -19,7 +19,7 @@
 WiFiManager wifiManager;
 WiFiClient client;
 
-uint8_t brightness_scale{0};
+uint8_t brightness_scale{30};
 unsigned long last_connected{0};
 unsigned long last_pressed{0};
 
@@ -135,14 +135,13 @@ void setup()
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, LED_NUMBER);
 
   // Reset LEDs
+  FastLED.setBrightness(brightness_scale);
   FastLED.clear();
   FastLED.show();
 
+  // Splashscreen Italia
   printSplashScreen(splashScreenItalia);
-  // Splashscreen Italia                  
-  for(int i = 0; i < 10; i++) leds[i] = VERDE;
-  for(int i = 10; i < 15; i++) leds[i] = BIANCO;
-  for(int i = 15; i < LED_NUMBER; i++) leds[i] = ROSSO;
+
   FastLED.show();
 
   delay(3000);
@@ -215,9 +214,9 @@ void setup()
   last_connected = millis();
 
 
-  // Blank screen
-  FastLED.clear(); 
-  FastLED.show();
+  // Blank screen // why? is ugly
+  //FastLED.clear(); 
+  //FastLED.show();
 
 
   //Serial.println("-------Fine SETUP-------");  
@@ -394,14 +393,13 @@ void loop()
 
 
 #ifdef DEBUG
-    Serial.print("ambient light ");
-    Serial.print(light);
-//    Serial.print(" scaled level ");
-//    Serial.print(scaled_light);
-    Serial.print(" led brightness ");
-    Serial.println(brightness_scale);
+    //Serial.print("ambient light ");
+    //Serial.print(light);
+//  //  Serial.print(" scaled level ");
+//  //  Serial.print(scaled_light);
+    //Serial.print(" led brightness ");
+    //Serial.println(brightness_scale);
 #endif
-
 
     //for every region
     for(auto &region : region_map) 
@@ -417,9 +415,9 @@ void loop()
   if (touch_minus.is_pressed())
   {
 #ifdef DEBUG
-    static int count = 0;
-    Serial.println(count++);
-    Serial.println(" touch_minus is pressed");
+    //static int count = 0;
+    //Serial.println(count++);
+    //Serial.println(" touch_minus is pressed");
 #endif
     
     if (brightness_scale >= BRIGHTNESS_INCREMENT){
@@ -429,40 +427,43 @@ void loop()
     }
 
 #ifdef DEBUG
-    Serial.println(brightness_scale);
+    //Serial.println(brightness_scale);
 #endif
     
   }
-
-/*
+/* //disabled, it goes crazy on my system
   touch_reset.update();
-  if (touch_reset.is_pressed() && touch_reset.first_press())
+  bool anti_bounce = true; 
+  if (touch_reset.is_pressed())
   {
+    if (!anti_bounce){
+      anti_bounce=true;
 #ifdef DEBUG
-    Serial.println("touch_reset is pressed");
+      Serial.println("touch_reset is pressed");
 #endif
 
-    // toggle showing flag
-    showing = !showing;
-    // if not showing, turn off all leds
-    if (!showing)
-    {
-      FastLED.clear();
-      FastLED.show();
+      // toggle showing flag
+      showing = !showing;
+      // if not showing, turn off all leds
+      if (!showing)
+      {
+        FastLED.clear();
+        FastLED.show();
+      }
+
+      Serial.print(showing);
+      Serial.println();
     }
-
-    Serial.print(showing);
-    Serial.println();
-  }
+  }else
+    anti_bounce = false;
 */
-
   touch_plus.update();
   if (touch_plus.is_pressed())
   {
 #ifdef DEBUG
-    static int count = 0;
-    Serial.println(count++);
-    Serial.println("touch_plus is pressed");
+    //static int count = 0;
+    //Serial.println(count++);
+    //Serial.println("touch_plus is pressed");
 #endif
 
     if (255 - brightness_scale > BRIGHTNESS_INCREMENT){
@@ -471,7 +472,7 @@ void loop()
       brightness_scale = 255u;
     }
 #ifdef DEBUG
-    Serial.println(brightness_scale);
+    //Serial.println(brightness_scale);
 #endif
   }
 
