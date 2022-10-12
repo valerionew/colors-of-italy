@@ -107,7 +107,7 @@ typedef CRGB SplashScreen[NUMERO_REGIONI];
   CRGB colors[NUMERO_REGIONI];
 };*/
 
-constexpr SplashScreen splashScreenItalia{
+const SplashScreen splashScreenItalia{
     VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE, VERDE,
     BIANCO, BIANCO, BIANCO, BIANCO, BIANCO,
     ROSSO, ROSSO, ROSSO, ROSSO, ROSSO, ROSSO, ROSSO,
@@ -124,7 +124,7 @@ void setup()
 {
 
 #ifdef DEBUG
-  Serial.begin(921600);
+  Serial.begin(115200);
 #endif
 
   Serial.println("-------SETUP-------");  
@@ -387,30 +387,32 @@ void loop()
     unsigned int light = analogRead(LIGHT_SENSOR_PIN);
 
     // calculate the actual brightness compared to the sensor output
-    //float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_offset;
-    //scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
-    //byte brightness = (byte)brightness_filter.update(scaled_light);
+    float scaled_light = rescale(light, 2000, 0, 255, MIN_GLOBAL_BRIGHTENSS) + brightness_scale;
+    scaled_light = force(scaled_light, MIN_GLOBAL_BRIGHTENSS, 255);
+    byte brightness = (byte)brightness_filter.update(scaled_light);
 
 
 #ifdef DEBUG
-    //Serial.print("ambient light ");
-    //Serial.print(light);
-//  //  Serial.print(" scaled level ");
-//  //  Serial.print(scaled_light);
-    //Serial.print(" led brightness ");
-    //Serial.println(brightness_scale);
+    // Serial.print("ambient light ");
+    // Serial.print(light);
+    // Serial.print(" scaled level ");
+    // Serial.print(scaled_light);
+    // Serial.print(" led brightness ");
+    // Serial.println(brightness);
 #endif
 
     //for every region
     for(auto &region : region_map) 
     {
-      region.setBrightness(brightness_scale);
+      region.setBrightness(brightness);
     }
 
-    FastLED.setBrightness(brightness_scale);
+    FastLED.setBrightness(brightness);
     FastLED.show();
   }
 
+
+// Tasto Minus
   touch_minus.update();
   if (touch_minus.is_pressed())
   {
@@ -425,12 +427,13 @@ void loop()
     }else{
       brightness_scale = 0;
     }
-
 #ifdef DEBUG
     //Serial.println(brightness_scale);
 #endif
-    
   }
+
+
+// Tasto On/Off
 /* //disabled, it goes crazy on my system
   touch_reset.update();
   bool anti_bounce = true; 
@@ -457,6 +460,9 @@ void loop()
   }else
     anti_bounce = false;
 */
+
+
+// Tasto Plus
   touch_plus.update();
   if (touch_plus.is_pressed())
   {
@@ -476,7 +482,8 @@ void loop()
 #endif
   }
 
-  // check Reset Button
+
+  // Check Reset Button
   if (digitalRead(WIFI_RESET_BUTTON) == LOW)
   {
     if (last_pressed == 0)

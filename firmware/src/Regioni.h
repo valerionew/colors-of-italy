@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <pixeltypes.h>
 
-constexpr CRGB OFFSET{0xFFFF00}; // color that gets blended with original one (color correction)
+const CRGB OFFSET{0xFFFF00}; // color that gets blended with original one (color correction)
 
 class Regioni{
   uint8_t brightness = 255;

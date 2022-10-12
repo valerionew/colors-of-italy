@@ -40,13 +40,14 @@ class Button
     int32_t mediaNormalizzata = sumMediaNormalizzata / peso;
 
 /*
-    Serial.print("touch_minus ");
+    Serial.print("touch ");
     Serial.print(sumMediaNormalizzata);
     Serial.print(" ");
     Serial.print(mediaNormalizzata);
     Serial.print(" ");
-    Serial.print(reading);
-*/    
+    Serial.println(reading); 
+*/
+
     if (mediaNormalizzata - reading > BIG_THRESHOLD || reading - mediaNormalizzata > BIG_THRESHOLD){
       // too big of a gap,reset
       Serial.println(" RESET MEAN");
